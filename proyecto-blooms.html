@@ -82,7 +82,6 @@
             font-size: 1.05rem;
         }
 
-        /* Bloque estilo Jupyter Lab */
         .jupyter-code {
             background-color: var(--code-bg);
             border-radius: 8px;
@@ -134,23 +133,6 @@
             font-style: italic;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 25px 0;
-        }
-
-        th, td {
-            padding: 15px;
-            text-align: left;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        th {
-            background-color: #f8fafc;
-            font-weight: 700;
-        }
-
         .highlight-box {
             background-color: #eff6ff;
             border-right: 4px solid var(--accent-color);
@@ -184,30 +166,24 @@
 
     <section class="section-card">
         <h2>El Arte de Contar Historias con Datos</h2>
-        <p>Este reporte sirve como un proyecto definitivo de portafolio, diseñado para demostrar una comprensión matizada de <strong>estrategia empresarial</strong> y optimización de la rentabilidad. Evitamos el error de presentar código sin contexto, adoptando un enfoque de <strong>"narrativa primero"</strong>.</p>
-        
+        <p>Este reporte demuestra una comprensión matizada de <strong>estrategia empresarial</strong> y optimización de la rentabilidad, adoptando un enfoque de <strong>"narrativa primero"</strong>.</p>
         <div class="highlight-box">
-            Objetivo: Diagnosticar las causas de la erosión de márgenes en los mercados asiáticos e identificar palancas de poder de fijación de precios en Europa y Norteamérica.
+            Objetivo: Diagnosticar la erosión de márgenes en Asia e identificar palancas de precio en Europa y Norteamérica.
         </div>
     </section>
 
     <section class="section-card">
         <h2>Parte I: Contexto Empresarial</h2>
-        <h3>El Cliente: Global Blooms</h3>
-        <p>Distribuidor floral internacional B2B y B2C. A pesar de un robusto crecimiento en ingresos, la Junta Directiva ha señalado un estancamiento en la rentabilidad neta, especialmente en economías emergentes.</p>
-        
         <h3>Hipótesis Estratégicas</h3>
         <ul>
             <li><strong>H1 (Tonto Ocupado):</strong> Mercado asiático con alto volumen pero bajo valor.</li>
-            <li><strong>H2 (Efecto Premium):</strong> Inelasticidad de demanda en ciertos artículos de lujo en Europa/USA.</li>
-            <li><strong>H3 (Reactividad):</strong> Fijación de precios basada en competidores, no en márgenes internos.</li>
+            <li><strong>H2 (Efecto Premium):</strong> Inelasticidad de demanda en artículos de lujo en Europa/USA.</li>
+            <li><strong>H3 (Reactividad):</strong> Fijación de precios basada en competidores, no en márgenes.</li>
         </ul>
     </section>
 
     <section class="section-card">
         <h2>Parte II: Preparación de Datos</h2>
-        <p>Para este análisis, utilizamos el ecosistema Python, priorizando la robustez y el manejo de errores en la carga de datos.</p>
-        
         <div class="jupyter-code">
 <pre>
 # Importar bibliotecas necesarias
@@ -220,20 +196,8 @@ import seaborn as sns
 sns.set(style="whitegrid")
 pd.set_option('display.precision', 2)
 
-# Carga robusta de datos
-def load_and_inspect_data(filepath):
-    """
-    Carga un CSV y realiza una inspección inicial.
-    """
-    try:
-        df = pd.read_csv(filepath)
-        print(f"--- Datos Cargados: {df.shape[0]} filas ---")
-        return df
-    except FileNotFoundError:
-        print("Error: Archivo no encontrado.")
-        return None
-
-df_flowers = load_and_inspect_data('docs/images/flowers_pricing_dataset_cleaned.csv')
+# Carga robusta de datos (Ruta relativa corregida)
+df_flowers = pd.read_csv('images/flowers_pricing_dataset_cleaned.csv')
 </pre>
         </div>
     </section>
@@ -242,36 +206,32 @@ df_flowers = load_and_inspect_data('docs/images/flowers_pricing_dataset_cleaned.
         <h2>Parte III: Análisis Exploratorio (EDA)</h2>
         <h3>Deconstruyendo el Dashboard Estratégico</h3>
         <div class="img-wrapper">
-            <img src="docs/images/dashboard_pricing_final.jpg" alt="Dashboard de Precios">
+            <img src="images/dashboard_pricing_final.jpg" alt="Dashboard de Precios">
             <p class="img-caption">Gráfico 1: Dashboard integral de métricas clave por región.</p>
         </div>
-        <p>La discrepancia visual en el dashboard valida la <strong>Hipótesis 1</strong>. En Asia, el volumen puro de unidades no se traduce en la línea de fondo, sugiriendo una fuerte compresión de márgenes.</p>
 
         <h3>Análisis de Correlación: Costo vs. Precio</h3>
         <div class="img-wrapper">
-            <img src="docs/images/visual_correlation_heatmap.png" alt="Matriz de Correlación">
+            <img src="images/visual_correlation_heatmap.png" alt="Matriz de Correlación">
             <p class="img-caption">Gráfico 2: Mapa de calor de variables financieras.</p>
         </div>
-        <p>La alta correlación (0.91) entre <code>Sale_Price</code> y <code>Total_Cost</code> indica una estrategia <strong>Costo-Plus</strong>. Esto protege de pérdidas pero ignora la disposición de pago del cliente.</p>
 
-        <h3>Dispersión de Precios: Volatilidad por Categoría</h3>
+        <h3>Dispersión de Precios</h3>
         <div class="img-wrapper">
-            <img src="docs/images/visual_price_dispersion.png" alt="Boxplot de Precios">
+            <img src="images/visual_price_dispersion.png" alt="Boxplot de Precios">
             <p class="img-caption">Gráfico 3: Distribución de precios por producto.</p>
         </div>
     </section>
 
     <section class="section-card">
         <h2>Parte IV: El Problema de Asia</h2>
-        <p>Los Lirios en Asia se venden con un margen de solo $1.00 por unidad. Estamos asumiendo riesgos logísticos masivos por un retorno del 4.7%.</p>
-        
         <div class="img-wrapper">
-            <img src="docs/images/predictive_analysis_dynamic.png" alt="Análisis de Elasticidad">
+            <img src="images/predictive_analysis_dynamic.png" alt="Análisis de Elasticidad">
             <p class="img-caption">Gráfico 4: Análisis de elasticidad precio de la demanda para Asia.</p>
         </div>
 
         <div class="img-wrapper">
-            <img src="docs/images/visual_profit_composition.png" alt="Composición de Ganancia">
+            <img src="images/visual_profit_composition.png" alt="Composición de Ganancia">
             <p class="img-caption">Gráfico 5: Composición de ganancias por región y producto.</p>
         </div>
     </section>
@@ -279,36 +239,17 @@ df_flowers = load_and_inspect_data('docs/images/flowers_pricing_dataset_cleaned.
     <section class="section-card">
         <h2>Parte V: Matriz Estratégica</h2>
         <div class="img-wrapper">
-            <img src="docs/images/visual_matriz_pricing.png" alt="Matriz de Pricing">
+            <img src="images/visual_matriz_pricing.png" alt="Matriz de Pricing">
             <p class="img-caption">Gráfico 6: Margen vs. Gap con Competidor.</p>
-        </div>
-        
-        <div class="jupyter-code">
-<pre>
-# Algoritmo de Segmentación Estratégica
-def classify_product_strategy(row):
-    margin = row['Margin_Percentage']
-    price_gap = row['Sale_Price'] - row['Competitor_Price']
-    
-    # Umbrales estratégicos
-    if margin < 0.20 and price_gap > 0:
-        return 'CRÍTICO: Revisar Costos'
-    elif margin > 0.35 and price_gap < -2.00:
-        return 'OPORTUNIDAD: Subir Precio'
-    else:
-        return 'Mantener / Optimizar'
-
-df_flowers['Strategy'] = df_flowers.apply(classify_product_strategy, axis=1)
-</pre>
         </div>
     </section>
 
     <section class="section-card">
-        <h2>Parte VI: Conclusiones y Recomendaciones</h2>
+        <h2>Parte VI: Conclusiones</h2>
         <ol>
-            <li><strong>Reestructuración en USA:</strong> Implementar aumento del 5% en Rosas Rojas dada su baja elasticidad.</li>
-            <li><strong>Auditoría en Asia:</strong> Urge reducción de COGS. No podemos subir precios sin perder volumen masivo.</li>
-            <li><strong>Racionalización:</strong> Descontinuar líneas con margen menor al 5% si no hay eficiencia operativa inmediata.</li>
+            <li><strong>Reestructuración en USA:</strong> Aumento del 5% en Rosas Rojas.</li>
+            <li><strong>Auditoría en Asia:</strong> Urge reducción de COGS (Costos de bienes vendidos).</li>
+            <li><strong>Racionalización:</strong> Descontinuar líneas con margen menor al 5%.</li>
         </ol>
     </section>
 
@@ -316,7 +257,6 @@ df_flowers['Strategy'] = df_flowers.apply(classify_product_strategy, axis=1)
 
 <footer>
     <p>Proyecto de Portafolio: Global Blooms - Análisis de Rentabilidad 2026</p>
-    <p style="font-size: 0.8rem; opacity: 0.6;">Desarrollado con Python, Pandas y Visualización Estratégica de Datos.</p>
 </footer>
 
 </body>
