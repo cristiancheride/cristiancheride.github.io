@@ -372,3 +372,208 @@ csv_file_path = <span class="code-string">'images/flowers_pricing_dataset_cleane
 
 <span class="code-comment"># Cargar los datos</span>
 df_flowers = load_and_inspect_data(csv_file_path)
+</pre>
+        </div>
+
+        <div class="analyst-note">
+            <strong>Comentario del Analista:</strong> La función <code>load_and_inspect_data</code> es crítica. En un portafolio profesional, el manejo de errores (bloques try-except) demuestra previsión y madurez en la codificación. Un error común en portafolios junior es asumir que los datos siempre cargan perfectamente. Al verificar valores nulos inmediatamente, establecemos confianza en la integridad de los datos antes de sacar conclusiones.
+        </div>
+    </section>
+
+    <section class="section-card">
+        <h2>Parte III: Análisis Exploratorio de Datos (EDA) - El Arco Narrativo</h2>
+        
+        <h3>3.1 La Visión Estratégica: Deconstruyendo el Dashboard</h3>
+        <p>El primer paso en nuestro análisis implica interpretar el "Dashboard Estratégico de Precios" (referenciando la Imagen 1 proporcionada por el cliente). Este tablero agrega cuatro vistas distintas del negocio, sirviendo efectivamente como un "chequeo de salud" para Global Blooms.</p>
+        
+        <div class="img-wrapper">
+            <img src="images/dashboard_pricing_final.jpg" alt="Dashboard Estratégico de Precios">
+            <p class="img-caption">Imagen 1: Dashboard Estratégico de Precios. Nótese la discrepancia en rentabilidad regional.</p>
+        </div>
+
+        <p><strong>Análisis Visual de la Imagen 1:</strong> El cuadrante superior derecho del dashboard, Rentabilidad Total por Región y Producto, confirma inmediatamente nuestros temores iniciales con respecto al mercado asiático. A pesar de lo que sabemos por los datos brutos sobre el alto volumen de ventas (ej., Lirios moviendo 1,674 unidades), la barra de ganancias para ASIA es empequeñecida por EUROPA y USA.</p>
+        <ul>
+            <li><strong>Observación:</strong> La barra europea está dominada por Rosas Rojas (verde) y Orquídeas (púrpura), indicando un flujo de ganancias diversificado.</li>
+            <li><strong>Observación:</strong> La barra asiática es delgada, a pesar de que la región es un centro logístico para muchas cadenas de suministro floral.</li>
+        </ul>
+        <p><strong>El "¿Y Qué?":</strong> Esta discrepancia visual valida la Hipótesis 1. Estamos ocupados (alto volumen), pero no somos rentables en Asia. El volumen puro de unidades vendidas no se está traduciendo en la línea de fondo, sugiriendo una compresión de márgenes.</p>
+
+        <h3>3.2 La Relación Costo-Precio: Análisis de Matriz de Correlación</h3>
+        <p>Para entender la mecánica de este fallo en la fijación de precios, examinamos la Matriz de Correlación (Imagen 2). Este mapa de calor es vital para diagnosticar si Global Blooms fija los precios de sus productos basándose en el valor o en el costo.</p>
+
+        <div class="img-wrapper">
+            <img src="images/visual_correlation_heatmap.png" alt="Matriz de Correlación">
+            <p class="img-caption">Imagen 2: Mapa de calor de correlación de variables clave.</p>
+        </div>
+
+        <p><strong>Análisis Visual de la Imagen 2:</strong></p>
+        <ul>
+            <li><strong>Sale_Price vs. Total_Cost (0.91):</strong> Esta correlación positiva extremadamente alta indica una estricta Estrategia de Precios Costo-Plus. La empresa esencialmente toma el costo de la flor y añade un margen fijo. Si bien esto protege contra la venta con pérdidas, ignora la disposición del consumidor a pagar. Si los costos aumentan (como sucede a menudo en logística), los precios suben, matando potencialmente la demanda.</li>
+            <li><strong>Units_Sold vs. Sale_Price (-0.05):</strong> Esta es la prueba definitiva. En un modelo típico de oferta y demanda, esperamos una fuerte correlación negativa (mayor precio = menores ventas). Una correlación cercana a cero sugiere que la demanda es inelástica o que la estrategia de precios es tan inconexa que el precio no es el conductor principal del volumen. Esto apoya la Hipótesis 2 (Potencial Premium) – si los clientes no compran significativamente menos cuando los precios son altos, tenemos espacio para subir los precios.</li>
+            <li><strong>Margin_Percentage vs. Total_Cost (-0.44):</strong> A medida que suben los costos, el porcentaje de margen baja. Esto implica que el margen de beneficio es fijo en términos de dólares, no en términos porcentuales, o que la empresa falla en transferir la carga completa de los artículos de alto costo (como Orquídeas) al consumidor.</li>
+        </ul>
+
+        <h3>3.3 La Volatilidad de los Precios: Análisis de Boxplot</h3>
+        <p>Moviéndonos a la distribución de precios, analizamos el Diagrama de Caja (Boxplot) de Precios de Venta (Imagen 3).</p>
+
+        <div class="img-wrapper">
+            <img src="images/visual_price_dispersion.png" alt="Boxplot de Precios">
+            <p class="img-caption">Imagen 3: Dispersión de precios de venta por categoría de producto.</p>
+        </div>
+
+        <p><strong>Análisis Visual de la Imagen 3:</strong></p>
+        <ul>
+            <li><strong>Orquídeas:</strong> Esta categoría muestra el rango intercuartílico (IQR) más amplio, con precios que van desde aproximadamente $30 hasta más de $40. Esta volatilidad sugiere inconsistencia operativa. ¿Por qué estamos vendiendo el mismo producto a puntos de precio tan vastamente diferentes?</li>
+            <li><strong>Lirios:</strong> La caja está comprimida, rondando la marca de $20-$25. Esta falta de varianza sugiere una estructura de precios rígida que no tiene en cuenta las diferencias regionales en el poder adquisitivo.</li>
+            <li><strong>Rosas Rojas:</strong> Vemos una dispersión saludable, indicando que ya está ocurriendo algún nivel de fijación de precios dinámica, probablemente en USA donde los márgenes son más saludables.</li>
+        </ul>
+    </section>
+
+    <section class="section-card">
+        <h2>Parte IV: El Análisis Profundo - El "Problema de Asia"</h2>
+        
+        <h3>4.1 Diagnosticando la Trampa de Ganancias</h3>
+        <p>La señal más alarmante en nuestra revisión inicial fue el rendimiento de los Lirios en Asia. Para investigar esto, recurrimos al Análisis de Elasticidad específico (Imagen 4).</p>
+
+        <div class="img-wrapper">
+            <img src="images/predictive_analysis_dynamic.png" alt="Análisis de Elasticidad en Asia">
+            <p class="img-caption">Imagen 4: Análisis de Elasticidad Precio de la Demanda para Lirios en Asia.</p>
+        </div>
+
+        <p><strong>Análisis de la Imagen 4: Elasticidad de Lirios en Asia</strong></p>
+        <p>Este gráfico es un diagrama de dispersión con una línea de regresión (roja discontinua) que representa la Elasticidad Precio de la Demanda.</p>
+        <ul>
+            <li><strong>Situación Actual (Punto Azul):</strong> El gráfico marca el estado "Actual" a un precio de $22.98.</li>
+            <li><strong>El Problema:</strong> La línea de regresión tiene una pendiente negativa pronunciada. Los puntos de datos (puntos azules representando ventas históricas) están dispersos, pero la tendencia es clara: precios más altos generalmente se correlacionan con menor volumen.</li>
+            <li><strong>La Anomalía:</strong> Sin embargo, mire el grupo de puntos en la parte superior izquierda (precio de $20, 2000+ unidades). La situación "Actual" es en realidad subóptima.</li>
+            <li><strong>La Simulación (Punto Verde):</strong> La simulación sugiere un precio de $45.96 (+100%). Sin embargo, el volumen de ventas correspondiente cae casi a cero (el punto verde está en la línea base del eje X).</li>
+        </ul>
+        <p><strong>Interpretación:</strong> La simulación nos advierte en contra de un aumento drástico de precios para este producto específico en esta región específica. El mercado para Lirios en Asia parece altamente sensible. Sin embargo, el precio actual está produciendo márgenes insignificantes.</p>
+        <p><strong>Referencia de Datos:</strong> Los Lirios en Asia tienen un Sale_Price de $20.94 y Total_Cost de $19.94, dejando un Unit_Margin de solo $1.00.</p>
+        <p><strong>Conclusión:</strong> Estamos moviendo un volumen masivo (1,674 unidades) por centavos. Estamos asumiendo todo el riesgo de deterioro y envío por un retorno del 4.7%. Esto es insostenible.</p>
+
+        <h3>4.2 Composición de Ganancias por Región</h3>
+        <p>Validando esto con la Imagen 5 (Composición de Ganancias por Región), vemos el gráfico de barras apiladas.</p>
+
+        <div class="img-wrapper">
+            <img src="images/visual_profit_composition.png" alt="Composición de Ganancias por Región">
+            <p class="img-caption">Imagen 5: Composición de ganancias totales por región y producto.</p>
+        </div>
+
+        <ul>
+            <li><strong>Columna ASIA:</strong> Es la barra más corta. El segmento azul (Lirios) es visible pero diminuto comparado con el volumen que sabemos que existe. El segmento verde (Rosas Rojas) está presente pero comprimido.</li>
+            <li><strong>Columna EUROPA:</strong> Este es el gigante imponente del gráfico. El segmento rojo (Girasoles) y el segmento azul (Lirios) son trozos masivos de ganancia.</li>
+        </ul>
+        <p><strong>Referencia de Datos:</strong> Los Girasoles en Europa tienen un margen del 44.66% ($10.24 de ganancia por unidad).</p>
+        <p><strong>Implicación Estratégica:</strong> Europa permite una fijación de precios basada en el valor. El consumidor allí valora la marca "Global Blooms" o la calidad lo suficiente como para pagar una prima.</p>
+    </section>
+
+    <section class="section-card">
+        <h2>Parte V: Análisis Estratégico de Precios (La Matriz)</h2>
+        
+        <h3>5.1 La Matriz de Precios</h3>
+        <p>La pieza final de nuestro rompecabezas es la Imagen 6, el "Dashboard Estratégico de Precios: Margen vs. Gap con Competidor". Este diagrama de dispersión es la herramienta más accionable para el equipo de precios.</p>
+        <ul>
+            <li><strong>Eje X (Price Gap):</strong> Valores positivos significan que somos más caros que los competidores. Valores negativos significan que somos más baratos.</li>
+            <li><strong>Eje Y (Margin %):</strong> La rentabilidad de la venta.</li>
+            <li><strong>La Línea Roja (Umbral del 20%):</strong> Esta es la zona de peligro. Cualquier punto debajo de esta línea es una venta de bajo margen.</li>
+        </ul>
+
+        <div class="img-wrapper">
+            <img src="images/visual_matriz_pricing.png" alt="Matriz de Estrategia de Precios">
+            <p class="img-caption">Imagen 6: Matriz de Margen vs. Brecha de Precio con Competidor.</p>
+        </div>
+
+        <p><strong>Análisis de la Imagen 6:</strong></p>
+        <ul>
+            <li><strong>La Zona "Revisar Costos":</strong> Hay un grupo de puntos en la parte inferior derecha (Puntos verdes, probablemente Asia). Estas transacciones tienen un gap de precio positivo (somos caros) pero un margen bajo (por debajo del 20%).<br>
+            <em>Significado:</em> Estamos cobrando más que los competidores, sin embargo estamos ganando menos dinero. Esto prueba matemáticamente que nuestra Base de Costos es demasiado alta. Somos ineficientes. No podemos bajar precios para competir porque nuestros márgenes ya son delgados.</li>
+            <li><strong>La Zona "Subir Precios":</strong> En la parte superior izquierda (Puntos azules, USA), vemos transacciones donde somos más baratos que los competidores (gap negativo) pero tenemos márgenes altos (>30%).<br>
+            <em>Significado:</em> Estamos dejando dinero sobre la mesa. Somos el líder de bajo costo en un mercado que podría pagar más. Podríamos subir los precios un 5%, seguir siendo más baratos que la competencia, y aumentar la ganancia pura.</li>
+        </ul>
+
+        <h3>5.2 Implementación de Código: Identificando los Clústeres</h3>
+        <p>Para operacionalizar esta perspectiva, escribimos código Python para segmentar estos productos automáticamente.</p>
+
+        <div class="jupyter-code">
+<pre>
+<span class="code-comment"># Algoritmo de Segmentación Estratégica</span>
+<span class="code-keyword">def</span> <span class="code-func">classify_product_strategy</span>(row):
+    margin = row[<span class="code-string">'Margin_Percentage'</span>]
+    <span class="code-comment"># Cálculo corregido: Precio Propio - Precio Competencia</span>
+    price_gap = row[<span class="code-string">'Sale_Price'</span>] - row[<span class="code-string">'Competitor_Price'</span>]
+    
+    <span class="code-comment"># Umbrales Estratégicos</span>
+    MARGIN_THRESHOLD = 0.20 <span class="code-comment"># 20%</span>
+    GAP_THRESHOLD = 0.00    <span class="code-comment"># Paridad</span>
+    
+    <span class="code-keyword">if</span> margin < MARGIN_THRESHOLD <span class="code-keyword">and</span> price_gap > GAP_THRESHOLD:
+        <span class="code-keyword">return</span> <span class="code-string">'CRÍTICO: Alto Costo / Revisar Cadena de Suministro'</span>
+    <span class="code-keyword">elif</span> margin > 0.35 <span class="code-keyword">and</span> price_gap < -2.00:
+        <span class="code-keyword">return</span> <span class="code-string">'OPORTUNIDAD: Subir Precio'</span>
+    <span class="code-keyword">elif</span> margin < MARGIN_THRESHOLD <span class="code-keyword">and</span> price_gap < -2.00:
+        <span class="code-keyword">return</span> <span class="code-string">'ADVERTENCIA: Líder en Pérdidas / Trampa de Descuento'</span>
+    <span class="code-keyword">else</span>:
+        <span class="code-keyword">return</span> <span class="code-string">'Mantener / Monitorear'</span>
+
+<span class="code-comment"># Aplicar la clasificación al dataframe</span>
+df_flowers[<span class="code-string">'Strategy_Action'</span>] = df_flowers.apply(classify_product_strategy, axis=1)
+
+<span class="code-comment"># Revisar el Resumen de Acciones</span>
+action_summary = df_flowers[<span class="code-string">'Strategy_Action'</span>].value_counts()
+<span class="code-func">print</span>(<span class="code-string">"\n--- Resumen del Plan de Acción Estratégico ---"</span>)
+<span class="code-func">print</span>(action_summary)
+</pre>
+        </div>
+
+        <div class="analyst-note">
+            <strong>Nota del Analista:</strong> Este fragmento de código transforma el EDA crudo en una lista de tareas para los Directores de Ventas. Se mueve más allá de "qué pasó" a "qué debemos hacer".
+        </div>
+    </section>
+
+    <section class="section-card">
+        <h2>Parte VI: Conclusiones y Recomendaciones</h2>
+        
+        <h3>6.1 Síntesis de Hallazgos</h3>
+        <p>El análisis de los datos de Global Blooms revela una empresa de dos identidades. En Occidente (Europa/USA), es una marca rentable y eficiente con poder de fijación de precios. En Oriente (Asia), es un comerciante de volumen inflado que sufre de ineficiencias de costos y modelos de precios ineficaces.</p>
+        <p>Los datos confirman la Hipótesis 1 (Asia es un "volumen sin valor") y la Hipótesis 3 (Precios Reactivos). Nos estamos atrapando en márgenes bajos en Asia no porque los clientes no paguen, sino porque nuestros costos son anómalamente altos comparados con nuestro techo de precios.</p>
+
+        <h3>6.2 Recomendaciones Estratégicas</h3>
+        <ol>
+            <li>
+                <strong>Reestructuración Inmediata de Precios en USA (La Zona de "Oportunidad")</strong>
+                <ul>
+                    <li><em>Hallazgo:</em> Las Rosas Rojas en USA tienen márgenes de ~40% y a menudo tienen precios por debajo de los competidores.</li>
+                    <li><em>Acción:</em> Implementar un aumento de precio del 5% en todos los SKU de Rosas Rojas en el mercado de EE. UU.</li>
+                    <li><em>Impacto:</em> Basado en la baja elasticidad observada en la matriz de correlación, la pérdida de volumen será mínima. Esto fluirá directamente a la Ganancia Neta.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Auditoría de Cadena de Suministro en Asia (La Zona "Crítica")</strong>
+                <ul>
+                    <li><em>Hallazgo:</em> Las Orquídeas en Asia se venden a ~$34.00 contra un costo de ~$31.00. Sin embargo, los competidores venden productos similares por $31.00 - $45.00. Estamos posicionados en el medio pero haciendo márgenes de un solo dígito.</li>
+                    <li><em>Acción:</em> No podemos simplemente subir los precios a $45 (según la simulación de Elasticidad) porque el volumen crea flujo de caja. En su lugar, el enfoque debe estar en la Reducción de Costos. Una auditoría de proveedores logísticos asiáticos es obligatoria para bajar el COGS de $31.00 al promedio global de ~$25.00.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Racionalización del Portafolio</strong>
+                <ul>
+                    <li><em>Hallazgo:</em> Los Lirios en Asia generan $1.00 de ganancia por unidad.</li>
+                    <li><em>Acción:</em> Si los costos no pueden reducirse, descontinuar Lirios en el mercado asiático. El capital de trabajo atado en inventario y envío para un retorno del 4.7% se despliega mejor en Girasoles Europeos de alto rendimiento.</li>
+                </ul>
+            </li>
+        </ol>
+
+        <h3>6.3 Pensamientos Finales</h3>
+        <p>La Ciencia de Datos a menudo se idealiza como la búsqueda de modelos complejos de aprendizaje automático. Sin embargo, para Global Blooms, el modelo más valioso no fue una red neuronal, sino un simple diagrama de dispersión de Margen vs. Gap con Competidor. Al visualizar el negocio de esta manera, hemos identificado palancas accionables que podrían aumentar la rentabilidad regional en un 15-20% sin adquirir un solo cliente nuevo.</p>
+    </section>
+
+</div>
+
+<footer>
+    <p>&copy; 2026 Global Blooms Analysis. Data Science Portfolio Project.</p>
+    <p style="opacity: 0.7; font-size: 0.9rem;">Developed with Python, Pandas & Strategic Vision.</p>
+</footer>
+
+</body>
+</html>
