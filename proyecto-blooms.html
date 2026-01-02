@@ -354,7 +354,7 @@ pd.set_option(<span class="code-string">'display.precision'</span>, 2)
 sns.set(style=<span class="code-string">"whitegrid"</span>)
 
 <span class="code-comment"># Definir ruta del archivo (Ajustado para estructura web)</span>
-csv_file_path = <span class="code-string">'images/flowers_pricing_dataset_cleaned.csv'</span>
+csv_file_path = <span class="code-string">'docs/images/flowers_pricing_dataset_cleaned.csv'</span>
 
 <span class="code-comment"># Función personalizada para carga robusta de datos</span>
 <span class="code-keyword">def</span> <span class="code-func">load_and_inspect_data</span>(filepath):
@@ -387,7 +387,7 @@ df_flowers = load_and_inspect_data(csv_file_path)
         <p>El primer paso en nuestro análisis implica interpretar el "Dashboard Estratégico de Precios" (referenciando la Imagen 1 proporcionada por el cliente). Este tablero agrega cuatro vistas distintas del negocio, sirviendo efectivamente como un "chequeo de salud" para Global Blooms.</p>
         
         <div class="img-wrapper">
-            <img src="images/dashboard_pricing_final.jpg" alt="Dashboard Estratégico de Precios">
+            <img src="docs/images/dashboard_pricing_final.jpg" alt="Dashboard Estratégico de Precios">
             <p class="img-caption">Imagen 1: Dashboard Estratégico de Precios. Nótese la discrepancia en rentabilidad regional.</p>
         </div>
 
@@ -402,7 +402,7 @@ df_flowers = load_and_inspect_data(csv_file_path)
         <p>Para entender la mecánica de este fallo en la fijación de precios, examinamos la Matriz de Correlación (Imagen 2). Este mapa de calor es vital para diagnosticar si Global Blooms fija los precios de sus productos basándose en el valor o en el costo.</p>
 
         <div class="img-wrapper">
-            <img src="images/visual_correlation_heatmap.png" alt="Matriz de Correlación">
+            <img src="docs/images/visual_correlation_heatmap.png" alt="Matriz de Correlación">
             <p class="img-caption">Imagen 2: Mapa de calor de correlación de variables clave.</p>
         </div>
 
@@ -417,7 +417,7 @@ df_flowers = load_and_inspect_data(csv_file_path)
         <p>Moviéndonos a la distribución de precios, analizamos el Diagrama de Caja (Boxplot) de Precios de Venta (Imagen 3).</p>
 
         <div class="img-wrapper">
-            <img src="images/visual_price_dispersion.png" alt="Boxplot de Precios">
+            <img src="docs/images/visual_price_dispersion.png" alt="Boxplot de Precios">
             <p class="img-caption">Imagen 3: Dispersión de precios de venta por categoría de producto.</p>
         </div>
 
@@ -436,7 +436,7 @@ df_flowers = load_and_inspect_data(csv_file_path)
         <p>La señal más alarmante en nuestra revisión inicial fue el rendimiento de los Lirios en Asia. Para investigar esto, recurrimos al Análisis de Elasticidad específico (Imagen 4).</p>
 
         <div class="img-wrapper">
-            <img src="images/predictive_analysis_dynamic.png" alt="Análisis de Elasticidad en Asia">
+            <img src="docs/images/predictive_analysis_dynamic.png" alt="Análisis de Elasticidad en Asia">
             <p class="img-caption">Imagen 4: Análisis de Elasticidad Precio de la Demanda para Lirios en Asia.</p>
         </div>
 
@@ -456,7 +456,7 @@ df_flowers = load_and_inspect_data(csv_file_path)
         <p>Validando esto con la Imagen 5 (Composición de Ganancias por Región), vemos el gráfico de barras apiladas.</p>
 
         <div class="img-wrapper">
-            <img src="images/visual_profit_composition.png" alt="Composición de Ganancias por Región">
+            <img src="docs/images/visual_profit_composition.png" alt="Composición de Ganancias por Región">
             <p class="img-caption">Imagen 5: Composición de ganancias totales por región y producto.</p>
         </div>
 
@@ -480,7 +480,7 @@ df_flowers = load_and_inspect_data(csv_file_path)
         </ul>
 
         <div class="img-wrapper">
-            <img src="images/visual_matriz_pricing.png" alt="Matriz de Estrategia de Precios">
+            <img src="docs/images/visual_matriz_pricing.png" alt="Matriz de Estrategia de Precios">
             <p class="img-caption">Imagen 6: Matriz de Margen vs. Brecha de Precio con Competidor.</p>
         </div>
 
