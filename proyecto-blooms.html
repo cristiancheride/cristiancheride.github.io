@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Blooms | Proyecto de Análisis Estratégico</title>
+    <title>Global Blooms | Data Science Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -12,275 +12,311 @@
             --accent-color: #2563eb;
             --section-bg: #ffffff;
             --code-bg: #111827;
-            --code-text: #e5e7eb;
+            --code-text: #f8fafc;
             --border-color: #e2e8f0;
+            --header-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            line-height: 1.6;
+            line-height: 1.7;
             color: var(--text-main);
             background-color: var(--bg-color);
             margin: 0;
             padding: 0;
         }
 
+        header {
+            text-align: center;
+            padding: 80px 20px;
+            background: var(--header-gradient);
+            color: white;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin: 0;
+            letter-spacing: -0.025em;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.8;
+            max-width: 800px;
+            margin: 20px auto 0;
+        }
+
         .container {
-            max-width: 1000px;
+            max-width: 1100px;
             margin: 0 auto;
             padding: 40px 20px;
         }
 
-        header {
-            text-align: center;
-            padding: 60px 0;
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-            color: white;
-            margin-bottom: 40px;
-            border-radius: 0 0 20px 20px;
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        header p {
-            font-weight: 300;
-            opacity: 0.9;
-        }
-
-        .card {
+        .section-card {
             background: var(--section-bg);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            margin-bottom: 30px;
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
             border: 1px solid var(--border-color);
         }
 
         h2 {
             color: var(--accent-color);
-            border-bottom: 2px solid var(--accent-color);
-            display: inline-block;
+            font-size: 1.8rem;
             margin-bottom: 25px;
-            font-weight: 700;
+            border-left: 5px solid var(--accent-color);
+            padding-left: 20px;
         }
 
         h3 {
-            margin-top: 30px;
+            margin-top: 35px;
             color: #334155;
+            font-size: 1.4rem;
         }
 
-        p { margin-bottom: 20px; }
-
-        .image-container {
-            text-align: center;
-            margin: 30px 0;
-            padding: 10px;
-            background: #f1f5f9;
-            border-radius: 8px;
+        p, ul {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
         }
 
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .caption {
-            font-size: 0.9rem;
-            color: #64748b;
-            margin-top: 10px;
-            font-style: italic;
-        }
-
-        /* Estilo Jupyter Lab */
-        .code-block {
+        /* Bloque estilo Jupyter Lab */
+        .jupyter-code {
             background-color: var(--code-bg);
-            color: var(--code-text);
-            padding: 20px;
             border-radius: 8px;
-            font-family: 'Fira Code', monospace;
-            font-size: 0.9rem;
-            overflow-x: auto;
-            border-left: 5px solid #3b82f6;
-            margin: 25px 0;
+            margin: 30px 0;
             position: relative;
+            overflow: hidden;
+            border: 1px solid #334155;
         }
 
-        .code-block::before {
+        .jupyter-code pre {
+            margin: 0;
+            padding: 25px 40px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.95rem;
+            color: var(--code-text);
+            overflow-x: auto;
+        }
+
+        .jupyter-code::before {
             content: "In [ ]:";
             position: absolute;
-            left: -50px;
-            color: #60a5fa;
+            left: 5px;
+            top: 25px;
+            color: #3b82f6;
+            font-family: 'Fira Code', monospace;
             font-size: 0.75rem;
-            top: 22px;
+            font-weight: bold;
         }
 
-        .code-comment { color: #9ca3af; font-style: italic; }
-        .code-keyword { color: #f472b6; }
-        .code-func { color: #60a5fa; }
-        .code-string { color: #34d399; }
+        .img-wrapper {
+            background: #f1f5f9;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .img-wrapper img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .img-caption {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: #64748b;
+            font-style: italic;
+        }
 
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
+            margin: 25px 0;
         }
 
         th, td {
+            padding: 15px;
             text-align: left;
-            padding: 12px;
             border-bottom: 1px solid var(--border-color);
         }
 
-        th { background-color: #f1f5f9; }
+        th {
+            background-color: #f8fafc;
+            font-weight: 700;
+        }
 
-        .highlight {
-            background: #dbeafe;
-            padding: 2px 5px;
-            border-radius: 4px;
-            font-weight: 600;
+        .highlight-box {
+            background-color: #eff6ff;
+            border-right: 4px solid var(--accent-color);
+            padding: 20px;
+            margin: 20px 0;
+            font-weight: 500;
         }
 
         footer {
             text-align: center;
-            padding: 40px;
-            color: #64748b;
-            font-size: 0.9rem;
+            padding: 60px 20px;
+            background: #0f172a;
+            color: white;
         }
 
         @media (max-width: 768px) {
-            .code-block::before { display: none; }
-            .container { padding: 10px; }
-            header h1 { font-size: 1.8rem; }
+            .section-card { padding: 25px; }
+            header h1 { font-size: 2rem; }
+            .jupyter-code::before { display: none; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Global Blooms</h1>
-    <p>Análisis Estratégico de Precios y Rentabilidad</p>
+    <h1>Global Blooms: Análisis Estratégico</h1>
+    <p>Proyecto Integral de Ciencia de Datos enfocado en la Optimización de Precios y Rentabilidad Global.</p>
 </header>
 
 <div class="container">
 
-    <section class="card">
-        <h2>Manifiesto del Proyecto</h2>
-        <p>En el panorama actual de la analítica de datos, el verdadero valor reside en la capacidad de tejer números crudos en una narrativa de negocios convincente. Este reporte demuestra dominio técnico sobre <strong>Python (Pandas, Seaborn, Scikit-Learn)</strong> y una comprensión estratégica sobre optimización de la rentabilidad.</p>
-        <p>Al integrar conocimiento del dominio con análisis estadístico riguroso, este reporte diagnostica las causas de la erosión de márgenes en mercados asiáticos e identifica palancas de poder de fijación de precios en Europa y Norteamérica.</p>
+    <section class="section-card">
+        <h2>El Arte de Contar Historias con Datos</h2>
+        <p>Este reporte sirve como un proyecto definitivo de portafolio, diseñado para demostrar una comprensión matizada de <strong>estrategia empresarial</strong> y optimización de la rentabilidad. Evitamos el error de presentar código sin contexto, adoptando un enfoque de <strong>"narrativa primero"</strong>.</p>
+        
+        <div class="highlight-box">
+            Objetivo: Diagnosticar las causas de la erosión de márgenes en los mercados asiáticos e identificar palancas de poder de fijación de precios en Europa y Norteamérica.
+        </div>
     </section>
 
-    <section class="card">
-        <h2>Parte I: El Compromiso</h2>
-        <h3>1.1 El Cliente: Global Blooms</h3>
-        <p>Distribuidor floral internacional con operaciones en USA, Europa, Asia y LATAM. A pesar del crecimiento en ingresos, la rentabilidad neta se ha estancado. El objetivo es diagnosticar por qué las regiones de alto volumen tienen un rendimiento inferior.</p>
+    <section class="section-card">
+        <h2>Parte I: Contexto Empresarial</h2>
+        <h3>El Cliente: Global Blooms</h3>
+        <p>Distribuidor floral internacional B2B y B2C. A pesar de un robusto crecimiento en ingresos, la Junta Directiva ha señalado un estancamiento en la rentabilidad neta, especialmente en economías emergentes.</p>
         
-        <h3>1.3 Hipótesis Estratégicas</h3>
+        <h3>Hipótesis Estratégicas</h3>
         <ul>
-            <li><strong>H1 (El Tonto Ocupado):</strong> Asia genera volumen pero bajo valor por descuentos excesivos o COGS alto.</li>
-            <li><strong>H2 (Efecto Premium):</strong> Demanda inelástica en USA/Europa para artículos de lujo.</li>
-            <li><strong>H3 (Reactividad):</strong> Precios basados en competencia, no en margen interno.</li>
+            <li><strong>H1 (Tonto Ocupado):</strong> Mercado asiático con alto volumen pero bajo valor.</li>
+            <li><strong>H2 (Efecto Premium):</strong> Inelasticidad de demanda en ciertos artículos de lujo en Europa/USA.</li>
+            <li><strong>H3 (Reactividad):</strong> Fijación de precios basada en competidores, no en márgenes internos.</li>
         </ul>
     </section>
 
-    <section class="card">
-        <h2>Parte II: Arquitectura de Datos</h2>
-        <div class="code-block">
-<span class="code-comment"># Importar bibliotecas necesarias</span>
-<span class="code-keyword">import</span> pandas <span class="code-keyword">as</span> pd
-<span class="code-keyword">import</span> numpy <span class="code-keyword">as</span> np
-<span class="code-keyword">import</span> matplotlib.pyplot <span class="code-keyword">as</span> plt
-<span class="code-keyword">import</span> seaborn <span class="code-keyword">as</span> sns
+    <section class="section-card">
+        <h2>Parte II: Preparación de Datos</h2>
+        <p>Para este análisis, utilizamos el ecosistema Python, priorizando la robustez y el manejo de errores en la carga de datos.</p>
+        
+        <div class="jupyter-code">
+<pre>
+# Importar bibliotecas necesarias
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 
-<span class="code-comment"># Función personalizada para carga robusta</span>
-<span class="code-keyword">def</span> <span class="code-func">load_and_inspect_data</span>(filepath):
-    <span class="code-keyword">try</span>:
-        df = pd.<span class="code-func">read_csv</span>(filepath)
-        <span class="code-func">print</span>(<span class="code-string">f"--- Datos Cargados: {df.shape} ---"</span>)
-        <span class="code-keyword">return</span> df
-    <span class="code-keyword">except</span> <span class="code-func">FileNotFoundError</span>:
-        <span class="code-keyword">return</span> <span class="code-keyword">None</span>
+# Configuración de estilo
+sns.set(style="whitegrid")
+pd.set_option('display.precision', 2)
+
+# Carga robusta de datos
+def load_and_inspect_data(filepath):
+    """
+    Carga un CSV y realiza una inspección inicial.
+    """
+    try:
+        df = pd.read_csv(filepath)
+        print(f"--- Datos Cargados: {df.shape[0]} filas ---")
+        return df
+    except FileNotFoundError:
+        print("Error: Archivo no encontrado.")
+        return None
+
+df_flowers = load_and_inspect_data('docs/images/flowers_pricing_dataset_cleaned.csv')
+</pre>
         </div>
-        <p>Este enfoque profesional utiliza bloques <code>try-except</code> para garantizar la integridad de los datos antes del análisis.</p>
     </section>
 
-    <section class="card">
+    <section class="section-card">
         <h2>Parte III: Análisis Exploratorio (EDA)</h2>
-        <h3>3.1 Visión Estratégica: Dashboard General</h3>
-        <div class="image-container">
-            <img src="dashboard_pricing_final.jpg" alt="Dashboard Estratégico">
-            <div class="caption">Imagen 1: Vista holística de rentabilidad y correlación.</div>
+        <h3>Deconstruyendo el Dashboard Estratégico</h3>
+        <div class="img-wrapper">
+            <img src="docs/images/dashboard_pricing_final.jpg" alt="Dashboard de Precios">
+            <p class="img-caption">Gráfico 1: Dashboard integral de métricas clave por región.</p>
         </div>
-        <p>El dashboard revela que el <strong>Profit en ASIA</strong> es significativamente menor al de EUROPA y USA, validando la <strong>Hipótesis 1</strong>.</p>
+        <p>La discrepancia visual en el dashboard valida la <strong>Hipótesis 1</strong>. En Asia, el volumen puro de unidades no se traduce en la línea de fondo, sugiriendo una fuerte compresión de márgenes.</p>
 
-        <h3>3.2 Relación Costo-Precio: Mapa de Correlación</h3>
-        <div class="image-container">
-            <img src="visual_correlation_heatmap.png" alt="Mapa de Correlación">
+        <h3>Análisis de Correlación: Costo vs. Precio</h3>
+        <div class="img-wrapper">
+            <img src="docs/images/visual_correlation_heatmap.png" alt="Matriz de Correlación">
+            <p class="img-caption">Gráfico 2: Mapa de calor de variables financieras.</p>
         </div>
-        <p>Observamos una correlación de <span class="highlight">0.91</span> entre Sale_Price y Total_Cost, lo que indica una estrategia rígida de <strong>Costo-Plus</strong> que ignora el valor percibido por el cliente.</p>
+        <p>La alta correlación (0.91) entre <code>Sale_Price</code> y <code>Total_Cost</code> indica una estrategia <strong>Costo-Plus</strong>. Esto protege de pérdidas pero ignora la disposición de pago del cliente.</p>
 
-        <h3>3.3 Volatilidad de Precios</h3>
-        <div class="image-container">
-            <img src="visual_price_dispersion.png" alt="Boxplot de Precios">
+        <h3>Dispersión de Precios: Volatilidad por Categoría</h3>
+        <div class="img-wrapper">
+            <img src="docs/images/visual_price_dispersion.png" alt="Boxplot de Precios">
+            <p class="img-caption">Gráfico 3: Distribución de precios por producto.</p>
         </div>
-        <p>Las Orquídeas muestran la mayor dispersión, sugiriendo inconsistencia operativa en los puntos de venta.</p>
     </section>
 
-    <section class="card">
+    <section class="section-card">
         <h2>Parte IV: El Problema de Asia</h2>
-        <h3>4.1 Elasticidad de la Demanda</h3>
-        <div class="image-container">
-            <img src="predictive_analysis_dynamic.png" alt="Análisis de Elasticidad">
+        <p>Los Lirios en Asia se venden con un margen de solo $1.00 por unidad. Estamos asumiendo riesgos logísticos masivos por un retorno del 4.7%.</p>
+        
+        <div class="img-wrapper">
+            <img src="docs/images/predictive_analysis_dynamic.png" alt="Análisis de Elasticidad">
+            <p class="img-caption">Gráfico 4: Análisis de elasticidad precio de la demanda para Asia.</p>
         </div>
-        <p>Para los Lirios en Asia, la simulación (punto verde) muestra que un aumento del 100% en el precio colapsaría la demanda. El margen actual de solo <strong>$1.00 (4.7%)</strong> es insostenible.</p>
 
-        <h3>4.2 Composición de Ganancias</h3>
-        <div class="image-container">
-            <img src="visual_profit_composition.png" alt="Composición de Ganancias">
+        <div class="img-wrapper">
+            <img src="docs/images/visual_profit_composition.png" alt="Composición de Ganancia">
+            <p class="img-caption">Gráfico 5: Composición de ganancias por región y producto.</p>
         </div>
-        <p>Mientras Europa diversifica sus ganancias, Asia depende de volúmenes masivos con márgenes mínimos.</p>
     </section>
 
-    <section class="card">
-        <h2>Parte V: Matriz de Pricing y Acción</h2>
-        <div class="image-container">
-            <img src="visual_matriz_pricing.png" alt="Matriz Margen vs Gap">
+    <section class="section-card">
+        <h2>Parte V: Matriz Estratégica</h2>
+        <div class="img-wrapper">
+            <img src="docs/images/visual_matriz_pricing.png" alt="Matriz de Pricing">
+            <p class="img-caption">Gráfico 6: Margen vs. Gap con Competidor.</p>
         </div>
-        <p>Identificamos dos zonas críticas: <strong>"Subir Precios"</strong> en USA (donde somos más baratos que la competencia con alto margen) y <strong>"Revisar Costos"</strong> en Asia.</p>
-
-        <div class="code-block">
-<span class="code-comment"># Algoritmo de Segmentación Estratégica</span>
-<span class="code-keyword">def</span> <span class="code-func">classify_product_strategy</span>(row):
-    margin = row[<span class="code-string">'Margin_Percentage'</span>]
-    price_gap = row[<span class="code-string">'Sale_Price'</span>] - row[<span class="code-string">'Competitor_Price'</span>]
+        
+        <div class="jupyter-code">
+<pre>
+# Algoritmo de Segmentación Estratégica
+def classify_product_strategy(row):
+    margin = row['Margin_Percentage']
+    price_gap = row['Sale_Price'] - row['Competitor_Price']
     
-    <span class="code-keyword">if</span> margin < 0.20 <span class="code-keyword">and</span> price_gap > 0:
-        <span class="code-keyword">return</span> <span class="code-string">'CRÍTICO: Revisar Cadena de Suministro'</span>
-    <span class="code-keyword">elif</span> margin > 0.35 <span class="code-keyword">and</span> price_gap < -2.00:
-        <span class="code-keyword">return</span> <span class="code-string">'OPORTUNIDAD: Subir Precio'</span>
-    <span class="code-keyword">else</span>:
-        <span class="code-keyword">return</span> <span class="code-string">'Mantener'</span>
+    # Umbrales estratégicos
+    if margin < 0.20 and price_gap > 0:
+        return 'CRÍTICO: Revisar Costos'
+    elif margin > 0.35 and price_gap < -2.00:
+        return 'OPORTUNIDAD: Subir Precio'
+    else:
+        return 'Mantener / Optimizar'
+
+df_flowers['Strategy'] = df_flowers.apply(classify_product_strategy, axis=1)
+</pre>
         </div>
     </section>
 
-    <section class="card">
-        <h2>Parte VI: Recomendaciones finales</h2>
+    <section class="section-card">
+        <h2>Parte VI: Conclusiones y Recomendaciones</h2>
         <ol>
-            <li><strong>USA:</strong> Aumento inmediato del 5% en Rosas Rojas para capturar valor.</li>
-            <li><strong>ASIA:</strong> Auditoría logística para reducir el COGS de $31 a $25 en Orquídeas.</li>
-            <li><strong>Racionalización:</strong> Descontinuar Lirios en Asia si los costos no bajan, reasignando capital a mercados europeos.</li>
+            <li><strong>Reestructuración en USA:</strong> Implementar aumento del 5% en Rosas Rojas dada su baja elasticidad.</li>
+            <li><strong>Auditoría en Asia:</strong> Urge reducción de COGS. No podemos subir precios sin perder volumen masivo.</li>
+            <li><strong>Racionalización:</strong> Descontinuar líneas con margen menor al 5% si no hay eficiencia operativa inmediata.</li>
         </ol>
-        <p><strong>Conclusión:</strong> El análisis visual permitió identificar palancas accionables que podrían aumentar la rentabilidad regional entre un <strong>15% y 20%</strong> sin necesidad de nuevos clientes.</p>
     </section>
 
 </div>
 
 <footer>
-    <p>&copy; 2026 Global Blooms Analysis | Proyecto para Portfolio de Ciencia de Datos</p>
+    <p>Proyecto de Portafolio: Global Blooms - Análisis de Rentabilidad 2026</p>
+    <p style="font-size: 0.8rem; opacity: 0.6;">Desarrollado con Python, Pandas y Visualización Estratégica de Datos.</p>
 </footer>
 
 </body>
