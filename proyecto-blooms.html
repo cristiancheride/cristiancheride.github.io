@@ -3,261 +3,372 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Blooms | Data Science Portfolio</title>
+    <title>Global Blooms | Análisis Estratégico de Precios</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #f8fafc;
-            --text-main: #1e293b;
-            --accent-color: #2563eb;
-            --section-bg: #ffffff;
-            --code-bg: #111827;
-            --code-text: #f8fafc;
+            --bg-color: #f1f5f9; /* Fondo gris muy claro */
+            --text-main: #334155; /* Texto gris oscuro legible */
+            --accent-color: #2563eb; /* Azul profesional */
+            --section-bg: #ffffff; /* Fondo blanco para tarjetas */
+            --code-bg: #1e293b; /* Fondo oscuro para bloques de código */
+            --code-text: #e2e8f0; /* Texto claro para código */
             --border-color: #e2e8f0;
             --header-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            line-height: 1.7;
+            line-height: 1.8;
             color: var(--text-main);
             background-color: var(--bg-color);
             margin: 0;
             padding: 0;
         }
 
+        /* --- Header --- */
         header {
             text-align: center;
-            padding: 80px 20px;
+            padding: 100px 20px;
             background: var(--header-gradient);
             color: white;
-            border-bottom: 4px solid var(--accent-color);
+            border-bottom: 5px solid var(--accent-color);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
 
         header h1 {
-            font-size: 2.8rem;
+            font-size: 3.5rem;
+            font-weight: 800;
             margin: 0;
-            letter-spacing: -0.025em;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
         }
 
-        header p {
-            font-size: 1.2rem;
+        header p.subtitle {
+            font-size: 1.5rem;
             font-weight: 300;
-            opacity: 0.8;
+            opacity: 0.9;
             max-width: 800px;
             margin: 20px auto 0;
         }
 
+        /* --- Contenedor Principal --- */
         .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
+            max-width: 1000px;
+            margin: -50px auto 40px; /* Margen negativo para subir sobre el header */
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
         }
 
+        /* --- Tarjetas de Sección --- */
         .section-card {
             background: var(--section-bg);
-            padding: 50px;
+            padding: 60px;
             border-radius: 16px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.05);
             margin-bottom: 40px;
             border: 1px solid var(--border-color);
         }
 
+        /* --- Tipografía y Elementos --- */
         h2 {
-            color: var(--accent-color);
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            border-left: 5px solid var(--accent-color);
-            padding-left: 20px;
+            color: #0f172a;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-top: 0;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 15px;
         }
 
         h3 {
-            margin-top: 35px;
-            color: #334155;
-            font-size: 1.4rem;
+            margin-top: 45px;
+            color: #1e293b;
+            font-size: 1.5rem;
+            font-weight: 600;
         }
 
-        p, ul {
+        p, li {
             margin-bottom: 20px;
-            font-size: 1.05rem;
+            font-size: 1.1rem;
         }
 
+        strong {
+            color: #0f172a;
+            font-weight: 700;
+        }
+
+        ul, ol {
+            padding-left: 25px;
+        }
+
+        li {
+            margin-bottom: 15px;
+        }
+
+        /* --- Bloques de Código estilo Jupyter Lab --- */
         .jupyter-code {
             background-color: var(--code-bg);
-            border-radius: 8px;
-            margin: 30px 0;
+            border-radius: 12px;
+            margin: 40px 0;
             position: relative;
             overflow: hidden;
             border: 1px solid #334155;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .jupyter-code pre {
             margin: 0;
-            padding: 25px 40px;
+            padding: 30px 30px 30px 60px; /* Padding izquierdo extra para el prompt */
             font-family: 'Fira Code', monospace;
             font-size: 0.95rem;
             color: var(--code-text);
+            white-space: pre-wrap; /* Ajuste de línea para móviles */
             overflow-x: auto;
         }
 
+        /* Pseudo-elemento para simular el prompt de entrada de Jupyter */
         .jupyter-code::before {
             content: "In [ ]:";
             position: absolute;
-            left: 5px;
-            top: 25px;
-            color: #3b82f6;
+            left: 15px;
+            top: 30px;
+            color: #60a5fa; /* Azul claro */
             font-family: 'Fira Code', monospace;
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             font-weight: bold;
+            user-select: none;
         }
+        
+        /* Colores de sintaxis simulados */
+        .code-comment { color: #94a3b8; font-style: italic; }
+        .code-keyword { color: #c678dd; } /* Morado */
+        .code-string { color: #98c379; } /* Verde */
+        .code-func { color: #61afef; } /* Azul */
 
+        /* --- Contenedores de Imagen --- */
         .img-wrapper {
-            background: #f1f5f9;
-            padding: 20px;
+            background: #f8fafc;
+            padding: 30px;
             border-radius: 12px;
             text-align: center;
-            margin: 40px 0;
+            margin: 50px 0;
+            border: 1px solid var(--border-color);
         }
 
         .img-wrapper img {
             max-width: 100%;
             height: auto;
             border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .img-wrapper img:hover {
+             transform: scale(1.01);
         }
 
         .img-caption {
-            margin-top: 15px;
-            font-size: 0.9rem;
+            margin-top: 20px;
+            font-size: 1rem;
             color: #64748b;
             font-style: italic;
-        }
-
-        .highlight-box {
-            background-color: #eff6ff;
-            border-right: 4px solid var(--accent-color);
-            padding: 20px;
-            margin: 20px 0;
             font-weight: 500;
         }
 
-        footer {
-            text-align: center;
-            padding: 60px 20px;
-            background: #0f172a;
-            color: white;
+        /* --- Tablas --- */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 1rem;
         }
 
+        .data-table th, .data-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .data-table th {
+            background-color: #f8fafc;
+            font-weight: 700;
+            color: #1e293b;
+        }
+
+        /* --- Cajas de Destacado (Notas de Analista) --- */
+        .analyst-note {
+            background-color: #eff6ff; /* Azul muy claro */
+            border-left: 5px solid var(--accent-color);
+            padding: 25px;
+            margin: 30px 0;
+            font-style: italic;
+            color: #1e3a8a;
+        }
+        
+        .analyst-note strong {
+             color: #1e3a8a;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 80px 20px;
+            background: #0f172a;
+            color: #94a3b8;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+             margin-bottom: 10px;
+        }
+
+        /* --- Media Queries para Móviles --- */
         @media (max-width: 768px) {
-            .section-card { padding: 25px; }
-            header h1 { font-size: 2rem; }
+            header { padding: 60px 20px 100px; }
+            header h1 { font-size: 2.5rem; }
+            header p.subtitle { font-size: 1.2rem; }
+            .container { margin-top: -60px; }
+            .section-card { padding: 30px; }
+            h2 { font-size: 1.6rem; }
+            /* Ocultar el prompt de In[] en pantallas pequeñas para ganar espacio */
             .jupyter-code::before { display: none; }
+            .jupyter-code pre { padding: 20px; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Global Blooms: Análisis Estratégico</h1>
-    <p>Proyecto Integral de Ciencia de Datos enfocado en la Optimización de Precios y Rentabilidad Global.</p>
+    <h1>Global Blooms</h1>
+    <p class="subtitle">Análisis Estratégico de Precios y Rentabilidad: Un Proyecto Integral de Portafolio en Ciencia de Datos</p>
 </header>
 
 <div class="container">
 
     <section class="section-card">
-        <h2>El Arte de Contar Historias con Datos</h2>
-        <p>Este reporte demuestra una comprensión matizada de <strong>estrategia empresarial</strong> y optimización de la rentabilidad, adoptando un enfoque de <strong>"narrativa primero"</strong>.</p>
-        <div class="highlight-box">
-            Objetivo: Diagnosticar la erosión de márgenes en Asia e identificar palancas de precio en Europa y Norteamérica.
-        </div>
+        <h2>Manifiesto del Proyecto: El Arte de Contar Historias con Datos</h2>
+        <p>En el panorama actual de la analítica de datos, la capacidad de escribir código en Python o R ya no es el único diferenciador para un Analista de Datos Líder. El verdadero valor de un profesional de datos reside en la capacidad de tejer números crudos y dispares en una narrativa de negocios convincente que impulse la toma de decisiones. Este reporte integral sirve como un proyecto definitivo de portafolio, diseñado no solo para mostrar dominio técnico sobre bibliotecas como Pandas, Seaborn y Scikit-Learn, sino para demostrar una comprensión matizada y de nivel ejecutivo sobre estrategia empresarial, dinámica de mercado y optimización de la rentabilidad.</p>
+        <p>Basándose en las mejores prácticas para portafolios de ciencia de datos, este proyecto evita el error común de presentar bloques de código secos sin contexto. En su lugar, adopta un enfoque de "narrativa primero", donde cada línea de código, cada visualización estadística y cada hipótesis sirve a una pregunta de negocios específica. El objetivo es transformar la entidad ficticia, 'Global Blooms', de un conjunto de datos estático en un caso de estudio de negocios vivo. Al integrar el conocimiento del dominio con un análisis estadístico riguroso, este reporte diagnostica las causas subyacentes de la erosión de márgenes en los mercados asiáticos mientras identifica las palancas de poder de fijación de precios no explotadas disponibles en los sectores europeos y norteamericanos.</p>
+        <p>Este documento está estructurado para guiar al lector a través del ciclo de vida completo de un proyecto de datos: desde el contacto inicial con el cliente y la formulación de hipótesis de negocios hasta la limpieza granular de datos, procediendo a través de un "Análisis Profundo" (Deep Dive) de Análisis Exploratorio de Datos (EDA) de visualizaciones específicas (incluyendo matrices de elasticidad y correlación), y culminando en recomendaciones estratégicas accionables.</p>
     </section>
 
     <section class="section-card">
-        <h2>Parte I: Contexto Empresarial</h2>
-        <h3>Hipótesis Estratégicas</h3>
+        <h2>Parte I: El Compromiso – Contexto Empresarial y Planteamiento del Problema</h2>
+        
+        <h3>1.1 El Cliente: Global Blooms</h3>
+        <p>Global Blooms es un distribuidor floral internacional de tamaño mediano que se especializa en el suministro B2B y B2C de flores frescas cortadas. Fundada en 2010, la empresa ha escalado operaciones en cuatro regiones principales: Estados Unidos (USA), Europa, Asia y América Latina (LATAM). Su cartera de productos consta de cinco categorías principales: Rosas Rojas, Lirios, Orquídeas, Girasoles y Tulipanes.</p>
+        <p>Históricamente, Global Blooms ha operado con una estrategia de "volumen primero", expandiendo agresivamente la cuota de mercado en economías emergentes como Asia y LATAM. Sin embargo, a pesar del robusto crecimiento de los ingresos brutos, la Junta Directiva ha señalado un estancamiento preocupante en la rentabilidad neta. El Director Financiero (CFO) se puso en contacto con una preocupación específica: "Estamos moviendo millones de tallos, pero nuestra línea de fondo es plana. Sospechamos que nuestra estrategia de precios está desconectada de las realidades del mercado local, pero carecemos de la visibilidad de datos granulares para probarlo."</p>
+
+        <h3>1.2 El Informe del Analista</h3>
+        <p>El cliente proporcionó un conjunto de datos brutos (flowers_pricing_dataset.csv) y un conjunto de gráficos estáticos preliminares que su equipo de marketing interno había generado pero no podía interpretar completamente. La misión era clara:</p>
         <ul>
-            <li><strong>H1 (Tonto Ocupado):</strong> Mercado asiático con alto volumen pero bajo valor.</li>
-            <li><strong>H2 (Efecto Premium):</strong> Inelasticidad de demanda en artículos de lujo en Europa/USA.</li>
-            <li><strong>H3 (Reactividad):</strong> Fijación de precios basada en competidores, no en márgenes.</li>
+            <li><strong>Auditar los Datos:</strong> Limpiar y validar los registros de transacciones.</li>
+            <li><strong>Diagnosticar la Salud:</strong> Utilizar las visualizaciones proporcionadas (Dashboard, Matriz de Correlación, etc.) para evaluar el estado actual del negocio.</li>
+            <li><strong>Probar Hipótesis:</strong> Investigar específicamente por qué las regiones de alto volumen tienen un rendimiento inferior.</li>
+            <li><strong>Recomendar Estrategia:</strong> Proponer un nuevo marco de fijación de precios respaldado por datos.</li>
+        </ul>
+
+        <h3>1.3 Hipótesis Estratégicas</h3>
+        <p>Antes de escribir una sola línea de código, establecimos tres hipótesis de trabajo para guiar la investigación:</p>
+        <ul>
+            <li><strong>H1 (La Hipótesis del "Volumen Sin Valor"):</strong> El mercado asiático está generando alto volumen pero bajo valor debido a descuentos excesivos o un alto Costo de Bienes Vendidos (COGS). (Refinamiento del concepto "Busy Fool").</li>
+            <li><strong>H2 (La Hipótesis "Premium"):</strong> Los mercados europeos y estadounidenses tienen una demanda inelástica para ciertos artículos de lujo (ej., Rosas Rojas), permitiendo aumentos de precios sin pérdida de volumen.</li>
+            <li><strong>H3 (La Hipótesis del "Competidor"):</strong> Global Blooms es reactivo en lugar de proactivo, fijando precios basados en los competidores en lugar de sus propios requisitos de margen interno.</li>
         </ul>
     </section>
 
     <section class="section-card">
-        <h2>Parte II: Preparación de Datos</h2>
+        <h2>Parte II: Arquitectura y Preparación de Datos</h2>
+        
+        <h3>2.1 Análisis del Conjunto de Datos</h3>
+        <p>La base de este análisis es el archivo <code>flowers_pricing_dataset_cleaned.csv</code>. Un diccionario de datos robusto es esencial para entender las variables en juego. El conjunto de datos contiene 500 registros transaccionales.</p>
+        
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Nombre de Variable</th>
+                    <th>Tipo de Dato</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Product</td>
+                    <td>Categórico</td>
+                    <td>El tipo específico de flor (ej., Rosas Rojas, Lirios).</td>
+                </tr>
+                <tr>
+                    <td>Region</td>
+                    <td>Categórico</td>
+                    <td>El mercado geográfico de venta (USA, Europe, Asia, LATAM).</td>
+                </tr>
+                <tr>
+                    <td>Sale_Price</td>
+                    <td>Numérico (Float)</td>
+                    <td>El precio por unidad cobrado al cliente (Ingresos).</td>
+                </tr>
+                <tr>
+                    <td>Total_Cost</td>
+                    <td>Numérico (Float)</td>
+                    <td>El costo total cargado por unidad (cultivo, logística, gastos generales).</td>
+                </tr>
+                <tr>
+                    <td>Competitor_Price</td>
+                    <td>Numérico (Float)</td>
+                    <td>El precio promedio cobrado por competidores directos en la misma región.</td>
+                </tr>
+                <tr>
+                    <td>Units_Sold</td>
+                    <td>Numérico (Integer)</td>
+                    <td>El volumen total de unidades vendidas en el período observado.</td>
+                </tr>
+                <tr>
+                    <td>Unit_Margin</td>
+                    <td>Numérico (Float)</td>
+                    <td>Campo calculado: Sale_Price - Total_Cost.</td>
+                </tr>
+                <tr>
+                    <td>Margin_Percentage</td>
+                    <td>Numérico (Float)</td>
+                    <td>Campo calculado: Unit_Margin / Sale_Price.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>2.2 Configuración del Entorno Python</h3>
+        <p>Para realizar un análisis de alto nivel, utilizamos el ecosistema Python. La elección de bibliotecas es deliberada: Pandas para manipulación de datos, NumPy para operaciones numéricas, y Seaborn/Matplotlib para visualización. El siguiente bloque de código representa el estándar de la industria para inicializar un entorno de ciencia de datos.</p>
+
         <div class="jupyter-code">
 <pre>
-# Importar bibliotecas necesarias
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
+<span class="code-comment"># Importar bibliotecas necesarias para análisis de datos y visualización</span>
+<span class="code-keyword">import</span> pandas <span class="code-keyword">as</span> pd
+<span class="code-keyword">import</span> numpy <span class="code-keyword">as</span> np
+<span class="code-keyword">import</span> matplotlib.pyplot <span class="code-keyword">as</span> plt
+<span class="code-keyword">import</span> seaborn <span class="code-keyword">as</span> sns
 
-# Configuración de estilo
-sns.set(style="whitegrid")
-pd.set_option('display.precision', 2)
+<span class="code-comment"># Configuración para una salida más clara</span>
+pd.set_option(<span class="code-string">'display.max_columns'</span>, <span class="code-keyword">None</span>)
+pd.set_option(<span class="code-string">'display.precision'</span>, 2)
+sns.set(style=<span class="code-string">"whitegrid"</span>)
 
-# Carga robusta de datos (Ruta relativa corregida)
-df_flowers = pd.read_csv('images/flowers_pricing_dataset_cleaned.csv')
-</pre>
-        </div>
-    </section>
+<span class="code-comment"># Definir ruta del archivo (Ajustado para estructura web)</span>
+csv_file_path = <span class="code-string">'images/flowers_pricing_dataset_cleaned.csv'</span>
 
-    <section class="section-card">
-        <h2>Parte III: Análisis Exploratorio (EDA)</h2>
-        <h3>Deconstruyendo el Dashboard Estratégico</h3>
-        <div class="img-wrapper">
-            <img src="images/dashboard_pricing_final.png" alt="Dashboard de Precios">
-            <p class="img-caption">Gráfico 1: Dashboard integral de métricas clave por región.</p>
-        </div>
+<span class="code-comment"># Función personalizada para carga robusta de datos</span>
+<span class="code-keyword">def</span> <span class="code-func">load_and_inspect_data</span>(filepath):
+    <span class="code-string">"""
+    Carga un archivo CSV en un dataframe y realiza una inspección inicial.
+    Retorna el dataframe si es exitoso, de lo contrario None.
+    """</span>
+    <span class="code-keyword">try</span>:
+        df = pd.read_csv(filepath)
+        <span class="code-func">print</span>(<span class="code-string">f"--- Datos Cargados Exitosamente: {df.shape} filas, {df.shape[1]} columnas ---"</span>)
+        <span class="code-keyword">return</span> df
+    <span class="code-keyword">except</span> FileNotFoundError:
+        <span class="code-func">print</span>(<span class="code-string">f"Error: El archivo en {filepath} no fue encontrado."</span>)
+        <span class="code-keyword">return</span> <span class="code-keyword">None</span>
 
-        <h3>Análisis de Correlación: Costo vs. Precio</h3>
-        <div class="img-wrapper">
-            <img src="images/visual_correlation_heatmap.png" alt="Matriz de Correlación">
-            <p class="img-caption">Gráfico 2: Mapa de calor de variables financieras.</p>
-        </div>
-
-        <h3>Dispersión de Precios</h3>
-        <div class="img-wrapper">
-            <img src="images/visual_price_dispersion.png" alt="Boxplot de Precios">
-            <p class="img-caption">Gráfico 3: Distribución de precios por producto.</p>
-        </div>
-    </section>
-
-    <section class="section-card">
-        <h2>Parte IV: El Problema de Asia</h2>
-        <div class="img-wrapper">
-            <img src="images/predictive_analysis_dynamic.png" alt="Análisis de Elasticidad">
-            <p class="img-caption">Gráfico 4: Análisis de elasticidad precio de la demanda para Asia.</p>
-        </div>
-
-        <div class="img-wrapper">
-            <img src="images/visual_profit_composition.png" alt="Composición de Ganancia">
-            <p class="img-caption">Gráfico 5: Composición de ganancias por región y producto.</p>
-        </div>
-    </section>
-
-    <section class="section-card">
-        <h2>Parte V: Matriz Estratégica</h2>
-        <div class="img-wrapper">
-            <img src="images/visual_matriz_pricing.png" alt="Matriz de Pricing">
-            <p class="img-caption">Gráfico 6: Margen vs. Gap con Competidor.</p>
-        </div>
-    </section>
-
-    <section class="section-card">
-        <h2>Parte VI: Conclusiones</h2>
-        <ol>
-            <li><strong>Reestructuración en USA:</strong> Aumento del 5% en Rosas Rojas.</li>
-            <li><strong>Auditoría en Asia:</strong> Urge reducción de COGS (Costos de bienes vendidos).</li>
-            <li><strong>Racionalización:</strong> Descontinuar líneas con margen menor al 5%.</li>
-        </ol>
-    </section>
-
-</div>
-
-<footer>
-    <p>Proyecto de Portafolio: Global Blooms - Análisis de Rentabilidad 2026</p>
-</footer>
-
-</body>
-</html>
+<span class="code-comment"># Cargar los datos</span>
+df_flowers = load_and_inspect_data(csv_file_path)
