@@ -39,8 +39,20 @@
             margin: 0 auto;
             display: flex;
             justify-content: flex-end;
+            align-items: center;
             padding: 0 20px;
+            gap: 20px;
         }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover { color: #60a5fa; }
 
         .dropdown {
             position: relative;
@@ -70,21 +82,11 @@
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
             border-radius: 6px;
-            /* SE QUITÓ overflow: hidden porque cortaba el puente invisible */
-            margin-top: 0; 
+            margin-top: 12px;
         }
 
-        /* Puente invisible mejorado */
-        .dropdown-content::before {
-            content: "";
-            position: absolute;
-            top: -20px; /* Cubre el espacio de separación */
-            left: 0;
-            width: 100%;
-            height: 25px;
-            display: block;
-            background: transparent;
-        }
+        /* Clase para mostrar el menú vía JS */
+        .show { display: block; }
 
         .dropdown-content a {
             color: #1e293b;
@@ -97,14 +99,7 @@
 
         .dropdown-content a:first-child { border-radius: 6px 6px 0 0; }
         .dropdown-content a:last-child { border-radius: 0 0 6px 6px; border-bottom: none; }
-
         .dropdown-content a:hover { background-color: #f1f5f9; color: var(--accent-color); }
-
-        /* Activar menú con margen controlado */
-        .dropdown:hover .dropdown-content { 
-            display: block; 
-            margin-top: 12px; 
-        }
 
         /* --- Estilos de Página --- */
         header {
@@ -178,6 +173,7 @@
             header h1 { font-size: 2.2rem; }
             .exp-header { flex-direction: column; }
             .section-card { padding: 30px; }
+            .nav-container { justify-content: center; }
         }
     </style>
 </head>
@@ -185,10 +181,12 @@
 
 <nav>
     <div class="nav-container">
+        <a href="https://linkedin.com/in/cristian-cheride" target="_blank" class="nav-link">LinkedIn</a>
+        
         <div class="dropdown">
-            <button class="dropbtn">Proyectos Analíticos ▾</button>
+            <button id="menu-toggle" class="dropbtn">Proyectos Analíticos ▾</button>
             <div id="projects-dropdown" class="dropdown-content">
-                <p style="padding: 12px; font-size: 0.8rem; color: #64748b;">Cargando proyectos...</p>
+                <a href="proyecto-blooms.html">Análisis Global Blooms</a>
             </div>
         </div>
     </div>
@@ -259,34 +257,23 @@
 </footer>
 
 <script>
-    const GITHUB_USER = 'cristiancheride'; 
-    const GITHUB_REPO = 'cristiancheride.github.io'; 
+    const dropbtn = document.getElementById('menu-toggle');
+    const dropdownContent = document.getElementById('projects-dropdown');
 
-    async function generateProjectsMenu() {
-        const dropdown = document.getElementById('projects-dropdown');
-        try {
-            const response = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/`);
-            const files = await response.json();
-            const htmlFiles = files.filter(file => file.name.endsWith('.html') && file.name.toLowerCase() !== 'index.html');
+    // Manejo del menú desplegable por Clic
+    dropbtn.onclick = function(e) {
+        e.stopPropagation();
+        dropdownContent.classList.toggle('show');
+    };
 
-            if (htmlFiles.length === 0) {
-                dropdown.innerHTML = '<p style="padding: 12px;">No hay proyectos aún.</p>';
-                return;
+    // Cerrar el menú si se hace clic fuera de él
+    window.onclick = function(e) {
+        if (!e.target.matches('#menu-toggle')) {
+            if (dropdownContent.classList.contains('show')) {
+                dropdownContent.classList.remove('show');
             }
-
-            dropdown.innerHTML = '';
-            htmlFiles.forEach(file => {
-                const a = document.createElement('a');
-                a.href = file.name;
-                const displayName = file.name.replace('.html', '').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-                a.textContent = displayName;
-                dropdown.appendChild(a);
-            });
-        } catch (error) {
-            dropdown.innerHTML = '<p style="padding: 12px;">Error al cargar.</p>';
         }
-    }
-    window.addEventListener('DOMContentLoaded', generateProjectsMenu);
+    };
 </script>
 
 </body>
