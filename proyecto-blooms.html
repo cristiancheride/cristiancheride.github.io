@@ -14,6 +14,7 @@
             --code-bg: #111827;
             --code-text: #e5e7eb;
             --border: #e2e8f0;
+            --header-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         }
 
         body {
@@ -25,8 +26,85 @@
             padding: 0;
         }
 
+        /* --- Navegación Superior (Unificada) --- */
+        nav {
+            background: #0f172a;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 20px;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover { color: #60a5fa; }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: var(--accent);
+            color: white;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dropbtn:hover { background-color: #1d4ed8; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: white;
+            min-width: 220px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 6px;
+            margin-top: 12px;
+        }
+
+        .show { display: block; }
+
+        .dropdown-content a {
+            color: #1e293b;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.85rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .dropdown-content a:first-child { border-radius: 6px 6px 0 0; }
+        .dropdown-content a:last-child { border-radius: 0 0 6px 6px; border-bottom: none; }
+        .dropdown-content a:hover { background-color: #f1f5f9; color: var(--accent); }
+
+        /* --- Estilos del Proyecto --- */
         header {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            background: var(--header-gradient);
             color: white;
             padding: 80px 20px;
             text-align: center;
@@ -54,7 +132,6 @@
         ul, ol { margin-bottom: 20px; padding-left: 20px; }
         li { margin-bottom: 10px; }
 
-        /* Jupyter Lab Code Block Style */
         .jupyter-cell {
             background-color: var(--code-bg);
             border-radius: 4px;
@@ -124,16 +201,31 @@
             font-style: italic;
         }
 
-        footer { text-align: center; padding: 40px; color: #64748b; font-size: 0.9rem; }
+        footer { text-align: center; padding: 60px; background: #0f172a; color: #94a3b8; }
 
         @media (max-width: 768px) {
             .section-card { padding: 30px; }
             .jupyter-cell::before { display: none; }
             .jupyter-cell pre { padding-left: 20px; }
+            .nav-container { justify-content: center; }
         }
     </style>
 </head>
 <body>
+
+<nav>
+    <div class="nav-container">
+        <a href="https://linkedin.com/in/cristian-cheride" target="_blank" class="nav-link">LinkedIn</a>
+        
+        <div class="dropdown">
+            <button id="menu-toggle" class="dropbtn">Proyectos Analíticos ▾</button>
+            <div id="projects-dropdown" class="dropdown-content">
+                <a href="index.html">Inicio / Bio</a>
+                <a href="proyecto-blooms.html">Análisis Global Blooms</a>
+            </div>
+        </div>
+    </div>
+</nav>
 
 <header>
     <h1>Global Blooms: Análisis Estratégico de Precios y Rentabilidad</h1>
@@ -176,8 +268,6 @@
     <section class="section-card">
         <h2>Parte II: Arquitectura y Preparación de Datos</h2>
         <h3>2.1 Análisis del Conjunto de Datos</h3>
-        <p>La base de este análisis es el archivo flowers_pricing_dataset_cleaned.csv. Un diccionario de datos robusto es esencial para entender las variables en juego. El conjunto de datos contiene 500 registros transaccionales.</p>
-        
         <table class="data-table">
             <thead>
                 <tr><th>Nombre de Variable</th><th>Tipo de Dato</th><th>Descripción</th></tr>
@@ -212,16 +302,11 @@ csv_file_path = 'flowers_pricing_dataset_cleaned.csv'
 
 # Función personalizada para carga robusta de datos
 def load_and_inspect_data(filepath):
-    """
-    Carga un archivo CSV en un dataframe y realiza una inspección inicial.
-    Retorna el dataframe si es exitoso, de lo contrario None.
-    """
     try:
         df = pd.read_csv(filepath)
-        print(f"--- Datos Cargados Exitosamente: {df.shape[0]} filas, {df.shape[1]} columnas ---")
+        print(f"--- Datos Cargados Exitosamente: {df.shape[0]} filas ---")
         return df
     except FileNotFoundError:
-        print(f"Error: El archivo en {filepath} no fue encontrado.")
         return None
 
 # Cargar los datos
@@ -229,158 +314,92 @@ df_flowers = load_and_inspect_data(csv_file_path)</pre>
         </div>
 
         <div class="analyst-highlight">
-            <strong>Comentario del Analista:</strong> La función load_and_inspect_data es crítica. El manejo de errores (bloques try-except) demuestra previsión y madurez en la codificación. Un error común es asumir que los datos siempre cargan perfectamente. Al verificar valores nulos inmediatamente, establecemos confianza en la integridad de los datos antes de sacar conclusiones.
+            <strong>Comentario del Analista:</strong> La función load_and_inspect_data es crítica. El manejo de errores demuestra previsión y madurez en la codificación. Al verificar valores nulos inmediatamente, establecemos confianza en la integridad de los datos antes de sacar conclusiones.
         </div>
     </section>
 
     <section class="section-card">
         <h2>Parte III: Análisis Exploratorio de Datos (EDA) - El Arco Narrativo</h2>
         <h3>3.1 La Visión Estratégica: Deconstruyendo el Dashboard</h3>
-        <p>El primer paso en nuestro análisis implica interpretar el "Dashboard Estratégico de Precios". Este tablero agrega cuatro vistas distintas del negocio, sirviendo efectivamente como un "chequeo de salud" para Global Blooms.</p>
-        
         <div class="img-container">
             <img src="docs/images/dashboard_pricing_final.png" alt="Dashboard Estratégico">
             <p class="caption">Imagen: Dashboard Estratégico de Precios de Global Blooms.</p>
         </div>
+        <p>El cuadrante superior derecho confirma inmediatamente nuestros temores iniciales con respecto al mercado asiático. La barra de ganancias para ASIA es empequeñecida por EUROPA y USA, validando la Hipótesis 1: Estamos ocupados, pero no somos rentables en Asia.</p>
 
-        <p><strong>Análisis Visual de la Imagen 2:</strong> El cuadrante superior derecho del dashboard, Rentabilidad Total por Región y Producto, confirma inmediatamente nuestros temores iniciales con respecto al mercado asiático. A pesar de lo que sabemos por los datos brutos sobre el alto volumen de ventas (ej., Lirios moviendo 1,674 unidades 5), la barra de ganancias para ASIA es empequeñecida por EUROPA y USA.</p>
-        <ul>
-            <li>Observación: La barra europea está dominada por Rosas Rojas (verde) y Orquídeas (púrpura), indicando un flujo de ganancias diversificado.</li>
-            <li>Observación: La barra asiática es delgada, a pesar de que la región es un centro logístico para muchas cadenas de suministro floral.</li>
-        </ul>
-        <p>El "¿Y Qué?": Esta discrepancia visual valida la Hipótesis 1. Estamos ocupados, pero no somos rentables en Asia. El volumen puro de unidades vendidas no se está traduciendo en la línea de fondo, sugiriendo una compresión de márgenes.</p>
-
-        <h3>3.2 La Relación Costo-Precio: Análisis de Matriz de Correlación</h3>
-        <p>Para entender la mecánica de este fallo en la fijación de precios, examinamos la Matriz de Correlación. Este mapa de calor es vital para diagnosticar si Global Blooms fija los precios de sus productos basándose en el valor o en el costo.</p>
-        
+        <h3>3.2 La Relación Costo-Precio: Matriz de Correlación</h3>
         <div class="img-container">
             <img src="docs/images/visual_correlation_heatmap.png" alt="Matriz de Correlación">
         </div>
-
-        <p><strong>Análisis Visual de la Imagen:</strong></p>
         <ul>
-            <li><strong>Sale_Price vs. Total_Cost (0.91):</strong> Esta correlación positiva extremadamente alta indica una estricta Estrategia de Precios Costo-Plus. La empresa esencialmente toma el costo de la flor y añade un margen fijo. Si bien esto protege contra la venta con pérdidas, ignora la disposición del consumidor a pagar.</li>
-            <li><strong>Units_Sold vs. Sale_Price (-0.05):</strong> Esta es la prueba definitiva. En un modelo típico de oferta y demanda, esperamos una fuerte correlación negativa. Una correlación cercana a cero sugiere que la demanda es inelástica o que la estrategia de precios es tan inconexa que el precio no es el conductor principal del volumen. Esto apoya la Hipótesis 2 (Potencial Premium).</li>
-            <li><strong>Margin_Percentage vs. Total_Cost (-0.44):</strong> A medida que suben los costos, el porcentaje de margen baja. Esto implica que el margen de beneficio es fijo en términos de dólares, no en términos porcentuales.</li>
+            <li><strong>Sale_Price vs. Total_Cost (0.91):</strong> Estrategia de Precios Costo-Plus estricta.</li>
+            <li><strong>Units_Sold vs. Sale_Price (-0.05):</strong> Demanda inelástica, apoyando el potencial Premium.</li>
         </ul>
 
         <h3>3.3 La Volatilidad de los Precios: Análisis de Boxplot</h3>
-        <p>Moviéndonos a la distribución de precios, analizamos el Diagrama de Caja (Boxplot) de Precios de Venta.</p>
-        
         <div class="img-container">
             <img src="docs/images/visual_price_dispersion.png" alt="Análisis Boxplot">
         </div>
-
-        <p><strong>Análisis Visual de la Imagen:</strong></p>
-        <ul>
-            <li><strong>Orquídeas:</strong> Esta categoría muestra el rango intercuartílico (IQR) más amplio, con precios que van desde aproximadamente $30 hasta más de $40. Esta volatilidad sugiere inconsistencia operativa.</li>
-            <li><strong>Lirios:</strong> La caja está comprimida, rondando la marca de $20-$25. Esta falta de varianza sugiere una estructura de precios rígida.</li>
-            <li><strong>Rosas Rojas:</strong> Vemos una dispersión saludable, indicando que ya está ocurriendo algún nivel de fijación de precios dinámica.</li>
-        </ul>
+        <p>Las Orquídeas muestran alta volatilidad e inconsistencia operativa, mientras que los Lirios presentan una estructura de precios rígida.</p>
     </section>
 
     <section class="section-card">
         <h2>Parte IV: El Análisis Profundo - El "Problema de Asia"</h2>
-        <h3>4.1 Diagnosticando la Trampa de Ganancias</h3>
-        <p>La señal más alarmante en nuestra revisión inicial fue el rendimiento de los Lirios en Asia. Para investigar esto, recurrimos al Análisis de Elasticidad específico.</p>
-        
         <div class="img-container">
             <img src="docs/images/predictive_analysis_dynamic.png" alt="Análisis de Elasticidad">
             <p class="caption">Análisis de Elasticidad de Lirios en Asia.</p>
         </div>
+        <p>Los Lirios en Asia dejan un Unit_Margin de solo $1.00 (retorno del 4.7%). La simulación advierte contra aumentos drásticos de precio en un mercado altamente sensible.</p>
 
-        <p><strong>Análisis de la Imagen: Elasticidad de Lirios en Asia</strong></p>
-        <p>Este gráfico es un diagrama de dispersión con una línea de regresión (roja discontinua) que representa la Elasticidad Precio de la Demanda.</p>
-        <ul>
-            <li>Situación Actual (Punto Azul): El gráfico marca el estado "Actual" a un precio de $22.98.</li>
-            <li>El Problema: La línea de regresión tiene una pendiente negativa pronunciada. Los precios más altos generalmente se correlacionan con menor volumen.</li>
-            <li>La Anomalía: Mire el grupo de puntos en la parte superior izquierda (precio de $20, 2000+ unidades). La situación "Actual" es en realidad subóptima.</li>
-            <li>La Simulación (Punto Verde): La simulación sugiere un precio de $45.96 (+100%). Sin embargo, el volumen de ventas correspondiente cae casi a cero.</li>
-        </ul>
-        <p>Interpretación: La simulación nos advierte en contra de un aumento drástico de precios. El mercado para Lirios en Asia parece altamente sensible. Sin embargo, el precio actual está produciendo márgenes insignificantes.</p>
-        <p>Referencia de Datos: Los Lirios en Asia tienen un Sale_Price de $20.94 y Total_Cost de $19.94, dejando un Unit_Margin de solo $1.00. Conclusión: Estamos moviendo un volumen masivo por centavos (retorno del 4.7%). Esto es insostenible.</p>
-
-        <h3>4.2 Composición de Ganancias por Región</h3>
-        <p>Validando esto con la Imagen: Composición de Ganancias por Región, vemos el gráfico de barras apiladas.</p>
-        
         <div class="img-container">
             <img src="docs/images/visual_profit_composition.png" alt="Composición de Ganancias">
         </div>
-
-        <ul>
-            <li>Columna ASIA: Es la barra más corta. El segmento azul (Lirios) es visible pero diminuto comparado con el volumen.</li>
-            <li>Columna EUROPA: Este es el gigante imponente del gráfico. El segmento rojo (Girasoles) y el segmento azul (Lirios) son trozos masivos de ganancia.</li>
-        </ul>
-        <p>Referencia de Datos: Los Girasoles en Europa tienen un margen del 44.66% ($10.24 de ganancia por unidad). Implicación Estratégica: Europa permite una fijación de precios basada en el valor.</p>
+        <p>Europa permite una fijación de precios basada en el valor, con los Girasoles entregando un margen del 44.66%.</p>
     </section>
 
     <section class="section-card">
         <h2>Parte V: Análisis Estratégico de Precios (La Matriz)</h2>
-        <h3>5.1 La Matriz de Precios</h3>
-        <p>La pieza final de nuestro rompecabezas es la Imagen "Dashboard Estratégico de Precios: Margen vs. Gap con Competidor". Este diagrama de dispersión es la herramienta más accionable.</p>
-        
         <div class="img-container">
             <img src="docs/images/visual_matriz_pricing.png" alt="Matriz Estratégica de Pricing">
         </div>
-
-        <p><strong>Análisis de la Imagen:</strong></p>
-        <ul>
-            <li><strong>La Zona "Revisar Costos":</strong> Grupo de puntos en la parte inferior derecha (Asia). Gap de precio positivo pero margen bajo. Significado: Estamos cobrando más que competidores y ganando menos. Nuestra Base de Costos es demasiado alta.</li>
-            <li><strong>La Zona "Subir Precios":</strong> Parte superior izquierda (USA). Somos más baratos que competidores pero tenemos márgenes altos (>30%). Significado: Estamos dejando dinero sobre la mesa. Podríamos subir precios un 5% y seguir siendo líderes.</li>
-        </ul>
-
-        <h3>5.2 Implementación de Código: Identificando los Clústeres</h3>
-        <div class="jupyter-cell">
-<pre># Algoritmo de Segmentación Estratégica
-def classify_product_strategy(row):
-    margin = row['Margin_Percentage']
-    price_gap = row['Sale_Price'] - row['Competitor_Price']
-    
-    # Umbrales
-    MARGIN_THRESHOLD = 0.20 # 20%
-    GAP_THRESHOLD = 0.00    # Paridad
-    
-    if margin < MARGIN_THRESHOLD and price_gap > GAP_THRESHOLD:
-        return 'CRÍTICO: Alto Costo / Revisar Cadena de Suministro'
-    elif margin > 0.35 and price_gap < -2.00:
-        return 'OPORTUNIDAD: Subir Precio'
-    elif margin < MARGIN_THRESHOLD and price_gap < -2.00:
-        return 'ADVERTENCIA: Líder en Pérdidas / Trampa de Descuento'
-    else:
-        return 'Mantener / Monitorear'
-
-# Aplicar la clasificación
-df_flowers['Action'] = df_flowers.apply(classify_product_strategy, axis=1)
-
-# Revisar el Resumen de Acciones
-print(df_flowers['Action'].value_counts())</pre>
-        </div>
-        <div class="analyst-highlight">
-            <strong>Nota del Analista:</strong> Este fragmento de código transforma el EDA crudo en una lista de tareas para los Directores de Ventas. Se mueve más allá de "qué pasó" a "qué debemos hacer".
-        </div>
+        <p>Identificamos zonas críticas: Asia requiere revisión urgente de costos (somos caros pero con poco margen), mientras que USA ofrece oportunidad de subir precios por ser líderes de bajo costo con alta rentabilidad.</p>
     </section>
 
     <section class="section-card">
         <h2>Parte VI: Conclusiones y Recomendaciones</h2>
-        <h3>6.1 Síntesis de Hallazgos</h3>
-        <p>El análisis de los datos de Global Blooms revela una empresa de dos identidades. En Occidente (Europa/USA), es una marca rentable y eficiente con poder de fijación de precios. En Oriente (Asia), es un comerciante de volumen inflado que sufre de ineficiencias de costos y modelos de precios ineficaces. Los datos confirman la Hipótesis 1 (Asia es un tonto ocupado) y la Hipótesis 3 (Precios Reactivos).</p>
-        
-        <h3>6.2 Recomendaciones Estratégicas</h3>
         <ol>
-            <li><strong>Reestructuración Inmediata de Precios en USA (La Zona de "Oportunidad"):</strong> Implementar un aumento de precio del 5% en Rosas Rojas en el mercado de EE. UU. Impacto: La pérdida de volumen será mínima y fluirá directamente a la Ganancia Neta.</li>
-            <li><strong>Auditoría de Cadena de Suministro en Asia (La Zona "Crítica"):</strong> El enfoque debe estar en la Reducción de Costos. Una auditoría de proveedores logísticos asiáticos es obligatoria para bajar el COGS de $31.00 al promedio global de ~$25.00.</li>
-            <li><strong>Racionalización del Portafolio:</strong> Si los costos no pueden reducirse, descontinuar Lirios en el mercado asiático. El capital de trabajo se despliega mejor en Girasoles Europeos de alto rendimiento.</li>
+            <li><strong>Subir Precios en USA:</strong> Aumento del 5% en Rosas Rojas para capturar margen sin perder volumen.</li>
+            <li><strong>Auditoría en Asia:</strong> Reducción de COGS de $31 a $25 mediante optimización logística.</li>
+            <li><strong>Racionalización:</strong> Descontinuar Lirios en Asia si no hay mejora en eficiencia.</li>
         </ol>
-
-        <h3>6.3 Pensamientos Finales</h3>
-        <p>La Ciencia de Datos a menudo se idealiza como la búsqueda de modelos complejos de aprendizaje automático. Sin embargo, para Global Blooms, el modelo más valioso no fue una red neuronal, sino un simple diagrama de dispersión de Margen vs. Gap con Competidor. Al visualizar el negocio de esta manera, hemos identificado palancas accionables que podrían aumentar la rentabilidad regional en un 15-20% sin adquirir un solo cliente nuevo.</p>
+        <p><strong>Pensamientos Finales:</strong> Identificamos palancas accionables para aumentar la rentabilidad regional en un 15-20% sin adquirir un solo cliente nuevo.</p>
     </section>
 
 </div>
 
 <footer>
-    <p>&copy; CRISTIAN CHERIDE - Portfolio Profesional de Ciencia de Datos</p>
+    <p>Buenos Aires, Argentina | crismoonchild@gmail.com</p>
+    <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 10px;">&copy; 2026 Cristian O. Cheride. Portafolio dinámico.</p>
 </footer>
+
+<script>
+    const dropbtn = document.getElementById('menu-toggle');
+    const dropdownContent = document.getElementById('projects-dropdown');
+
+    // Manejo del menú por Clic
+    dropbtn.onclick = function(e) {
+        e.stopPropagation();
+        dropdownContent.classList.toggle('show');
+    };
+
+    window.onclick = function(e) {
+        if (!e.target.matches('#menu-toggle')) {
+            if (dropdownContent.classList.contains('show')) {
+                dropdownContent.classList.remove('show');
+            }
+        }
+    };
+</script>
 
 </body>
 </html>
