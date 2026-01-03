@@ -286,7 +286,7 @@
 
 <footer>
     <p>Buenos Aires, Argentina | crismoonchild@gmail.com</p>
-    <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 10px;">&copy; 2026 Cristian Cheride. Portfolio Profesional de Ciencia de Datos.</p>
+    <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 10px;">&copy; 2026 Cristian O. Cheride. Portafolio dinámico.</p>
 </footer>
 
 <script>
@@ -296,7 +296,7 @@
     async function generateProjectsMenu() {
         const dropdown = document.getElementById('projects-dropdown');
         try {
-            const response = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO.github.io}/contents/`);
+            const response = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/`);
             const files = await response.json();
             const htmlFiles = files.filter(file => file.name.endsWith('.html') && file.name.toLowerCase() !== 'index.html');
 
