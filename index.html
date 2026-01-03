@@ -70,20 +70,20 @@
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
             border-radius: 6px;
-            overflow: hidden;
-            /* Se quita el margin-top para evitar el "gap" que rompe el hover */
+            /* SE QUITÓ overflow: hidden porque cortaba el puente invisible */
             margin-top: 0; 
         }
 
-        /* Puente invisible para mantener el hover activo entre el botón y el menú */
+        /* Puente invisible mejorado */
         .dropdown-content::before {
             content: "";
             position: absolute;
-            top: -15px;
+            top: -20px; /* Cubre el espacio de separación */
             left: 0;
             width: 100%;
-            height: 15px;
+            height: 25px;
             display: block;
+            background: transparent;
         }
 
         .dropdown-content a {
@@ -95,12 +95,18 @@
             border-bottom: 1px solid #f1f5f9;
         }
 
+        .dropdown-content a:first-child { border-radius: 6px 6px 0 0; }
+        .dropdown-content a:last-child { border-radius: 0 0 6px 6px; border-bottom: none; }
+
         .dropdown-content a:hover { background-color: #f1f5f9; color: var(--accent-color); }
 
-        /* Activar menú al pasar el mouse por el contenedor padre */
-        .dropdown:hover .dropdown-content { display: block; margin-top: 10px; }
+        /* Activar menú con margen controlado */
+        .dropdown:hover .dropdown-content { 
+            display: block; 
+            margin-top: 12px; 
+        }
 
-        /* --- Header / Hero --- */
+        /* --- Estilos de Página --- */
         header {
             text-align: center;
             padding: 100px 20px;
@@ -109,28 +115,11 @@
             border-bottom: 4px solid var(--accent-color);
         }
 
-        header h1 {
-            font-size: 3rem;
-            margin: 0;
-            letter-spacing: -0.025em;
-        }
+        header h1 { font-size: 3rem; margin: 0; letter-spacing: -0.025em; }
+        header p.tagline { font-size: 1.3rem; font-weight: 300; opacity: 0.8; max-width: 800px; margin: 20px auto 0; }
 
-        header p.tagline {
-            font-size: 1.3rem;
-            font-weight: 300;
-            opacity: 0.8;
-            max-width: 800px;
-            margin: 20px auto 0;
-        }
+        .container { max-width: 1000px; margin: -50px auto 60px; padding: 0 20px; position: relative; }
 
-        .container {
-            max-width: 1000px;
-            margin: -50px auto 60px;
-            padding: 0 20px;
-            position: relative;
-        }
-
-        /* --- Secciones --- */
         .section-card {
             background: var(--section-bg);
             padding: 50px;
@@ -177,30 +166,13 @@
             font-size: 0.9rem;
         }
 
-        .exp-item {
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #f1f5f9;
-        }
-
+        .exp-item { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #f1f5f9; }
         .exp-item:last-child { border: none; }
-
-        .exp-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 10px;
-        }
-
+        .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
         .exp-title { font-weight: 700; color: #0f172a; font-size: 1.1rem; }
         .exp-date { color: #64748b; font-size: 0.9rem; }
 
-        footer {
-            text-align: center;
-            padding: 60px;
-            background: #0f172a;
-            color: #94a3b8;
-        }
+        footer { text-align: center; padding: 60px; background: #0f172a; color: #94a3b8; }
 
         @media (max-width: 768px) {
             header h1 { font-size: 2.2rem; }
@@ -228,7 +200,6 @@
 </header>
 
 <div class="container">
-
     <section class="section-card">
         <h2>Presentación</h2>
         <p>¡Hola! Soy Cristian. Mi trayectoria profesional se define por una única obsesión: <strong>reducir la brecha entre "tener datos" y "utilizarlos para generar valor"</strong>. Trabajo activamente en la intersección de las Operaciones de Ingresos (RevOps), el Análisis de Datos y la Automatización de Procesos.</p>
@@ -254,13 +225,12 @@
 
     <section class="section-card">
         <h2>Experiencia Reciente</h2>
-        
         <div class="exp-item">
             <div class="exp-header">
                 <span class="exp-title">Lead Business Process Analyst | Municipalidad de Las Lomitas</span>
                 <span class="exp-date">Dic 2022 - Ago 2024</span>
             </div>
-            <p>Lideré la transformación digital de procesos fiscales para 15,000 contribuyentes. Desarrollé scripts que redujeron la carga operativa manual en un 60% e implementé tableros en tiempo real para una gobernanza basada en datos (Data-Driven).</p>
+            <p>Lideré la transformación digital de procesos fiscales para 15,000 contribuyentes. Desarrollé scripts que redujeron la carga operativa manual en un 60% e implementé tableros en tiempo real para una gobernanza basada en datos.</p>
         </div>
 
         <div class="exp-item">
@@ -281,7 +251,6 @@
             <li><strong>Inglés:</strong> Nivel B2 Upper Intermediate (EF SET Certificate)</li>
         </ul>
     </section>
-
 </div>
 
 <footer>
