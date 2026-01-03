@@ -3,384 +3,322 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Blooms | Proyecto de Portafolio</title>
+    <title>Cristian O. Cheride | Portafolio Profesional</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #f8fafc;
-            --text: #1e293b;
-            --accent: #2563eb;
-            --card-bg: #ffffff;
-            --code-bg: #111827;
-            --code-text: #e5e7eb;
-            --border: #e2e8f0;
+            --bg-color: #f8fafc;
+            --text-main: #1e293b;
+            --accent-color: #2563eb;
+            --section-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --header-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
         }
 
         body {
             font-family: 'Inter', sans-serif;
             line-height: 1.7;
-            color: var(--text);
-            background-color: var(--bg);
+            color: var(--text-main);
+            background-color: var(--bg-color);
             margin: 0;
             padding: 0;
         }
 
-        header {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-            border-bottom: 4px solid var(--accent);
+        /* --- Navegación Superior --- */
+        nav {
+            background: #0f172a;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        header h1 { font-size: 2.8rem; margin: 0; letter-spacing: -1px; }
-        header p { font-size: 1.2rem; opacity: 0.8; margin-top: 10px; font-weight: 300; }
-
-        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
-
-        .section-card {
-            background: var(--card-bg);
-            padding: 50px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            margin-bottom: 40px;
-            border: 1px solid var(--border);
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-end;
+            padding: 0 20px;
         }
 
-        h2 { color: var(--accent); font-size: 1.8rem; border-bottom: 2px solid var(--bg); padding-bottom: 10px; margin-top: 0; }
-        h3 { color: #0f172a; margin-top: 30px; font-size: 1.4rem; }
-
-        p { margin-bottom: 20px; }
-        ul, ol { margin-bottom: 20px; padding-left: 20px; }
-        li { margin-bottom: 10px; }
-
-        /* Jupyter Lab Code Block Style */
-        .jupyter-cell {
-            background-color: var(--code-bg);
-            border-radius: 4px;
-            margin: 25px 0;
+        .dropdown {
             position: relative;
-            border: 1px solid #334155;
+            display: inline-block;
         }
 
-        .jupyter-cell pre {
-            margin: 0;
-            padding: 25px 30px 25px 65px;
-            font-family: 'Fira Code', monospace;
+        .dropbtn {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
             font-size: 0.9rem;
-            color: var(--code-text);
-            overflow-x: auto;
-            white-space: pre-wrap;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
         }
 
-        .jupyter-cell::before {
-            content: "In [ ]:";
+        .dropbtn:hover { background-color: #1d4ed8; }
+
+        .dropdown-content {
+            display: none;
             position: absolute;
-            left: 10px;
-            top: 25px;
-            color: #3b82f6;
-            font-family: 'Fira Code', monospace;
-            font-size: 0.8rem;
-            font-weight: bold;
+            right: 0;
+            background-color: white;
+            min-width: 220px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 6px;
+            overflow: hidden;
+            /* Se quita el margin-top para evitar el "gap" que rompe el hover */
+            margin-top: 0; 
         }
 
-        .img-container {
-            text-align: center;
-            margin: 40px 0;
-            padding: 20px;
-            background: #f1f5f9;
-            border-radius: 8px;
-        }
-
-        .img-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .caption { font-size: 0.9rem; color: #64748b; margin-top: 10px; font-style: italic; }
-
-        .data-table {
+        /* Puente invisible para mantener el hover activo entre el botón y el menú */
+        .dropdown-content::before {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: 0;
             width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 0.95rem;
+            height: 15px;
+            display: block;
         }
 
-        .data-table th, .data-table td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid var(--border);
+        .dropdown-content a {
+            color: #1e293b;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.85rem;
+            border-bottom: 1px solid #f1f5f9;
         }
 
-        .data-table th { background-color: #f8fafc; font-weight: 700; }
+        .dropdown-content a:hover { background-color: #f1f5f9; color: var(--accent-color); }
 
-        .analyst-highlight {
+        /* Activar menú al pasar el mouse por el contenedor padre */
+        .dropdown:hover .dropdown-content { display: block; margin-top: 10px; }
+
+        /* --- Header / Hero --- */
+        header {
+            text-align: center;
+            padding: 100px 20px;
+            background: var(--header-gradient);
+            color: white;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: -0.025em;
+        }
+
+        header p.tagline {
+            font-size: 1.3rem;
+            font-weight: 300;
+            opacity: 0.8;
+            max-width: 800px;
+            margin: 20px auto 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: -50px auto 60px;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        /* --- Secciones --- */
+        .section-card {
+            background: var(--section-bg);
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+        }
+
+        h2 {
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--accent-color);
+            padding-left: 20px;
+        }
+
+        h3 { color: #0f172a; margin-top: 35px; font-size: 1.4rem; }
+
+        .highlight-box {
             background-color: #eff6ff;
-            border-left: 4px solid var(--accent);
-            padding: 20px;
-            margin: 25px 0;
+            border-right: 4px solid var(--accent-color);
+            padding: 25px;
+            margin: 20px 0;
+            font-size: 1.1rem;
             font-style: italic;
+            color: #1e40af;
         }
 
-        footer { text-align: center; padding: 40px; color: #64748b; font-size: 0.9rem; }
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .tech-item {
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            border: 1px solid #e2e8f0;
+            font-size: 0.9rem;
+        }
+
+        .exp-item {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .exp-item:last-child { border: none; }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 10px;
+        }
+
+        .exp-title { font-weight: 700; color: #0f172a; font-size: 1.1rem; }
+        .exp-date { color: #64748b; font-size: 0.9rem; }
+
+        footer {
+            text-align: center;
+            padding: 60px;
+            background: #0f172a;
+            color: #94a3b8;
+        }
 
         @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            .exp-header { flex-direction: column; }
             .section-card { padding: 30px; }
-            .jupyter-cell::before { display: none; }
-            .jupyter-cell pre { padding-left: 20px; }
         }
     </style>
 </head>
 <body>
 
+<nav>
+    <div class="nav-container">
+        <div class="dropdown">
+            <button class="dropbtn">Proyectos Analíticos ▾</button>
+            <div id="projects-dropdown" class="dropdown-content">
+                <p style="padding: 12px; font-size: 0.8rem; color: #64748b;">Cargando proyectos...</p>
+            </div>
+        </div>
+    </div>
+</nav>
+
 <header>
-    <h1>Global Blooms: Análisis Estratégico de Precios y Rentabilidad</h1>
-    <p>Un Proyecto Integral de Portafolio en Ciencia de Datos</p>
+    <h1>Cristian O. Cheride</h1>
+    <p class="tagline">RevOps & Business Process Analyst | Driving Efficiency via Data & Automation</p>
 </header>
 
 <div class="container">
 
     <section class="section-card">
-        <h2>Manifiesto del Proyecto: El Arte de Contar Historias con Datos</h2>
-        <p>En el panorama actual de la analítica de datos, la capacidad de escribir código en Python o R ya no es el único diferenciador para un Analista de Datos Líder. El verdadero valor de un profesional de datos reside en la capacidad de tejer números crudos y dispares en una narrativa de negocios convincente que impulse la toma de decisiones. Este reporte integral sirve como un proyecto definitivo de portafolio, diseñado no solo para mostrar dominio técnico sobre bibliotecas como Pandas, Seaborn y Scikit-Learn, sino para demostrar una comprensión matizada y de nivel ejecutivo sobre estrategia empresarial, dinámica de mercado y optimización de la rentabilidad.</p>
-        <p>Basándose en las mejores prácticas para portafolios de ciencia de datos, este proyecto evita el error común de presentar bloques de código secos sin contexto. En su lugar, adopta un enfoque de "narrativa primero", donde cada línea de código, cada visualización estadística y cada hipótesis sirve a una pregunta de negocios específica. El objetivo es transformar la entidad ficticia, 'Global Blooms', de un conjunto de datos estático en un caso de estudio de negocios vivo. Al integrar el conocimiento del dominio con un análisis estadístico riguroso, este reporte diagnostica las causas subyacentes de la erosión de márgenes en los mercados asiáticos mientras identifica las palancas de poder de fijación de precios no explotadas disponibles en los sectores europeos y norteamericanos.</p>
-        <p>Este documento está estructurado para guiar al lector a través del ciclo de vida completo de un proyecto de datos: desde el contacto inicial con el cliente y la formulación de hipótesis de negocios hasta la limpieza granular de datos, procediendo a través de un "Análisis Profundo" (Deep Dive) de Análisis Exploratorio de Datos (EDA) de visualizaciones específicas (incluyendo matrices de elasticidad y correlación), y culminando en recomendaciones estratégicas accionables.</p>
-    </section>
-
-    <section class="section-card">
-        <h2>Parte I: El Compromiso – Contexto Empresarial y Planteamiento del Problema</h2>
-        <h3>1.1 El Cliente: Global Blooms</h3>
-        <p>Global Blooms es un distribuidor floral internacional de tamaño mediano que se especializa en el suministro B2B y B2C de flores frescas cortadas. Fundada en 2010, la empresa ha escalado operaciones en cuatro regiones principales: Estados Unidos (USA), Europa, Asia y América Latina (LATAM). Su cartera de productos consta de cinco categorías principales: Rosas Rojas, Lirios, Orquídeas, Girasoles y Tulipanes.</p>
-        <p>Históricamente, Global Blooms ha operado con una estrategia de "volumen primero", expandiendo agresivamente la cuota de mercado en economías emergentes como Asia y LATAM. Sin embargo, a pesar del robusto crecimiento de los ingresos brutos, la Junta Directiva ha señalado un estancamiento preocupante en la rentabilidad neta. El Director Financiero (CFO) se puso en contacto con una preocupación específica: "Estamos moviendo millones de tallos, pero nuestra línea de fondo es plana. Sospechamos que nuestra estrategia de precios está desconectada de las realidades del mercado local, pero carecemos de la visibilidad de datos granulares para probarlo."</p>
+        <h2>Presentación</h2>
+        <p>¡Hola! Soy Cristian. Mi trayectoria profesional se define por una única obsesión: <strong>reducir la brecha entre "tener datos" y "utilizarlos para generar valor"</strong>. Trabajo activamente en la intersección de las Operaciones de Ingresos (RevOps), el Análisis de Datos y la Automatización de Procesos.</p>
         
-        <h3>1.2 El Informe del Analista</h3>
-        <p>El cliente proporcionó un conjunto de datos brutos (flowers_pricing_dataset.csv). La misión era clara:</p>
-        <ul>
-            <li>Auditar los Datos: Limpiar y validar los registros de transacciones.</li>
-            <li>Diagnosticar la Salud: Utilizar las visualizaciones proporcionadas (Dashboard, Matriz de Correlación, etc.) para evaluar el estado actual del negocio.</li>
-            <li>Probar Hipótesis: Investigar específicamente por qué las regiones de alto volumen tienen un rendimiento inferior.</li>
-            <li>Recomendar Estrategia: Proponer un nuevo marco de fijación de precios respaldado por datos.</li>
-        </ul>
-
-        <h3>1.3 Hipótesis Estratégicas</h3>
-        <p>Antes de escribir una sola línea de código, establecimos tres hipótesis de trabajo para guiar la investigación:</p>
-        <ul>
-            <li><strong>H1 (La Hipótesis del "Tonto Ocupado"):</strong> El mercado asiático está generando alto volumen pero bajo valor debido a descuentos excesivos o un alto Costo de Bienes Vendidos (COGS).</li>
-            <li><strong>H2 (La Hipótesis "Premium"):</strong> Los mercados europeos y estadounidenses tienen una demanda inelástica para ciertos artículos de lujo (ej., Rosas Rojas), permitiendo aumentos de precios sin pérdida de volumen.</li>
-            <li><strong>H3 (La Hipótesis del "Competidor"):</strong> Global Blooms es reactivo en lugar de proactivo, fijando precios basados en los competidores en lugar de sus propios requisitos de margen interno.</li>
-        </ul>
-    </section>
-
-    <section class="section-card">
-        <h2>Parte II: Arquitectura y Preparación de Datos</h2>
-        <h3>2.1 Análisis del Conjunto de Datos</h3>
-        <p>La base de este análisis es el archivo flowers_pricing_dataset_cleaned.csv. Un diccionario de datos robusto es esencial para entender las variables en juego. El conjunto de datos contiene 500 registros transaccionales.</p>
-        
-        <table class="data-table">
-            <thead>
-                <tr><th>Nombre de Variable</th><th>Tipo de Dato</th><th>Descripción</th></tr>
-            </thead>
-            <tbody>
-                <tr><td>Product</td><td>Categórico</td><td>El tipo específico de flor (ej., Rosas Rojas, Lirios).</td></tr>
-                <tr><td>Region</td><td>Categórico</td><td>El mercado geográfico de venta (USA, Europe, Asia, LATAM).</td></tr>
-                <tr><td>Sale_Price</td><td>Numérico (Float)</td><td>El precio por unidad cobrado al cliente (Ingresos).</td></tr>
-                <tr><td>Total_Cost</td><td>Numérico (Float)</td><td>El costo total cargado por unidad (cultivo, logística, gastos generales).</td></tr>
-                <tr><td>Competitor_Price</td><td>Numérico (Float)</td><td>El precio promedio cobrado por competidores directos en la misma región.</td></tr>
-                <tr><td>Units_Sold</td><td>Numérico (Integer)</td><td>El volumen total de unidades vendidas en el período observado.</td></tr>
-                <tr><td>Unit_Margin</td><td>Numérico (Float)</td><td>Campo calculado: Sale_Price - Total_Cost.</td></tr>
-                <tr><td>Margin_Percentage</td><td>Numérico (Float)</td><td>Campo calculado: Unit_Margin / Sale_Price.</td></tr>
-            </tbody>
-        </table>
-
-        <h3>2.2 Configuración del Envío Python</h3>
-        <div class="jupyter-cell">
-<pre># Importar bibliotecas necesarias para análisis de datos y visualización
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-
-# Configuración para una salida más clara
-pd.set_option('display.max_columns', None)
-pd.set_option('display.precision', 2)
-sns.set(style="whitegrid")
-
-# Definir ruta del archivo
-csv_file_path = 'flowers_pricing_dataset_cleaned.csv'
-
-# Función personalizada para carga robusta de datos
-def load_and_inspect_data(filepath):
-    """
-    Carga un archivo CSV en un dataframe y realiza una inspección inicial.
-    Retorna el dataframe si es exitoso, de lo contrario None.
-    """
-    try:
-        df = pd.read_csv(filepath)
-        print(f"--- Datos Cargados Exitosamente: {df.shape[0]} filas, {df.shape[1]} columnas ---")
-        return df
-    except FileNotFoundError:
-        print(f"Error: El archivo en {filepath} no fue encontrado.")
-        return None
-
-# Cargar los datos
-df_flowers = load_and_inspect_data(csv_file_path)</pre>
+        <div class="highlight-box">
+            "Con 15 años de experiencia, mi objetivo es la eficiencia operativa, ya sea optimizando la logística de e-commerce o liderando la transformación digital en el sector público".
         </div>
 
-        <div class="analyst-highlight">
-            <strong>Comentario del Analista:</strong> La función load_and_inspect_data es crítica. El manejo de errores (bloques try-except) demuestra previsión y madurez en la codificación. Un error común es asumir que los datos siempre cargan perfectamente. Al verificar valores nulos inmediatamente, establecemos confianza en la integridad de los datos antes de sacar conclusiones.
+        <p>Comprendo la lógica de negocio detrás de cada consulta SQL. Mi experiencia abarca desde el liderazgo de operaciones técnicas en el sector privado gestionando más de 1000 transacciones mensuales, hasta la modernización de estructuras estatales para la ingeniería de soluciones dinámicas.</p>
+    </section>
+
+    <section class="section-card">
+        <h2>Stack Tecnológico</h2>
+        <div class="tech-grid">
+            <div class="tech-item">SQL</div>
+            <div class="tech-item">Python (Pandas)</div>
+            <div class="tech-item">Power BI</div>
+            <div class="tech-item">Google Looker</div>
+            <div class="tech-item">Excel (VBA/Power Query)</div>
+            <div class="tech-item">Google Apps Script</div>
         </div>
     </section>
 
     <section class="section-card">
-        <h2>Parte III: Análisis Exploratorio de Datos (EDA) - El Arco Narrativo</h2>
-        <h3>3.1 La Visión Estratégica: Deconstruyendo el Dashboard</h3>
-        <p>El primer paso en nuestro análisis implica interpretar el "Dashboard Estratégico de Precios". Este tablero agrega cuatro vistas distintas del negocio, sirviendo efectivamente como un "chequeo de salud" para Global Blooms.</p>
+        <h2>Experiencia Reciente</h2>
         
-        <div class="img-container">
-            <img src="docs/images/dashboard_pricing_final.png" alt="Dashboard Estratégico">
-            <p class="caption">Imagen: Dashboard Estratégico de Precios de Global Blooms.</p>
+        <div class="exp-item">
+            <div class="exp-header">
+                <span class="exp-title">Lead Business Process Analyst | Municipalidad de Las Lomitas</span>
+                <span class="exp-date">Dic 2022 - Ago 2024</span>
+            </div>
+            <p>Lideré la transformación digital de procesos fiscales para 15,000 contribuyentes. Desarrollé scripts que redujeron la carga operativa manual en un 60% e implementé tableros en tiempo real para una gobernanza basada en datos (Data-Driven).</p>
         </div>
 
-        <p><strong>Análisis Visual de la Imagen 2:</strong> El cuadrante superior derecho del dashboard, Rentabilidad Total por Región y Producto, confirma inmediatamente nuestros temores iniciales con respecto al mercado asiático. A pesar de lo que sabemos por los datos brutos sobre el alto volumen de ventas (ej., Lirios moviendo 1,674 unidades 5), la barra de ganancias para ASIA es empequeñecida por EUROPA y USA.</p>
-        <ul>
-            <li>Observación: La barra europea está dominada por Rosas Rojas (verde) y Orquídeas (púrpura), indicando un flujo de ganancias diversificado.</li>
-            <li>Observación: La barra asiática es delgada, a pesar de que la región es un centro logístico para muchas cadenas de suministro floral.</li>
-        </ul>
-        <p>El "¿Y Qué?": Esta discrepancia visual valida la Hipótesis 1. Estamos ocupados, pero no somos rentables en Asia. El volumen puro de unidades vendidas no se está traduciendo en la línea de fondo, sugiriendo una compresión de márgenes.</p>
-
-        <h3>3.2 La Relación Costo-Precio: Análisis de Matriz de Correlación</h3>
-        <p>Para entender la mecánica de este fallo en la fijación de precios, examinamos la Matriz de Correlación. Este mapa de calor es vital para diagnosticar si Global Blooms fija los precios de sus productos basándose en el valor o en el costo.</p>
-        
-        <div class="img-container">
-            <img src="docs/images/visual_correlation_heatmap.png" alt="Matriz de Correlación">
-        </div>
-
-        <p><strong>Análisis Visual de la Imagen:</strong></p>
-        <ul>
-            <li><strong>Sale_Price vs. Total_Cost (0.91):</strong> Esta correlación positiva extremadamente alta indica una estricta Estrategia de Precios Costo-Plus. La empresa esencialmente toma el costo de la flor y añade un margen fijo. Si bien esto protege contra la venta con pérdidas, ignora la disposición del consumidor a pagar.</li>
-            <li><strong>Units_Sold vs. Sale_Price (-0.05):</strong> Esta es la prueba definitiva. En un modelo típico de oferta y demanda, esperamos una fuerte correlación negativa. Una correlación cercana a cero sugiere que la demanda es inelástica o que la estrategia de precios es tan inconexa que el precio no es el conductor principal del volumen. Esto apoya la Hipótesis 2 (Potencial Premium).</li>
-            <li><strong>Margin_Percentage vs. Total_Cost (-0.44):</strong> A medida que suben los costos, el porcentaje de margen baja. Esto implica que el margen de beneficio es fijo en términos de dólares, no en términos porcentuales.</li>
-        </ul>
-
-        <h3>3.3 La Volatilidad de los Precios: Análisis de Boxplot</h3>
-        <p>Moviéndonos a la distribución de precios, analizamos el Diagrama de Caja (Boxplot) de Precios de Venta.</p>
-        
-        <div class="img-container">
-            <img src="docs/images/visual_price_dispersion.png" alt="Análisis Boxplot">
-        </div>
-
-        <p><strong>Análisis Visual de la Imagen:</strong></p>
-        <ul>
-            <li><strong>Orquídeas:</strong> Esta categoría muestra el rango intercuartílico (IQR) más amplio, con precios que van desde aproximadamente $30 hasta más de $40. Esta volatilidad sugiere inconsistencia operativa.</li>
-            <li><strong>Lirios:</strong> La caja está comprimida, rondando la marca de $20-$25. Esta falta de varianza sugiere una estructura de precios rígida.</li>
-            <li><strong>Rosas Rojas:</strong> Vemos una dispersión saludable, indicando que ya está ocurriendo algún nivel de fijación de precios dinámica.</li>
-        </ul>
-    </section>
-
-    <section class="section-card">
-        <h2>Parte IV: El Análisis Profundo - El "Problema de Asia"</h2>
-        <h3>4.1 Diagnosticando la Trampa de Ganancias</h3>
-        <p>La señal más alarmante en nuestra revisión inicial fue el rendimiento de los Lirios en Asia. Para investigar esto, recurrimos al Análisis de Elasticidad específico.</p>
-        
-        <div class="img-container">
-            <img src="docs/images/predictive_analysis_dynamic.png" alt="Análisis de Elasticidad">
-            <p class="caption">Análisis de Elasticidad de Lirios en Asia.</p>
-        </div>
-
-        <p><strong>Análisis de la Imagen: Elasticidad de Lirios en Asia</strong></p>
-        <p>Este gráfico es un diagrama de dispersión con una línea de regresión (roja discontinua) que representa la Elasticidad Precio de la Demanda.</p>
-        <ul>
-            <li>Situación Actual (Punto Azul): El gráfico marca el estado "Actual" a un precio de $22.98.</li>
-            <li>El Problema: La línea de regresión tiene una pendiente negativa pronunciada. Los precios más altos generalmente se correlacionan con menor volumen.</li>
-            <li>La Anomalía: Mire el grupo de puntos en la parte superior izquierda (precio de $20, 2000+ unidades). La situación "Actual" es en realidad subóptima.</li>
-            <li>La Simulación (Punto Verde): La simulación sugiere un precio de $45.96 (+100%). Sin embargo, el volumen de ventas correspondiente cae casi a cero.</li>
-        </ul>
-        <p>Interpretación: La simulación nos advierte en contra de un aumento drástico de precios. El mercado para Lirios en Asia parece altamente sensible. Sin embargo, el precio actual está produciendo márgenes insignificantes.</p>
-        <p>Referencia de Datos: Los Lirios en Asia tienen un Sale_Price de $20.94 y Total_Cost de $19.94, dejando un Unit_Margin de solo $1.00. Conclusión: Estamos moviendo un volumen masivo por centavos (retorno del 4.7%). Esto es insostenible.</p>
-
-        <h3>4.2 Composición de Ganancias por Región</h3>
-        <p>Validando esto con la Imagen: Composición de Ganancias por Región, vemos el gráfico de barras apiladas.</p>
-        
-        <div class="img-container">
-            <img src="docs/images/visual_profit_composition.png" alt="Composición de Ganancias">
-        </div>
-
-        <ul>
-            <li>Columna ASIA: Es la barra más corta. El segmento azul (Lirios) es visible pero diminuto comparado con el volumen.</li>
-            <li>Columna EUROPA: Este es el gigante imponente del gráfico. El segmento rojo (Girasoles) y el segmento azul (Lirios) son trozos masivos de ganancia.</li>
-        </ul>
-        <p>Referencia de Datos: Los Girasoles en Europa tienen un margen del 44.66% ($10.24 de ganancia por unidad). Implicación Estratégica: Europa permite una fijación de precios basada en el valor.</p>
-    </section>
-
-    <section class="section-card">
-        <h2>Parte V: Análisis Estratégico de Precios (La Matriz)</h2>
-        <h3>5.1 La Matriz de Precios</h3>
-        <p>La pieza final de nuestro rompecabezas es la Imagen "Dashboard Estratégico de Precios: Margen vs. Gap con Competidor". Este diagrama de dispersión es la herramienta más accionable.</p>
-        
-        <div class="img-container">
-            <img src="docs/images/visual_matriz_pricing.png" alt="Matriz Estratégica de Pricing">
-        </div>
-
-        <p><strong>Análisis de la Imagen:</strong></p>
-        <ul>
-            <li><strong>La Zona "Revisar Costos":</strong> Grupo de puntos en la parte inferior derecha (Asia). Gap de precio positivo pero margen bajo. Significado: Estamos cobrando más que competidores y ganando menos. Nuestra Base de Costos es demasiado alta.</li>
-            <li><strong>La Zona "Subir Precios":</strong> Parte superior izquierda (USA). Somos más baratos que competidores pero tenemos márgenes altos (>30%). Significado: Estamos dejando dinero sobre la mesa. Podríamos subir precios un 5% y seguir siendo líderes.</li>
-        </ul>
-
-        <h3>5.2 Implementación de Código: Identificando los Clústeres</h3>
-        <div class="jupyter-cell">
-<pre># Algoritmo de Segmentación Estratégica
-def classify_product_strategy(row):
-    margin = row['Margin_Percentage']
-    price_gap = row['Sale_Price'] - row['Competitor_Price']
-    
-    # Umbrales
-    MARGIN_THRESHOLD = 0.20 # 20%
-    GAP_THRESHOLD = 0.00    # Paridad
-    
-    if margin < MARGIN_THRESHOLD and price_gap > GAP_THRESHOLD:
-        return 'CRÍTICO: Alto Costo / Revisar Cadena de Suministro'
-    elif margin > 0.35 and price_gap < -2.00:
-        return 'OPORTUNIDAD: Subir Precio'
-    elif margin < MARGIN_THRESHOLD and price_gap < -2.00:
-        return 'ADVERTENCIA: Líder en Pérdidas / Trampa de Descuento'
-    else:
-        return 'Mantener / Monitorear'
-
-# Aplicar la clasificación
-df_flowers['Action'] = df_flowers.apply(classify_product_strategy, axis=1)
-
-# Revisar el Resumen de Acciones
-print(df_flowers['Action'].value_counts())</pre>
-        </div>
-        <div class="analyst-highlight">
-            <strong>Nota del Analista:</strong> Este fragmento de código transforma el EDA crudo en una lista de tareas para los Directores de Ventas. Se mueve más allá de "qué pasó" a "qué debemos hacer".
+        <div class="exp-item">
+            <div class="exp-header">
+                <span class="exp-title">Sales Operations Lead | Ciriux</span>
+                <span class="exp-date">Ago 2014 - Sep 2020</span>
+            </div>
+            <p>Orquesté operaciones logísticas con cero discrepancias de inventario mediante seguimiento automatizado. Logré una reducción del 15% en costos de adquisición mediante la negociación estratégica.</p>
         </div>
     </section>
 
     <section class="section-card">
-        <h2>Parte VI: Conclusiones y Recomendaciones</h2>
-        <h3>6.1 Síntesis de Hallazgos</h3>
-        <p>El análisis de los datos de Global Blooms revela una empresa de dos identidades. En Occidente (Europa/USA), es una marca rentable y eficiente con poder de fijación de precios. En Oriente (Asia), es un comerciante de volumen inflado que sufre de ineficiencias de costos y modelos de precios ineficaces. Los datos confirman la Hipótesis 1 (Asia es un tonto ocupado) y la Hipótesis 3 (Precios Reactivos).</p>
-        
-        <h3>6.2 Recomendaciones Estratégicas</h3>
-        <ol>
-            <li><strong>Reestructuración Inmediata de Precios en USA (La Zona de "Oportunidad"):</strong> Implementar un aumento de precio del 5% en Rosas Rojas en el mercado de EE. UU. Impacto: La pérdida de volumen será mínima y fluirá directamente a la Ganancia Neta.</li>
-            <li><strong>Auditoría de Cadena de Suministro en Asia (La Zona "Crítica"):</strong> El enfoque debe estar en la Reducción de Costos. Una auditoría de proveedores logísticos asiáticos es obligatoria para bajar el COGS de $31.00 al promedio global de ~$25.00.</li>
-            <li><strong>Racionalización del Portafolio:</strong> Si los costos no pueden reducirse, descontinuar Lirios en el mercado asiático. El capital de trabajo se despliega mejor en Girasoles Europeos de alto rendimiento.</li>
-        </ol>
-
-        <h3>6.3 Pensamientos Finales</h3>
-        <p>La Ciencia de Datos a menudo se idealiza como la búsqueda de modelos complejos de aprendizaje automático. Sin embargo, para Global Blooms, el modelo más valioso no fue una red neuronal, sino un simple diagrama de dispersión de Margen vs. Gap con Competidor. Al visualizar el negocio de esta manera, hemos identificado palancas accionables que podrían aumentar la rentabilidad regional en un 15-20% sin adquirir un solo cliente nuevo.</p>
+        <h2>Certificaciones y Formación</h2>
+        <ul>
+            <li><strong>Data Analyst Professional Certificate</strong> - IBM</li>
+            <li><strong>Data Science Fundamentals with Python and SQL</strong> - IBM</li>
+            <li><strong>IA y Ciencia de Datos para Negocios</strong> - Univ. de Palermo</li>
+            <li><strong>Inglés:</strong> Nivel B2 Upper Intermediate (EF SET Certificate)</li>
+        </ul>
     </section>
 
 </div>
 
 <footer>
-    <p>&copy; 2026 Cristian Cheride. Portfolio Profesional de Ciencia de Datos</p>
+    <p>Buenos Aires, Argentina | crismoonchild@gmail.com</p>
+    <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 10px;">&copy; © 2026 Cristian Cheride. Portfolio Profesional de Ciencia de Datos.</p>
 </footer>
+
+<script>
+    const GITHUB_USER = 'cristiancheride'; 
+    const GITHUB_REPO = 'cristiancheride.github.io'; 
+
+    async function generateProjectsMenu() {
+        const dropdown = document.getElementById('projects-dropdown');
+        try {
+            const response = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/`);
+            const files = await response.json();
+            const htmlFiles = files.filter(file => file.name.endsWith('.html') && file.name.toLowerCase() !== 'index.html');
+
+            if (htmlFiles.length === 0) {
+                dropdown.innerHTML = '<p style="padding: 12px;">No hay proyectos aún.</p>';
+                return;
+            }
+
+            dropdown.innerHTML = '';
+            htmlFiles.forEach(file => {
+                const a = document.createElement('a');
+                a.href = file.name;
+                const displayName = file.name.replace('.html', '').replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                a.textContent = displayName;
+                dropdown.appendChild(a);
+            });
+        } catch (error) {
+            dropdown.innerHTML = '<p style="padding: 12px;">Error al cargar.</p>';
+        }
+    }
+    window.addEventListener('DOMContentLoaded', generateProjectsMenu);
+</script>
 
 </body>
 </html>
