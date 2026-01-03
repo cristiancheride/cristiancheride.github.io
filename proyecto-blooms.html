@@ -145,7 +145,7 @@
     <section class="section-card">
         <h2>Manifiesto del Proyecto: El Arte de Contar Historias con Datos</h2>
         <p>En el panorama actual de la analítica de datos, la capacidad de escribir código en Python o R ya no es el único diferenciador para un Analista de Datos Líder. El verdadero valor de un profesional de datos reside en la capacidad de tejer números crudos y dispares en una narrativa de negocios convincente que impulse la toma de decisiones. Este reporte integral sirve como un proyecto definitivo de portafolio, diseñado no solo para mostrar dominio técnico sobre bibliotecas como Pandas, Seaborn y Scikit-Learn, sino para demostrar una comprensión matizada y de nivel ejecutivo sobre estrategia empresarial, dinámica de mercado y optimización de la rentabilidad.</p>
-        <p>Basándose en las mejores prácticas para portafolios de ciencia de datos 1, este proyecto evita el error común de presentar bloques de código secos sin contexto. En su lugar, adopta un enfoque de "narrativa primero" 3, donde cada línea de código, cada visualización estadística y cada hipótesis sirve a una pregunta de negocios específica. El objetivo es transformar la entidad ficticia, 'Global Blooms', de un conjunto de datos estático en un caso de estudio de negocios vivo. Al integrar el conocimiento del dominio con un análisis estadístico riguroso 4, este reporte diagnostica las causas subyacentes de la erosión de márgenes en los mercados asiáticos mientras identifica las palancas de poder de fijación de precios no explotadas disponibles en los sectores europeos y norteamericanos.</p>
+        <p>Basándose en las mejores prácticas para portafolios de ciencia de datos, este proyecto evita el error común de presentar bloques de código secos sin contexto. En su lugar, adopta un enfoque de "narrativa primero", donde cada línea de código, cada visualización estadística y cada hipótesis sirve a una pregunta de negocios específica. El objetivo es transformar la entidad ficticia, 'Global Blooms', de un conjunto de datos estático en un caso de estudio de negocios vivo. Al integrar el conocimiento del dominio con un análisis estadístico riguroso, este reporte diagnostica las causas subyacentes de la erosión de márgenes en los mercados asiáticos mientras identifica las palancas de poder de fijación de precios no explotadas disponibles en los sectores europeos y norteamericanos.</p>
         <p>Este documento está estructurado para guiar al lector a través del ciclo de vida completo de un proyecto de datos: desde el contacto inicial con el cliente y la formulación de hipótesis de negocios hasta la limpieza granular de datos, procediendo a través de un "Análisis Profundo" (Deep Dive) de Análisis Exploratorio de Datos (EDA) de visualizaciones específicas (incluyendo matrices de elasticidad y correlación), y culminando en recomendaciones estratégicas accionables.</p>
     </section>
 
@@ -156,7 +156,7 @@
         <p>Históricamente, Global Blooms ha operado con una estrategia de "volumen primero", expandiendo agresivamente la cuota de mercado en economías emergentes como Asia y LATAM. Sin embargo, a pesar del robusto crecimiento de los ingresos brutos, la Junta Directiva ha señalado un estancamiento preocupante en la rentabilidad neta. El Director Financiero (CFO) se puso en contacto con una preocupación específica: "Estamos moviendo millones de tallos, pero nuestra línea de fondo es plana. Sospechamos que nuestra estrategia de precios está desconectada de las realidades del mercado local, pero carecemos de la visibilidad de datos granulares para probarlo."</p>
         
         <h3>1.2 El Informe del Analista</h3>
-        <p>El cliente proporcionó un conjunto de datos brutos (flowers_pricing_dataset.csv) y un conjunto de gráficos estáticos preliminares que su equipo de marketing interno había generado pero no podía interpretar completamente. La misión era clara:</p>
+        <p>El cliente proporcionó un conjunto de datos brutos (flowers_pricing_dataset.csv). La misión era clara:</p>
         <ul>
             <li>Auditar los Datos: Limpiar y validar los registros de transacciones.</li>
             <li>Diagnosticar la Salud: Utilizar las visualizaciones proporcionadas (Dashboard, Matriz de Correlación, etc.) para evaluar el estado actual del negocio.</li>
@@ -229,14 +229,14 @@ df_flowers = load_and_inspect_data(csv_file_path)</pre>
         </div>
 
         <div class="analyst-highlight">
-            <strong>Comentario del Analista:</strong> La función load_and_inspect_data es crítica. En un portafolio profesional, el manejo de errores (bloques try-except) demuestra previsión y madurez en la codificación.6 Un error común en portafolios junior es asumir que los datos siempre cargan perfectamente. Al verificar valores nulos inmediatamente, establecemos confianza en la integridad de los datos antes de sacar conclusiones.
+            <strong>Comentario del Analista:</strong> La función load_and_inspect_data es crítica. El manejo de errores (bloques try-except) demuestra previsión y madurez en la codificación. Un error común es asumir que los datos siempre cargan perfectamente. Al verificar valores nulos inmediatamente, establecemos confianza en la integridad de los datos antes de sacar conclusiones.
         </div>
     </section>
 
     <section class="section-card">
         <h2>Parte III: Análisis Exploratorio de Datos (EDA) - El Arco Narrativo</h2>
         <h3>3.1 La Visión Estratégica: Deconstruyendo el Dashboard</h3>
-        <p>El primer paso en nuestro análisis implica interpretar el "Dashboard Estratégico de Precios" (referenciando la Imagen 2 proporcionada por el cliente). Este tablero agrega cuatro vistas distintas del negocio, sirviendo efectivamente como un "chequeo de salud" para Global Blooms.</p>
+        <p>El primer paso en nuestro análisis implica interpretar el "Dashboard Estratégico de Precios". Este tablero agrega cuatro vistas distintas del negocio, sirviendo efectivamente como un "chequeo de salud" para Global Blooms.</p>
         
         <div class="img-container">
             <img src="docs/images/dashboard_pricing_final.png" alt="Dashboard Estratégico">
@@ -251,13 +251,13 @@ df_flowers = load_and_inspect_data(csv_file_path)</pre>
         <p>El "¿Y Qué?": Esta discrepancia visual valida la Hipótesis 1. Estamos ocupados, pero no somos rentables en Asia. El volumen puro de unidades vendidas no se está traduciendo en la línea de fondo, sugiriendo una compresión de márgenes.</p>
 
         <h3>3.2 La Relación Costo-Precio: Análisis de Matriz de Correlación</h3>
-        <p>Para entender la mecánica de este fallo en la fijación de precios, examinamos la Matriz de Correlación (Imagen 3). Este mapa de calor es vital para diagnosticar si Global Blooms fija los precios de sus productos basándose en el valor o en el costo.</p>
+        <p>Para entender la mecánica de este fallo en la fijación de precios, examinamos la Matriz de Correlación. Este mapa de calor es vital para diagnosticar si Global Blooms fija los precios de sus productos basándose en el valor o en el costo.</p>
         
         <div class="img-container">
             <img src="docs/images/visual_correlation_heatmap.png" alt="Matriz de Correlación">
         </div>
 
-        <p><strong>Análisis Visual de la Imagen 3:</strong></p>
+        <p><strong>Análisis Visual de la Imagen:</strong></p>
         <ul>
             <li><strong>Sale_Price vs. Total_Cost (0.91):</strong> Esta correlación positiva extremadamente alta indica una estricta Estrategia de Precios Costo-Plus. La empresa esencialmente toma el costo de la flor y añade un margen fijo. Si bien esto protege contra la venta con pérdidas, ignora la disposición del consumidor a pagar.</li>
             <li><strong>Units_Sold vs. Sale_Price (-0.05):</strong> Esta es la prueba definitiva. En un modelo típico de oferta y demanda, esperamos una fuerte correlación negativa. Una correlación cercana a cero sugiere que la demanda es inelástica o que la estrategia de precios es tan inconexa que el precio no es el conductor principal del volumen. Esto apoya la Hipótesis 2 (Potencial Premium).</li>
@@ -265,13 +265,13 @@ df_flowers = load_and_inspect_data(csv_file_path)</pre>
         </ul>
 
         <h3>3.3 La Volatilidad de los Precios: Análisis de Boxplot</h3>
-        <p>Moviéndonos a la distribución de precios, analizamos el Diagrama de Caja (Boxplot) de Precios de Venta (Imagen 4).</p>
+        <p>Moviéndonos a la distribución de precios, analizamos el Diagrama de Caja (Boxplot) de Precios de Venta.</p>
         
         <div class="img-container">
             <img src="docs/images/visual_price_dispersion.png" alt="Análisis Boxplot">
         </div>
 
-        <p><strong>Análisis Visual de la Imagen 4:</strong></p>
+        <p><strong>Análisis Visual de la Imagen:</strong></p>
         <ul>
             <li><strong>Orquídeas:</strong> Esta categoría muestra el rango intercuartílico (IQR) más amplio, con precios que van desde aproximadamente $30 hasta más de $40. Esta volatilidad sugiere inconsistencia operativa.</li>
             <li><strong>Lirios:</strong> La caja está comprimida, rondando la marca de $20-$25. Esta falta de varianza sugiere una estructura de precios rígida.</li>
@@ -282,14 +282,14 @@ df_flowers = load_and_inspect_data(csv_file_path)</pre>
     <section class="section-card">
         <h2>Parte IV: El Análisis Profundo - El "Problema de Asia"</h2>
         <h3>4.1 Diagnosticando la Trampa de Ganancias</h3>
-        <p>La señal más alarmante en nuestra revisión inicial fue el rendimiento de los Lirios en Asia. Para investigar esto, recurrimos al Análisis de Elasticidad específico (Imagen 1).</p>
+        <p>La señal más alarmante en nuestra revisión inicial fue el rendimiento de los Lirios en Asia. Para investigar esto, recurrimos al Análisis de Elasticidad específico.</p>
         
         <div class="img-container">
             <img src="docs/images/predictive_analysis_dynamic.png" alt="Análisis de Elasticidad">
             <p class="caption">Análisis de Elasticidad de Lirios en Asia.</p>
         </div>
 
-        <p><strong>Análisis de la Imagen 1: Elasticidad de Lirios en Asia</strong></p>
+        <p><strong>Análisis de la Imagen: Elasticidad de Lirios en Asia</strong></p>
         <p>Este gráfico es un diagrama de dispersión con una línea de regresión (roja discontinua) que representa la Elasticidad Precio de la Demanda.</p>
         <ul>
             <li>Situación Actual (Punto Azul): El gráfico marca el estado "Actual" a un precio de $22.98.</li>
@@ -301,7 +301,7 @@ df_flowers = load_and_inspect_data(csv_file_path)</pre>
         <p>Referencia de Datos: Los Lirios en Asia tienen un Sale_Price de $20.94 y Total_Cost de $19.94, dejando un Unit_Margin de solo $1.00. Conclusión: Estamos moviendo un volumen masivo por centavos (retorno del 4.7%). Esto es insostenible.</p>
 
         <h3>4.2 Composición de Ganancias por Región</h3>
-        <p>Validando esto con la Imagen 5 (Composición de Ganancias por Región), vemos el gráfico de barras apiladas.</p>
+        <p>Validando esto con la Imagen: Composición de Ganancias por Región, vemos el gráfico de barras apiladas.</p>
         
         <div class="img-container">
             <img src="docs/images/visual_profit_composition.png" alt="Composición de Ganancias">
@@ -317,13 +317,13 @@ df_flowers = load_and_inspect_data(csv_file_path)</pre>
     <section class="section-card">
         <h2>Parte V: Análisis Estratégico de Precios (La Matriz)</h2>
         <h3>5.1 La Matriz de Precios</h3>
-        <p>La pieza final de nuestro rompecabezas es la Imagen 6, el "Dashboard Estratégico de Precios: Margen vs. Gap con Competidor". Este diagrama de dispersión es la herramienta más accionable.</p>
+        <p>La pieza final de nuestro rompecabezas es la Imagen "Dashboard Estratégico de Precios: Margen vs. Gap con Competidor". Este diagrama de dispersión es la herramienta más accionable.</p>
         
         <div class="img-container">
             <img src="docs/images/visual_matriz_pricing.png" alt="Matriz Estratégica de Pricing">
         </div>
 
-        <p><strong>Análisis de la Imagen 6:</strong></p>
+        <p><strong>Análisis de la Imagen:</strong></p>
         <ul>
             <li><strong>La Zona "Revisar Costos":</strong> Grupo de puntos en la parte inferior derecha (Asia). Gap de precio positivo pero margen bajo. Significado: Estamos cobrando más que competidores y ganando menos. Nuestra Base de Costos es demasiado alta.</li>
             <li><strong>La Zona "Subir Precios":</strong> Parte superior izquierda (USA). Somos más baratos que competidores pero tenemos márgenes altos (>30%). Significado: Estamos dejando dinero sobre la mesa. Podríamos subir precios un 5% y seguir siendo líderes.</li>
