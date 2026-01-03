@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Blooms | Proyecto de Portafolio</title>
+    <title>Global Blooms | Portfolio Project</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -26,7 +26,7 @@
             padding: 0;
         }
 
-        /* --- Navegación Superior (Unificada) --- */
+        /* --- Superior Navigation (Unified) --- */
         nav {
             background: #0f172a;
             padding: 15px 0;
@@ -102,7 +102,7 @@
         .dropdown-content a:last-child { border-radius: 0 0 6px 6px; border-bottom: none; }
         .dropdown-content a:hover { background-color: #f1f5f9; color: var(--accent); }
 
-        /* --- Estilos del Proyecto --- */
+        /* --- Project Styles --- */
         header {
             background: var(--header-gradient);
             color: white;
@@ -218,175 +218,175 @@
         <a href="https://linkedin.com/in/cristian-cheride" target="_blank" class="nav-link">LinkedIn</a>
         
         <div class="dropdown">
-            <button id="menu-toggle" class="dropbtn">Proyectos ▾</button>
+            <button id="menu-toggle" class="dropbtn">Projects ▾</button>
             <div id="projects-dropdown" class="dropdown-content">
-                <a href="index.html">Inicio / Bio</a>
-                <a href="proyecto-blooms.html">Análisis Global Blooms</a>
+                <a href="index.html">Home / Bio</a>
+                <a href="proyecto-blooms.html">Blooms Global Analysis</a>
             </div>
         </div>
     </div>
 </nav>
 
 <header>
-    <h1>Global Blooms: Análisis Estratégico de Precios y Rentabilidad</h1>
-    <p>Un Proyecto Integral de Portafolio en Ciencia de Datos</p>
+    <h1>Global Blooms: Strategic Pricing and Profitability Analysis</h1>
+    <p>A Comprehensive Data Science Portfolio Project</p>
 </header>
 
 <div class="container">
 
     <section class="section-card">
-        <h2>Manifiesto del Proyecto: El Arte de Contar Historias con Datos</h2>
-        <p>En el panorama actual de la analítica de datos, la capacidad de escribir código en Python o R ya no es el único diferenciador para un Analista de Datos Líder. El verdadero valor de un profesional de datos reside en la capacidad de tejer números crudos y dispares en una narrativa de negocios convincente que impulse la toma de decisiones. Este reporte integral sirve como un proyecto definitivo de portafolio, diseñado no solo para mostrar dominio técnico sobre bibliotecas como Pandas, Seaborn y Scikit-Learn, sino para demostrar una comprensión matizada y de nivel ejecutivo sobre estrategia empresarial, dinámica de mercado y optimización de la rentabilidad.</p>
-        <p>Basándose en las mejores prácticas para portafolios de ciencia de datos, este proyecto evita el error común de presentar bloques de código secos sin contexto. En su lugar, adopta un enfoque de "narrativa primero", donde cada línea de código, cada visualización estadística y cada hipótesis sirve a una pregunta de negocios específica. El objetivo es transformar la entidad ficticia, 'Global Blooms', de un conjunto de datos estático en un caso de estudio de negocios vivo. Al integrar el conocimiento del dominio con un análisis estadístico riguroso, este reporte diagnostica las causas subyacentes de la erosión de márgenes en los mercados asiáticos mientras identifica las palancas de poder de fijación de precios no explotadas disponibles en los sectores europeos y norteamericanos.</p>
-        <p>Este documento está estructurado para guiar al lector a través del ciclo de vida completo de un proyecto de datos: desde el contacto inicial con el cliente y la formulación de hipótesis de negocios hasta la limpieza granular de datos, procediendo a través de un "Análisis Profundo" (Deep Dive) de Análisis Exploratorio de Datos (EDA) de visualizaciones específicas (incluyendo matrices de elasticidad y correlación), y culminando en recomendaciones estratégicas accionables.</p>
+        <h2>Project Manifesto: The Art of Storytelling with Data</h2>
+        <p>In today's data analytics landscape, the ability to write code in Python or R is no longer the sole differentiator for a Lead Data Analyst. The true value of a data professional lies in the ability to weave raw, disparate numbers into a compelling business narrative that drives decision-making. This comprehensive report serves as a definitive portfolio project, designed not only to showcase technical mastery of libraries such as Pandas, Seaborn, and Scikit-Learn but to demonstrate a nuanced, executive-level understanding of business strategy, market dynamics, and profitability optimization.</p>
+        <p>Drawing from best practices for data science portfolios, this project avoids the common pitfall of presenting dry code blocks without context. Instead, it adopts a "story-first" approach, where every line of code, every statistical visualization, and every hypothesis serves a specific business question. The goal is to transform the fictional entity, 'Global Blooms', from a static dataset into a living business case study. By integrating domain knowledge with rigorous statistical analysis, this report diagnoses the underlying causes of margin erosion in Asian markets while identifying untapped pricing power levers available in European and North American sectors.</p>
+        <p>This document is structured to guide the reader through the complete lifecycle of a data project: from initial client engagement and business hypothesis formulation to granular data cleaning, proceeding through a "Deep Dive" of Exploratory Data Analysis (EDA) with specific visualizations (including elasticity and correlation matrices), and culminating in actionable strategic recommendations.</p>
     </section>
 
     <section class="section-card">
-        <h2>Parte I: El Compromiso – Contexto Empresarial y Planteamiento del Problema</h2>
-        <h3>1.1 El Cliente: Global Blooms</h3>
-        <p>Global Blooms es un distribuidor floral internacional de tamaño mediano que se especializa en el suministro B2B y B2C de flores frescas cortadas. Fundada en 2010, la empresa ha escalado operaciones en cuatro regiones principales: Estados Unidos (USA), Europa, Asia y América Latina (LATAM). Su cartera de productos consta de cinco categorías principales: Rosas Rojas, Lirios, Orquídeas, Girasoles y Tulipanes.</p>
-        <p>Históricamente, Global Blooms ha operado con una estrategia de "volumen primero", expandiendo agresivamente la cuota de mercado en economías emergentes como Asia y LATAM. Sin embargo, a pesar del robusto crecimiento de los ingresos brutos, la Junta Directiva ha señalado un estancamiento preocupante en la rentabilidad neta. El Director Financiero (CFO) se puso en contacto con una preocupación específica: "Estamos moviendo millones de tallos, pero nuestra línea de fondo es plana. Sospechamos que nuestra estrategia de precios está desconectada de las realidades del mercado local, pero carecemos de la visibilidad de datos granulares para probarlo."</p>
+        <h2>Part I: The Engagement – Business Context and Problem Statement</h2>
+        <h3>1.1 The Client: Global Blooms</h3>
+        <p>Global Blooms is a medium-sized international floral distributor specializing in B2B and B2C supply of fresh cut flowers. Founded in 2010, the company has scaled operations across four main regions: United States (USA), Europe, Asia, and Latin America (LATAM). Its product portfolio consists of five main categories: Red Roses, Lilies, Orchids, Sunflowers, and Tulips.</p>
+        <p>Historically, Global Blooms has operated with a "volume-first" strategy, aggressively expanding market share in emerging economies like Asia and LATAM. However, despite robust gross revenue growth, the Board of Directors has noted a worrying stagnation in net profitability. The Chief Financial Officer (CFO) reached out with a specific concern: "We are moving millions of stems, but our bottom line is flat. We suspect our pricing strategy is disconnected from local market realities, but we lack the granular data visibility to prove it."</p>
         
-        <h3>1.2 El Informe del Analista</h3>
-        <p>El cliente proporcionó un conjunto de datos brutos (flowers_pricing_dataset.csv). La misión era clara:</p>
+        <h3>1.2 The Analyst's Brief</h3>
+        <p>The client provided a raw dataset (flowers_pricing_dataset.csv). The mission was clear:</p>
         <ul>
-            <li>Auditar los Datos: Limpiar y validar los registros de transacciones.</li>
-            <li>Diagnosticar la Salud: Utilizar las visualizaciones proporcionadas (Dashboard, Matriz de Correlación, etc.) para evaluar el estado actual del negocio.</li>
-            <li>Probar Hipótesis: Investigar específicamente por qué las regiones de alto volumen tienen un rendimiento inferior.</li>
-            <li>Recomendar Estrategia: Proponer un nuevo marco de fijación de precios respaldado por datos.</li>
+            <li>Audit the Data: Clean and validate transaction records.</li>
+            <li>Diagnose Health: Use provided visualizations (Dashboard, Correlation Matrix, etc.) to assess the current state of the business.</li>
+            <li>Test Hypotheses: Specifically investigate why high-volume regions are underperforming.</li>
+            <li>Recommend Strategy: Propose a new data-backed pricing framework.</li>
         </ul>
 
-        <h3>1.3 Hipótesis Estratégicas</h3>
-        <p>Antes de escribir una sola línea de código, establecimos tres hipótesis de trabajo para guiar la investigación:</p>
+        <h3>1.3 Strategic Hypotheses</h3>
+        <p>Before writing a single line of code, we established three working hypotheses to guide the investigation:</p>
         <ul>
-            <li><strong>H1 (La Hipótesis del "Tonto Ocupado"):</strong> El mercado asiático está generando alto volumen pero bajo valor debido a descuentos excesivos o un alto Costo de Bienes Vendidos (COGS).</li>
-            <li><strong>H2 (La Hipótesis "Premium"):</strong> Los mercados europeos y estadounidenses tienen una demanda inelástica para ciertos artículos de lujo (ej., Rosas Rojas), permitiendo aumentos de precios sin pérdida de volumen.</li>
-            <li><strong>H3 (La Hipótesis del "Competidor"):</strong> Global Blooms es reactivo en lugar de proactivo, fijando precios basados en los competidores en lugar de sus propios requisitos de margen interno.</li>
+            <li><strong>H1 (The "Busy Fool" Hypothesis):</strong> The Asian market is generating high volume but low value due to excessive discounting or high Cost of Goods Sold (COGS).</li>
+            <li><strong>H2 (The "Premium" Hypothesis):</strong> European and US markets have inelastic demand for certain luxury items (e.g., Red Roses), allowing for price increases without volume loss.</li>
+            <li><strong>H3 (The "Competitor" Hypothesis):</strong> Global Blooms is reactive rather than proactive, setting prices based on competitors instead of its own internal margin requirements.</li>
         </ul>
     </section>
 
     <section class="section-card">
-        <h2>Parte II: Arquitectura y Preparación de Datos</h2>
-        <h3>2.1 Análisis del Conjunto de Datos</h3>
+        <h2>Part II: Data Architecture and Preparation</h2>
+        <h3>2.1 Dataset Analysis</h3>
         <table class="data-table">
             <thead>
-                <tr><th>Nombre de Variable</th><th>Tipo de Dato</th><th>Descripción</th></tr>
+                <tr><th>Variable Name</th><th>Data Type</th><th>Description</th></tr>
             </thead>
             <tbody>
-                <tr><td>Product</td><td>Categórico</td><td>El tipo específico de flor (ej., Rosas Rojas, Lirios).</td></tr>
-                <tr><td>Region</td><td>Categórico</td><td>El mercado geográfico de venta (USA, Europe, Asia, LATAM).</td></tr>
-                <tr><td>Sale_Price</td><td>Numérico (Float)</td><td>El precio por unidad cobrado al cliente (Ingresos).</td></tr>
-                <tr><td>Total_Cost</td><td>Numérico (Float)</td><td>El costo total cargado por unidad (cultivo, logística, gastos generales).</td></tr>
-                <tr><td>Competitor_Price</td><td>Numérico (Float)</td><td>El precio promedio cobrado por competidores directos en la misma región.</td></tr>
-                <tr><td>Units_Sold</td><td>Numérico (Integer)</td><td>El volumen total de unidades vendidas en el período observado.</td></tr>
-                <tr><td>Unit_Margin</td><td>Numérico (Float)</td><td>Campo calculado: Sale_Price - Total_Cost.</td></tr>
-                <tr><td>Margin_Percentage</td><td>Numérico (Float)</td><td>Campo calculado: Unit_Margin / Sale_Price.</td></tr>
+                <tr><td>Product</td><td>Categorical</td><td>The specific type of flower (e.g., Red Roses, Lilies).</td></tr>
+                <tr><td>Region</td><td>Categorical</td><td>The geographic sales market (USA, Europe, Asia, LATAM).</td></tr>
+                <tr><td>Sale_Price</td><td>Numeric (Float)</td><td>The price per unit charged to the customer (Revenue).</td></tr>
+                <tr><td>Total_Cost</td><td>Numeric (Float)</td><td>The total cost loaded per unit (cultivation, logistics, overhead).</td></tr>
+                <tr><td>Competitor_Price</td><td>Numeric (Float)</td><td>The average price charged by direct competitors in the same region.</td></tr>
+                <tr><td>Units_Sold</td><td>Numeric (Integer)</td><td>Total volume of units sold in the observed period.</td></tr>
+                <tr><td>Unit_Margin</td><td>Numeric (Float)</td><td>Calculated field: Sale_Price - Total_Cost.</td></tr>
+                <tr><td>Margin_Percentage</td><td>Numeric (Float)</td><td>Calculated field: Unit_Margin / Sale_Price.</td></tr>
             </tbody>
         </table>
 
-        <h3>2.2 Configuración del Envío Python</h3>
+        <h3>2.2 Python Environment Setup</h3>
         <div class="jupyter-cell">
-<pre># Importar bibliotecas necesarias para análisis de datos y visualización
+<pre># Import necessary libraries for data analysis and visualization
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Configuración para una salida más clara
+# Configuration for clearer output
 pd.set_option('display.max_columns', None)
 pd.set_option('display.precision', 2)
 sns.set(style="whitegrid")
 
-# Definir ruta del archivo
+# Define file path
 csv_file_path = 'flowers_pricing_dataset_cleaned.csv'
 
-# Función personalizada para carga robusta de datos
+# Custom function for robust data loading
 def load_and_inspect_data(filepath):
     try:
         df = pd.read_csv(filepath)
-        print(f"--- Datos Cargados Exitosamente: {df.shape[0]} filas ---")
+        print(f"--- Data Loaded Successfully: {df.shape[0]} rows ---")
         return df
     except FileNotFoundError:
         return None
 
-# Cargar los datos
+# Load the data
 df_flowers = load_and_inspect_data(csv_file_path)</pre>
         </div>
 
         <div class="analyst-highlight">
-            <strong>Comentario del Analista:</strong> La función load_and_inspect_data es crítica. El manejo de errores demuestra previsión y madurez en la codificación. Al verificar valores nulos inmediatamente, establecemos confianza en la integridad de los datos antes de sacar conclusiones.
+            <strong>Analyst's Comment:</strong> The load_and_inspect_data function is critical. Error handling demonstrates foresight and coding maturity. By checking for null values immediately, we establish confidence in data integrity before drawing conclusions.
         </div>
     </section>
 
     <section class="section-card">
-        <h2>Parte III: Análisis Exploratorio de Datos (EDA) - El Arco Narrativo</h2>
-        <h3>3.1 La Visión Estratégica: Deconstruyendo el Dashboard</h3>
+        <h2>Part III: Exploratory Data Analysis (EDA) - The Narrative Arc</h2>
+        <h3>3.1 Strategic Vision: Deconstructing the Dashboard</h3>
         <div class="img-container">
-            <img src="docs/images/dashboard_pricing_final.png" alt="Dashboard Estratégico">
-            <p class="caption">Imagen: Dashboard Estratégico de Precios de Global Blooms.</p>
+            <img src="docs/images/dashboard_pricing_final.png" alt="Strategic Dashboard">
+            <p class="caption">Image: Global Blooms Strategic Pricing Dashboard.</p>
         </div>
-        <p>El cuadrante superior derecho confirma inmediatamente nuestros temores iniciales con respecto al mercado asiático. La barra de ganancias para ASIA es empequeñecida por EUROPA y USA, validando la Hipótesis 1: Estamos ocupados, pero no somos rentables en Asia.</p>
+        <p>The upper right quadrant immediately confirms our initial fears regarding the Asian market. The profit bar for ASIA is dwarfed by EUROPE and USA, validating Hypothesis 1: We are busy, but not profitable in Asia.</p>
 
-        <h3>3.2 La Relación Costo-Precio: Matriz de Correlación</h3>
+        <h3>3.2 Cost-Price Relationship: Correlation Matrix</h3>
         <div class="img-container">
-            <img src="docs/images/visual_correlation_heatmap.png" alt="Matriz de Correlación">
+            <img src="docs/images/visual_correlation_heatmap.png" alt="Correlation Matrix">
         </div>
         <ul>
-            <li><strong>Sale_Price vs. Total_Cost (0.91):</strong> Estrategia de Precios Costo-Plus estricta.</li>
-            <li><strong>Units_Sold vs. Sale_Price (-0.05):</strong> Demanda inelástica, apoyando el potencial Premium.</li>
+            <li><strong>Sale_Price vs. Total_Cost (0.91):</strong> Strict Cost-Plus Pricing strategy.</li>
+            <li><strong>Units_Sold vs. Sale_Price (-0.05):</strong> Inelastic demand, supporting Premium potential.</li>
         </ul>
 
-        <h3>3.3 La Volatilidad de los Precios: Análisis de Boxplot</h3>
+        <h3>3.3 Price Volatility: Boxplot Analysis</h3>
         <div class="img-container">
-            <img src="docs/images/visual_price_dispersion.png" alt="Análisis Boxplot">
+            <img src="docs/images/visual_price_dispersion.png" alt="Boxplot Analysis">
         </div>
-        <p>Las Orquídeas muestran alta volatilidad e inconsistencia operativa, mientras que los Lirios presentan una estructura de precios rígida.</p>
+        <p>Orchids show high volatility and operational inconsistency, while Lilies present a rigid pricing structure.</p>
     </section>
 
     <section class="section-card">
-        <h2>Parte IV: El Análisis Profundo - El "Problema de Asia"</h2>
+        <h2>Part IV: Deep Dive - The "Asia Problem"</h2>
         <div class="img-container">
-            <img src="docs/images/predictive_analysis_dynamic.png" alt="Análisis de Elasticidad">
-            <p class="caption">Análisis de Elasticidad de Lirios en Asia.</p>
+            <img src="docs/images/predictive_analysis_dynamic.png" alt="Elasticity Analysis">
+            <p class="caption">Lilies Elasticity Analysis in Asia.</p>
         </div>
-        <p>Los Lirios en Asia dejan un Unit_Margin de solo $1.00 (retorno del 4.7%). La simulación advierte contra aumentos drásticos de precio en un mercado altamente sensible.</p>
+        <p>Lilies in Asia leave a Unit_Margin of only $1.00 (4.7% return). Simulation warns against drastic price increases in a highly sensitive market.</p>
 
         <div class="img-container">
-            <img src="docs/images/visual_profit_composition.png" alt="Composición de Ganancias">
+            <img src="docs/images/visual_profit_composition.png" alt="Profit Composition">
         </div>
-        <p>Europa permite una fijación de precios basada en el valor, con los Girasoles entregando un margen del 44.66%.</p>
+        <p>Europe allows for value-based pricing, with Sunflowers delivering a 44.66% margin.</p>
     </section>
 
     <section class="section-card">
-        <h2>Parte V: Análisis Estratégico de Precios (La Matriz)</h2>
+        <h2>Part V: Strategic Pricing Analysis (The Matrix)</h2>
         <div class="img-container">
-            <img src="docs/images/visual_matriz_pricing.png" alt="Matriz Estratégica de Pricing">
+            <img src="docs/images/visual_matriz_pricing.png" alt="Strategic Pricing Matrix">
         </div>
-        <p>Identificamos zonas críticas: Asia requiere revisión urgente de costos (somos caros pero con poco margen), mientras que USA ofrece oportunidad de subir precios por ser líderes de bajo costo con alta rentabilidad.</p>
+        <p>We identified critical zones: Asia requires urgent cost review (we are expensive but with low margin), while USA offers the opportunity to raise prices as we are low-cost leaders with high profitability.</p>
     </section>
 
     <section class="section-card">
-        <h2>Parte VI: Conclusiones y Recomendaciones</h2>
+        <h2>Part VI: Conclusions and Recommendations</h2>
         <ol>
-            <li><strong>Subir Precios en USA:</strong> Aumento del 5% en Rosas Rojas para capturar margen sin perder volumen.</li>
-            <li><strong>Auditoría en Asia:</strong> Reducción de COGS de $31 a $25 mediante optimización logística.</li>
-            <li><strong>Racionalización:</strong> Descontinuar Lirios en Asia si no hay mejora en eficiencia.</li>
+            <li><strong>Increase Prices in USA:</strong> 5% increase in Red Roses to capture margin without losing volume.</li>
+            <li><strong>Audit in Asia:</strong> Reduce COGS from $31 to $25 through logistics optimization.</li>
+            <li><strong>Rationalization:</strong> Discontinue Lilies in Asia if efficiency does not improve.</li>
         </ol>
-        <p><strong>Pensamientos Finales:</strong> Identificamos palancas accionables para aumentar la rentabilidad regional en un 15-20% sin adquirir un solo cliente nuevo.</p>
+        <p><strong>Final Thoughts:</strong> We identified actionable levers to increase regional profitability by 15-20% without acquiring a single new customer.</p>
     </section>
 
 </div>
 
 <footer>
     <p>Buenos Aires, Argentina | crismoonchild@gmail.com</p>
-    <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 10px;">&copy; 2026 Cristian Cheride | Portfolio Profesional de Ciencia de Datos</p>
+    <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 10px;">&copy; 2026 Cristian Cheride | Professional Data Science Portfolio</p>
 </footer>
 
 <script>
     const dropbtn = document.getElementById('menu-toggle');
     const dropdownContent = document.getElementById('projects-dropdown');
 
-    // Manejo del menú por Clic
+    // Click Menu Handling
     dropbtn.onclick = function(e) {
         e.stopPropagation();
         dropdownContent.classList.toggle('show');
