@@ -1,1 +1,348 @@
-<h1>Hola Mundo</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cristian O. Cheride | Portafolio Profesional</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --text-main: #1e293b;
+            --accent-color: #2563eb;
+            --section-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --header-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--text-main);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* --- Navegación Superior --- */
+        nav {
+            background: #0f172a;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-end;
+            padding: 0 20px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dropbtn:hover { background-color: #1d4ed8; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: white;
+            min-width: 220px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+
+        .dropdown-content a {
+            color: #1e293b;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.85rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .dropdown-content a:hover { background-color: #f1f5f9; color: var(--accent-color); }
+
+        .dropdown:hover .dropdown-content { display: block; }
+
+        /* --- Header / Hero --- */
+        header {
+            text-align: center;
+            padding: 100px 20px;
+            background: var(--header-gradient);
+            color: white;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin: 0;
+            letter-spacing: -0.025em;
+        }
+
+        header p.tagline {
+            font-size: 1.3rem;
+            font-weight: 300;
+            opacity: 0.8;
+            max-width: 800px;
+            margin: 20px auto 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: -50px auto 60px;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        /* --- Secciones --- */
+        .section-card {
+            background: var(--section-bg);
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+        }
+
+        h2 {
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--accent-color);
+            padding-left: 20px;
+        }
+
+        h3 { color: #0f172a; margin-top: 35px; font-size: 1.4rem; }
+
+        .highlight-box {
+            background-color: #eff6ff;
+            border-right: 4px solid var(--accent-color);
+            padding: 25px;
+            margin: 20px 0;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #1e40af;
+        }
+
+        /* --- Grid de Tech Stack --- */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .tech-item {
+            background: #f8fafc;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            border: 1px solid #e2e8f0;
+            font-size: 0.9rem;
+        }
+
+        /* --- Experiencia --- */
+        .exp-item {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .exp-item:last-child { border: none; }
+
+        .exp-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 10px;
+        }
+
+        .exp-title { font-weight: 700; color: #0f172a; font-size: 1.1rem; }
+        .exp-date { color: #64748b; font-size: 0.9rem; }
+
+        footer {
+            text-align: center;
+            padding: 60px;
+            background: #0f172a;
+            color: #94a3b8;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            .exp-header { flex-direction: column; }
+            .section-card { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <div class="dropdown">
+            <button class="dropbtn">Proyectos Analíticos ▾</button>
+            <div id="projects-dropdown" class="dropdown-content">
+                <p style="padding: 12px; font-size: 0.8rem; color: #64748b;">Cargando proyectos...</p>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<header>
+    <h1>Cristian O. Cheride</h1>
+    <p class="tagline">RevOps & Business Process Analyst | Driving Efficiency via Data & Automation [cite: 3, 4]</p>
+</header>
+
+<div class="container">
+
+    <section class="section-card">
+        <h2>Presentación</h2>
+        <p>¡Hola! Soy Cristian. Mi trayectoria profesional se define por una única obsesión: <strong>reducir la brecha entre "tener datos" y "utilizarlos para generar valor"</strong>[cite: 7]. Trabajo activamente en la intersección de las Operaciones de Ingresos (RevOps), el Análisis de Datos y la Automatización de Procesos[cite: 6].</p>
+        
+        <div class="highlight-box">
+            "Con 15 años de experiencia, mi objetivo es la eficiencia operativa, ya sea optimizando la logística de e-commerce o liderando la transformación digital en el sector público"[cite: 8].
+        </div>
+
+        <p>A lo largo de mi carrera, he combinado la visión estratégica de un gestor experimentado con la profundidad técnica de un analista. Comprendo la lógica de negocio detrás de cada consulta SQL[cite: 18, 19]. Mi experiencia abarca desde el liderazgo de operaciones técnicas en el sector privado gestionando más de 1000 transacciones mensuales [cite: 10], hasta la modernización de estructuras estatales obsoletas[cite: 13].</p>
+    </section>
+
+    <section class="section-card">
+        <h2>Stack Tecnológico</h2>
+        <p>Dominio de herramientas avanzadas para la ingeniería de soluciones y visibilidad estratégica[cite: 20]:</p>
+        <div class="tech-grid">
+            <div class="tech-item">SQL</div>
+            <div class="tech-item">Python (Pandas)</div>
+            <div class="tech-item">Power BI</div>
+            <div class="tech-item">Google Looker</div>
+            <div class="tech-item">Excel (VBA/Power Query)</div>
+            <div class="tech-item">Google Apps Script</div>
+        </div>
+    </section>
+
+    <section class="section-card">
+        <h2>Experiencia Reciente</h2>
+        
+        <div class="exp-item">
+            <div class="exp-header">
+                <span class="exp-title">Lead Business Process Analyst (Deputy Director) | Municipalidad de Las Lomitas</span>
+                <span class="exp-date">Dic 2022 - Ago 2024 [cite: 24]</span>
+            </div>
+            <p>Lideré la transformación digital de procesos fiscales para 15,000 contribuyentes, migrando de flujos en papel a operaciones de ingresos basadas en datos (Data-Driven Revenue Ops)[cite: 25]. Desarrollé scripts que redujeron la carga operativa manual en un 60% e implementé tableros en tiempo real para una gobernanza basada en datos[cite: 15, 17].</p>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-header">
+                <span class="exp-title">Sales Operations & E-commerce Logistics Lead | Ciriux</span>
+                <span class="exp-date">Ago 2014 - Sep 2020 [cite: 32]</span>
+            </div>
+            <p>Orquesté operaciones en Mercado Libre con cero discrepancias de inventario mediante seguimiento automatizado[cite: 33]. Logré una reducción del 15% en costos de adquisición mediante la negociación estratégica con proveedores[cite: 34].</p>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-header">
+                <span class="exp-title">Technical Enablement Specialist & Excel Instructor | Independiente</span>
+                <span class="exp-date">2009 - Presente [cite: 36]</span>
+            </div>
+            <p>Consultoría para PyMEs en automatización y dashboards, reduciendo tiempos de reporte manual en hasta un 70%[cite: 37]. Aprovecho esta experiencia para simplificar conceptos técnicos complejos hacia equipos comerciales[cite: 11].</p>
+        </div>
+    </section>
+
+    <section class="section-card">
+        <h2>Certificaciones y Formación</h2>
+        <ul>
+            <li><strong>Data Analyst Professional Certificate</strong> - IBM [cite: 41]</li>
+            <li><strong>Data Science Fundamentals with Python and SQL</strong> - IBM [cite: 42]</li>
+            <li><strong>IA y Ciencia de Datos para Negocios</strong> - Univ. de Palermo [cite: 43]</li>
+            <li><strong>Estadística aplicada a los negocios</strong> - Univ. Austral [cite: 45]</li>
+            <li><strong>Inglés:</strong> Nivel B2 Upper Intermediate (EF SET Certificate) [cite: 63]</li>
+        </ul>
+    </section>
+
+</div>
+
+<footer>
+    <p>Buenos Aires, Argentina | crismoonchild@gmail.com | cristian-cheride [cite: 2]</p>
+    <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 10px;">&copy; 2026 Cristian O. Cheride. Portafolio generado dinámicamente.</p>
+</footer>
+
+<script>
+    /**
+     * CONFIGURACIÓN DEL MENÚ DINÁMICO
+     * Reemplaza con tus datos reales de GitHub para que funcione en producción.
+     */
+    const GITHUB_USER = 'cristiancheride'; 
+    const GITHUB_REPO = 'cristiancheride.github.io'; // O el nombre de tu repositorio
+
+    async function generateProjectsMenu() {
+        const dropdown = document.getElementById('projects-dropdown');
+        
+        try {
+            // Llamada a la API de GitHub para listar archivos del repo
+            const response = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/`);
+            const files = await response.json();
+
+            if (!Array.isArray(files)) throw new Error('No se pudo obtener la lista de archivos');
+
+            // Filtrar archivos .html, excluir el index.html
+            const htmlFiles = files.filter(file => 
+                file.name.endsWith('.html') && 
+                file.name.toLowerCase() !== 'index.html'
+            );
+
+            if (htmlFiles.length === 0) {
+                dropdown.innerHTML = '<p style="padding: 12px; font-size: 0.8rem; color: #64748b;">No se encontraron proyectos.</p>';
+                return;
+            }
+
+            // Limpiar mensaje de carga
+            dropdown.innerHTML = '';
+
+            // Crear enlaces para cada archivo encontrado
+            htmlFiles.forEach(file => {
+                const a = document.createElement('a');
+                a.href = file.name;
+                // Formatear el nombre (ej: proyecto-blooms.html -> Proyecto Blooms)
+                const displayName = file.name
+                    .replace('.html', '')
+                    .replace(/-/g, ' ')
+                    .replace(/\b\w/g, l => l.toUpperCase());
+                
+                a.textContent = displayName;
+                dropdown.appendChild(a);
+            });
+
+        } catch (error) {
+            console.error('Error al generar el menú:', error);
+            dropdown.innerHTML = '<p style="padding: 12px; font-size: 0.8rem; color: #ef4444;">Error al cargar proyectos.</p>';
+        }
+    }
+
+    // Ejecutar al cargar la página
+    window.addEventListener('DOMContentLoaded', generateProjectsMenu);
+</script>
+
+</body>
+</html>
