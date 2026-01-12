@@ -185,7 +185,7 @@
             <button id="menu-toggle" class="dropbtn" data-i18n="nav-projects">Proyectos ▾</button>
             <div id="projects-dropdown" class="dropdown-content">
                 <a href="index.html" data-i18n="nav-main">Main Portfolio</a>
-                <a href="proyecto-eda.html" data-i18n="nav-eda">EDA Suite Pro</a>
+                <a href="proyecto-eda.html" data-i18n="nav-eda">EDA Suite Pro (Actual)</a>
                 <a href="proyecto-blooms.html" data-i18n="nav-blooms">Blooms Global Analysis</a>
             </div>
         </div>
@@ -259,7 +259,7 @@
             <p><strong data-i18n="cta-title">¿Me ayudarías con un favor?</strong></p>
             <p data-i18n="cta-p">Si te es útil, te pido que me sigas en GitHub y LinkedIn. Tus estrellas y comentarios son el motor para seguir mejorando esta suite.</p>
             <p>
-                ⭐ <a href="https://github.com/cristiancheride" target="_blank">GitHub</a> | 
+                ⭐ <a href="https://github.com/cristiancheride" target="_blank">GitHub</a> | 
                 🤝 <a href="https://www.linkedin.com/in/cristian-cheride/" target="_blank">LinkedIn (Follow)</a>
             </p>
         </div>
@@ -276,7 +276,7 @@
         es: {
             "nav-projects": "Proyectos ▾",
             "nav-main": "Portfolio Principal",
-            "nav-eda": "EDA Suite Pro",
+            "nav-eda": "EDA Suite Pro (Actual)",
             "nav-blooms": "Análisis Blooms",
             "header-title": "EDA Suite Pro",
             "header-tagline": "Optimizando el flujo de datos: Del caos de un CSV al valor estratégico.",
@@ -309,8 +309,8 @@
         en: {
             "nav-projects": "Projects ▾",
             "nav-main": "Main Portfolio",
-            "nav-eda": "EDA Suite Pro",
-            "nav-blooms": "Blooms Analysis",
+            "nav-eda": "EDA Suite Pro (Current)",
+            "nav-blooms": "Blooms Global Analysis",
             "header-title": "EDA Suite Pro",
             "header-tagline": "Optimizing data flow: From CSV chaos to strategic value.",
             "intro-h2": "A small contribution to our community",
@@ -342,7 +342,6 @@
     };
 
     function applyLanguage() {
-        // Detecta el idioma del navegador (ej: 'es-AR' -> 'es')
         const userLang = navigator.language.split('-')[0] === 'es' ? 'es' : 'en';
         document.documentElement.lang = userLang;
         document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -353,7 +352,6 @@
 
     window.onload = applyLanguage;
 
-    // Manejo Dropdown
     const dropbtn = document.getElementById('menu-toggle');
     const dropdownContent = document.getElementById('projects-dropdown');
     dropbtn.onclick = function(e) { e.stopPropagation(); dropdownContent.classList.toggle('show'); };
