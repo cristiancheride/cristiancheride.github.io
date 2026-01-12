@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDA Suite Pro | Cristian O. Cheride</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --text-main: #1e293b;
+            --accent-color: #2563eb;
+            --section-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --header-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--text-main);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background: #0f172a;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 20px;
+            gap: 20px;
+        }
+
+        .nav-link { color: white; text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.3s; }
+        .nav-link:hover { color: #60a5fa; }
+
+        .dropdown { position: relative; display: inline-block; }
+        .dropbtn {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: white;
+            min-width: 220px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 6px;
+            margin-top: 12px;
+        }
+
+        .show { display: block; }
+        .dropdown-content a {
+            color: #1e293b;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.85rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .dropdown-content a:hover { background-color: #f1f5f9; color: var(--accent-color); }
+
+        header {
+            text-align: center;
+            padding: 100px 20px;
+            background: var(--header-gradient);
+            color: white;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        header h1 { font-size: 3rem; margin: 0; letter-spacing: -0.025em; }
+        header p.tagline { font-size: 1.3rem; font-weight: 300; opacity: 0.8; max-width: 800px; margin: 20px auto 0; }
+
+        .container { max-width: 1000px; margin: -50px auto 60px; padding: 0 20px; position: relative; }
+
+        .section-card {
+            background: var(--section-bg);
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+        }
+
+        h2 { color: var(--accent-color); font-size: 1.8rem; margin-bottom: 25px; border-left: 5px solid var(--accent-color); padding-left: 20px; }
+        h3 { color: #0f172a; margin-top: 40px; font-size: 1.5rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; }
+
+        .highlight-box {
+            background-color: #eff6ff;
+            border-left: 4px solid var(--accent-color);
+            padding: 25px;
+            margin: 25px 0;
+            color: #1e40af;
+        }
+
+        .formula-card {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.95rem;
+            margin: 15px 0;
+        }
+
+        .btn-download {
+            display: inline-block;
+            background: #24292e;
+            color: white;
+            padding: 18px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            margin: 30px 0;
+        }
+        .btn-download:hover { transform: translateY(-3px); background: #444; }
+
+        .social-cta {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        footer { text-align: center; padding: 60px; background: #0f172a; color: #94a3b8; }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            .section-card { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <a href="https://linkedin.com/in/cristian-cheride" target="_blank" class="nav-link">LinkedIn</a>
+        <div class="dropdown">
+            <button id="menu-toggle" class="dropbtn" data-i18n="nav-projects">Proyectos ▾</button>
+            <div id="projects-dropdown" class="dropdown-content">
+                <a href="index.html" data-i18n="nav-main">Main Portfolio</a>
+                <a href="EDASuitePro.html" data-i18n="nav-eda">EDA Suite Pro (Actual)</a>
+                <a href="proyecto-blooms.html" data-i18n="nav-blooms">Blooms Global Analysis</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<header>
+    <h1 data-i18n="header-title">EDA Suite Pro</h1>
+    <p class="tagline" data-i18n="header-tagline">Optimizando el flujo de datos: Del caos de un CSV al valor estratégico.</p>
+</header>
+
+<div class="container">
+    <section class="section-card">
+        <h2 data-i18n="intro-h2">Una pequeña contribución para nuestra comunidad</h2>
+        <p data-i18n="intro-p1">Estimados colegas y entusiastas de los datos: hoy traigo humildemente esta herramienta a todos ustedes para ayudarles a facilitar el trabajo del día a día. Sé lo que es pasar horas lidiando con archivos CSV desordenados o Excel inconsistentes. He creado <strong>EDA Suite Pro</strong> no como una solución definitiva, sino como un apoyo sincero para que podamos enfocarnos en el análisis y no en la limpieza tediosa.</p>
+        
+        <div class="highlight-box" data-i18n="intro-quote">
+            "Diseñé esta herramienta para que tanto analistas como perfiles de negocio puedan auditar la calidad de su información y aplicar lógica estadística avanzada con unos pocos clics."
+        </div>
+    </section>
+
+    <section class="section-card">
+        <h2 data-i18n="tech-guide-h2">Maximizando el Análisis con EDA Suite Pro: Guía Técnica de Funcionalidades</h2>
+        <p data-i18n="tech-guide-p">Para los profesionales de datos, la eficiencia radica en la capacidad de transformar rápidamente un dataset ruidoso en una fuente de verdad. EDA Suite Pro facilita este proceso mediante herramientas de manipulación lógica y estadística avanzada.</p>
+
+        <h3 data-i18n="lab-h3">🧬 Dominando "Fórmulas Lab": Lógica Personalizada</h3>
+        <p data-i18n="lab-p1">La función de Fórmulas Lab en la Fase 2 permite realizar imputaciones dinámicas que van más allá de los promedios simples.</p>
+        <p data-i18n="lab-p2"><strong>Cómo funciona el motor:</strong> El script descompone la entrada del usuario en "tokens" basándose en los espacios. Si un token es un número entero, el sistema lo interpreta como el índice de una columna (empezando desde 0); si no es un entero, lo trata como un operador o una constante.</p>
+        
+        <p data-i18n="lab-syntax"><strong>Sintaxis Correcta:</strong> Es fundamental separar cada elemento con espacios.</p>
+        <div class="formula-card">
+            # <span data-i18n="lab-ex1">Suma: 0 + 100 (Suma 100 a columna 0)</span><br>
+            # <span data-i18n="lab-ex2">Multiplicación: 1 * 1.15 (Proyección de impuestos)</span><br>
+            # <span data-i18n="lab-ex3">Operación entre columnas: 0 / 2</span>
+        </div>
+        <p data-i18n="lab-impact"><strong>Impacto:</strong> Esto permite reconstruir datos faltantes basándose en la relación lógica que ya existe en el dataset.</p>
+
+        <h3 data-i18n="out-h3">🧠 Tratamiento Quirúrgico de Outliers</h3>
+        <p data-i18n="out-p1">En la Fase 3, la aplicación automatiza la detección de anomalías mediante el Rango Intercuartílico (IQR).</p>
+        
+        <p data-i18n="out-p2"><strong>Ajuste de Sensibilidad:</strong> El usuario controla el "Factor IQR" (por defecto 1.5). Un factor más bajo detecta más anomalías, mientras que uno de 3.0 detecta solo valores extremadamente raros.</p>
+        
+        <p><strong>Estrategias de Mitigación:</strong></p>
+        <ul>
+            <li data-i18n="out-li1"><strong>Winsorización:</strong> En lugar de perder datos, el sistema "recorta" los valores extremos y los iguala a los límites de los percentiles 1 y 99.</li>
+            <li data-i18n="out-li2"><strong>Imputación por Mediana:</strong> Los valores fuera de rango se reemplazan por la mediana de su propia columna.</li>
+        </ul>
+
+        <h3 data-i18n="bi-h3">📊 Visualización BI e Interactividad</h3>
+        <p data-i18n="bi-p1">La Fase 4 transforma el análisis estático en una experiencia exploratoria mediante Plotly.</p>
+        
+        <ul>
+            <li data-i18n="bi-p2"><strong>Gráficos de Dispersión (Scatter):</strong> Incluyen automáticamente una línea de tendencia OLS (mínimos cuadrados ordinarios).</li>
+            <li data-i18n="bi-p3"><strong>Análisis Multidimensional:</strong> Se puede asignar una tercera variable al parámetro de Color.</li>
+            <li data-i18n="bi-p4"><strong>Portabilidad:</strong> Todos los gráficos se exportan como archivos HTML autónomos.</li>
+        </ul>
+
+        <h3 data-i18n="ml-h3">🚀 Segmentación Estratégica con Machine Learning</h3>
+        <p data-i18n="ml-p1">La Fase 5 aplica K-Means Clustering para agrupar registros por similitudes matemáticas.</p>
+        
+        <ul>
+            <li data-i18n="ml-p2"><strong>Pre-procesamiento Transparente:</strong> La app realiza automáticamente StandardScaling y LabelEncoding de textos.</li>
+            <li data-i18n="ml-p3"><strong>KPI de Impacto:</strong> El usuario puede elegir una variable de "Target" que determinará el tamaño de la burbuja.</li>
+        </ul>
+    </section>
+
+    <section class="section-card">
+        <h2 data-i18n="faq-h2">Preguntas Frecuentes (FAQ)</h2>
+        <div class="faq-item">
+            <span class="faq-question" data-i18n="faq-q1">1. ¿Por qué es importante el "Borrado Inteligente" de duplicados?</span>
+            <p data-i18n="faq-a1">A diferencia de un borrado aleatorio, la app conserva la fila que tiene menos valores nulos. Esto garantiza que te quedes con la información más completa.</p>
+        </div>
+        <div class="faq-item">
+            <span class="faq-question" data-i18n="faq-q2">2. ¿Qué pasa si ingreso una fórmula sin espacios en "Fórmulas Lab"?</span>
+            <p data-i18n="faq-a2">El motor no podrá identificar los índices de las columnas correctamente. Recuerda siempre usar espacios: 0 * 1.2 en lugar de 0*1.2.</p>
+        </div>
+        <div class="faq-item">
+            <span class="faq-question" data-i18n="faq-q3">3. ¿Puedo segmentar mis datos si tengo columnas con nombres de ciudades o categorías?</span>
+            <p data-i18n="faq-a3">Sí. La app detecta automáticamente las columnas de texto y las convierte en valores numéricos (LabelEncoding) para el algoritmo.</p>
+        </div>
+        <div class="faq-item">
+            <span class="faq-question" data-i18n="faq-q4">4. ¿Qué archivos puedo cargar?</span>
+            <p data-i18n="faq-a4">La suite es compatible con archivos CSV y Excel (.xlsx).</p>
+        </div>
+    </section>
+
+    <section class="section-card" style="text-align: center;">
+        <h2 data-i18n="repo-h2">Obtén EDA Suite Pro</h2>
+        <p data-i18n="repo-p">Esta herramienta es Freeware para apoyar a la comunidad.</p>
+        <a href="https://github.com/cristiancheride" target="_blank" class="btn-download" data-i18n="btn-github">🚀 Descargar desde GitHub</a>
+
+        <div class="social-cta">
+            <p><strong data-i18n="cta-title">¿Me ayudarías con un favor?</strong></p>
+            <p data-i18n="cta-p">Si te es útil, te pido que me sigas en GitHub y LinkedIn. Tus estrellas y comentarios son el motor para seguir mejorando esta suite.</p>
+            <p>
+                ⭐ <a href="https://github.com/cristiancheride" target="_blank">GitHub</a> | 
+                🤝 <a href="https://www.linkedin.com/in/cristian-cheride/" target="_blank">LinkedIn (Follow)</a>
+            </p>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>Buenos Aires, Argentina | crismoonchild@gmail.com</p>
+    <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 10px;">&copy; 2026 Cristian Cheride | Data Science & Automation Professional</p>
+</footer>
+
+<script>
+    const translations = {
+        es: {
+            "nav-projects": "Proyectos ▾", "nav-main": "Portfolio Principal", "nav-eda": "EDA Suite Pro (Actual)", "nav-blooms": "Análisis Blooms",
+            "header-title": "EDA Suite Pro", "header-tagline": "Optimizando el flujo de datos: Del caos de un CSV al valor estratégico.",
+            "intro-h2": "Una pequeña contribución para nuestra comunidad",
+            "intro-p1": "Estimados colegas y entusiastas de los datos: hoy traigo humildemente esta herramienta a todos ustedes para ayudarles a facilitar el trabajo del día a día. Sé lo que es pasar horas lidiando con archivos CSV desordenados o Excel inconsistentes. He creado EDA Suite Pro no como una solución definitiva, sino como un apoyo sincero.",
+            "intro-quote": "Diseñé esta herramienta para que tanto analistas como perfiles de negocio puedan auditar la calidad de su información y aplicar lógica estadística avanzada con unos pocos clics.",
+            "tech-guide-h2": "Maximizando el Análisis con EDA Suite Pro: Guía Técnica de Funcionalidades",
+            "tech-guide-p": "Para los profesionales de datos, la eficiencia radica en la capacidad de transformar rápidamente un dataset ruidoso en una fuente de verdad.",
+            "lab-h3": "🧬 Dominando 'Fórmulas Lab': Lógica Personalizada",
+            "lab-p1": "La función de Fórmulas Lab permite realizar imputaciones dinámicas que van más allá de los promedios simples.",
+            "lab-p2": "Cómo funciona el motor: El script interpreta los números enteros como el índice de una columna (empezando desde 0).",
+            "lab-syntax": "Sintaxis Correcta: Es fundamental separar cada elemento con espacios.",
+            "lab-ex1": "Suma: 0 + 100 (Suma 100 a columna 0)", "lab-ex2": "Multiplicación: 1 * 1.15", "lab-ex3": "Operación entre columnas: 0 / 2",
+            "lab-impact": "Impacto: Reconstruye datos basados en la relación lógica del dataset.",
+            "out-h3": "🧠 Tratamiento Quirúrgico de Outliers",
+            "out-p1": "Automatiza la detección de anomalías mediante el Rango Intercuartílico (IQR).",
+            "out-p2": "Ajuste de Sensibilidad: El usuario controla el 'Factor IQR' (por defecto 1.5).",
+            "out-li1": "Winsorización: Recorta valores extremos a los límites del 1% y 99%.",
+            "out-li2": "Imputación por Mediana: Reemplaza outliers por la mediana de la columna.",
+            "bi-h3": "📊 Visualización BI e Interactividad",
+            "bi-p1": "Transforma el análisis estático en una experiencia exploratoria mediante Plotly.",
+            "bi-p2": "Gráficos de Dispersión: Con línea de tendencia OLS automática.",
+            "bi-p3": "Análisis Multidimensional: Variable de color para segmentación visual.",
+            "bi-p4": "Portabilidad: Exportación a HTML autónomo.",
+            "ml-h3": "🚀 Segmentación Estratégica con Machine Learning",
+            "ml-p1": "Agrupa registros por similitudes matemáticas mediante K-Means.",
+            "ml-p2": "Pre-procesamiento: StandardScaling y LabelEncoding automático.",
+            "ml-p3": "KPI de Impacto: El tamaño de la burbuja representa la rentabilidad o volumen.",
+            "faq-h2": "Preguntas Frecuentes (FAQ)",
+            "faq-q1": "1. ¿Por qué es importante el 'Borrado Inteligente'?", "faq-a1": "Conserva la fila con menos valores nulos para garantizar información completa.",
+            "faq-q2": "2. ¿Qué pasa si no uso espacios en las fórmulas?", "faq-a2": "El motor no identificará los índices. Usa siempre: 0 * 1.2.",
+            "faq-q3": "3. ¿Puedo usar categorías de texto?", "faq-a3": "Sí, la app las convierte a números automáticamente.",
+            "faq-q4": "4. ¿Qué archivos soporta?", "faq-a4": "CSV y Excel (.xlsx).",
+            "repo-h2": "Obtén EDA Suite Pro", "repo-p": "Herramienta Open Source disponible para toda la comunidad.",
+            "btn-github": "🚀 Descargar desde GitHub", "cta-title": "¿Me ayudarías con un favor?", "cta-p": "Si te es útil, sígueme en GitHub y LinkedIn."
+        },
+        en: {
+            "nav-projects": "Projects ▾", "nav-main": "Main Portfolio", "nav-eda": "EDA Suite Pro (Current)", "nav-blooms": "Blooms Analysis",
+            "header-title": "EDA Suite Pro", "header-tagline": "Optimizing data flow: From CSV chaos to strategic value.",
+            "intro-h2": "A small contribution to our community",
+            "intro-p1": "Dear colleagues and data enthusiasts: today I humbly bring this tool to all of you to help facilitate your day-to-day work. I created EDA Suite Pro not as a definitive solution, but as sincere support.",
+            "intro-quote": "I designed this tool so that both analysts and business profiles can audit their information quality and apply advanced statistical logic.",
+            "tech-guide-h2": "Maximizing Analysis with EDA Suite Pro: Technical Features Guide",
+            "tech-guide-p": "For data professionals, efficiency lies in the ability to quickly transform a noisy dataset into a source of truth.",
+            "lab-h3": "🧬 Mastering 'Formula Lab': Custom Logic",
+            "lab-p1": "The Formula Lab feature allows for dynamic imputations that go beyond simple averages.",
+            "lab-p2": "How the engine works: The script interprets integers as column indices (starting from 0).",
+            "lab-syntax": "Correct Syntax: It is essential to separate each element with spaces.",
+            "lab-ex1": "Sum: 0 + 100 (Add 100 to col 0)", "lab-ex2": "Multiply: 1 * 1.15", "lab-ex3": "Column operation: 0 / 2",
+            "lab-impact": "Impact: Reconstructs missing data based on the dataset's logical relationships.",
+            "out-h3": "🧠 Surgical Outlier Treatment",
+            "out-p1": "Automates anomaly detection using the Interquartile Range (IQR).",
+            "out-p2": "Sensitivity Adjustment: User controls the 'IQR Factor' (default 1.5).",
+            "out-li1": "Winsorization: Clips extreme values to the 1% and 99% limits.",
+            "out-li2": "Median Imputation: Replaces outliers with the column's median.",
+            "bi-h3": "📊 BI Visualization & Interactivity",
+            "bi-p1": "Transforms static analysis into an exploratory experience using Plotly.",
+            "bi-p2": "Scatter Plots: With automatic OLS trendlines.",
+            "bi-p3": "Multidimensional Analysis: Color variable for visual segmentation.",
+            "bi-p4": "Portability: Export to standalone HTML files.",
+            "ml-h3": "🚀 Strategic Segmentation with Machine Learning",
+            "ml-p1": "Groups records by mathematical similarities using K-Means.",
+            "ml-p2": "Preprocessing: Automatic StandardScaling and LabelEncoding.",
+            "ml-p3": "Impact KPI: Bubble size represents profitability or volume.",
+            "faq-h2": "Frequently Asked Questions (FAQ)",
+            "faq-q1": "1. Why is 'Smart Deletion' important?", "faq-a1": "It keeps the row with fewer null values to ensure complete information.",
+            "faq-q2": "2. What if I don't use spaces in formulas?", "faq-a2": "The engine won't identify indices. Always use: 0 * 1.2.",
+            "faq-q3": "3. Can I use text categories?", "faq-a3": "Yes, the app converts them to numbers automatically.",
+            "faq-q4": "4. What files are supported?", "faq-a4": "CSV and Excel (.xlsx).",
+            "repo-h2": "Get EDA Suite Pro", "repo-p": "Open Source tool available for the community.",
+            "btn-github": "🚀 Download from GitHub", "cta-title": "Would you do me a favor?", "cta-p": "If it's useful, follow me on GitHub and LinkedIn."
+        }
+    };
+
+    function applyLanguage() {
+        const userLang = navigator.language.split('-')[0] === 'es' ? 'es' : 'en';
+        document.documentElement.lang = userLang;
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[userLang][key]) el.innerText = translations[userLang][key];
+        });
+    }
+
+    window.onload = applyLanguage;
+
+    const dropbtn = document.getElementById('menu-toggle');
+    const dropdownContent = document.getElementById('projects-dropdown');
+    dropbtn.onclick = function(e) { e.stopPropagation(); dropdownContent.classList.toggle('show'); };
+    window.onclick = function(e) {
+        if (!e.target.matches('#menu-toggle')) {
+            if (dropdownContent.classList.contains('show')) dropdownContent.classList.remove('show');
+        }
+    };
+</script>
+
+</body>
+</html>
