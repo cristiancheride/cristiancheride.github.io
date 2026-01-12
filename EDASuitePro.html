@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EDA Suite Pro | Cristian O. Cheride</title>
+    <title>EDA Suite Pro | Portfolio Cristian O. Cheride</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -98,7 +98,7 @@
 
         .dropdown-content a:hover { background-color: #f1f5f9; color: var(--accent-color); }
 
-        /* --- Estilos de Página --- */
+        /* --- Estilos de Contenido --- */
         header {
             text-align: center;
             padding: 100px 20px;
@@ -129,47 +129,52 @@
             padding-left: 20px;
         }
 
-        h3 { color: #0f172a; margin-top: 35px; font-size: 1.4rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; }
+        h3 { color: #0f172a; margin-top: 40px; font-size: 1.5rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; }
 
         .highlight-box {
             background-color: #eff6ff;
             border-left: 4px solid var(--accent-color);
             padding: 25px;
-            margin: 20px 0;
-            font-size: 1.1rem;
+            margin: 25px 0;
             color: #1e40af;
         }
 
-        code {
+        .formula-card {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
             font-family: 'Fira Code', monospace;
-            background: #f1f5f9;
-            padding: 2px 6px;
-            border-radius: 4px;
-            color: #e11d48;
+            font-size: 0.95rem;
+            margin: 15px 0;
         }
 
         .btn-download {
             display: inline-block;
             background: #24292e;
             color: white;
-            padding: 15px 30px;
+            padding: 18px 35px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 700;
-            transition: transform 0.2s;
-            margin-top: 20px;
+            transition: all 0.3s;
+            margin: 30px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
 
-        .btn-download:hover { transform: translateY(-3px); background: #444; }
+        .btn-download:hover { transform: translateY(-3px); background: #444; box-shadow: 0 6px 15px rgba(0,0,0,0.2); }
 
         .social-cta {
             background: #f0fdf4;
             border: 1px solid #bbf7d0;
-            padding: 20px;
+            padding: 30px;
             border-radius: 12px;
             text-align: center;
-            margin-top: 30px;
+            margin-top: 50px;
         }
+
+        .faq-item { margin-bottom: 25px; }
+        .faq-question { font-weight: 700; color: #0f172a; display: block; margin-bottom: 8px; }
 
         footer { text-align: center; padding: 60px; background: #0f172a; color: #94a3b8; }
 
@@ -183,13 +188,13 @@
 
 <nav>
     <div class="nav-container">
-        <a href="index.html" class="nav-link">Inicio</a>
         <a href="https://linkedin.com/in/cristian-cheride" target="_blank" class="nav-link">LinkedIn</a>
         <div class="dropdown">
             <button id="menu-toggle" class="dropbtn">Proyectos ▾</button>
             <div id="projects-dropdown" class="dropdown-content">
-                <a href="#">EDA Suite Pro</a>
+                <a href="#">EDA Suite Pro (Actual)</a>
                 <a href="proyecto-blooms.html">Blooms Global Analysis</a>
+                <a href="index.html">Volver al Portfolio Principal</a>
             </div>
         </div>
     </div>
@@ -197,68 +202,121 @@
 
 <header>
     <h1>EDA Suite Pro</h1>
-    <p class="tagline">La herramienta definitiva para automatizar el Análisis Exploratorio de Datos (EDA) y potenciar decisiones estratégicas.</p>
+    <p class="tagline">Optimizando el flujo de datos: Del caos de un CSV al valor estratégico de un modelo de segmentación.</p>
 </header>
 
 <div class="container">
     <section class="section-card">
-        <h2>Sobre la Herramienta</h2>
-        <p>Como analista de procesos y datos, siempre me he enfrentado al mismo obstáculo: el 80% del tiempo se pierde limpiando datos en lugar de analizándolos. Por eso creé <strong>EDA Suite Pro</strong>, una aplicación de escritorio diseñada para democratizar el análisis avanzado, permitiendo que cualquier profesional pueda auditar, limpiar y segmentar datos sin necesidad de programar.</p>
+        <h2>La Solución a la Paradoja del Analista</h2>
+        <p>En mi experiencia como <strong>Business Process Analyst</strong>, he comprobado que el análisis real solo representa el 20% del tiempo de un proyecto; el 80% restante se consume en una limpieza tediosa y repetitiva. He creado <strong>EDA Suite Pro</strong> para invertir esa ecuación.</p>
+        
+        <p>Esta aplicación de escritorio, desarrollada íntegramente en Python, centraliza todas las etapas críticas del Análisis Exploratorio de Datos (EDA) en una interfaz intuitiva, eliminando la necesidad de escribir código para las tareas de saneamiento más complejas.</p>
         
         <div class="highlight-box">
-            "Mi objetivo es cerrar la brecha entre tener datos y generar valor real. Esta app optimiza los flujos de trabajo de RevOps y Business Intelligence, eliminando errores manuales."
+            "Diseñé esta herramienta para que tanto analistas como perfiles de negocio puedan auditar la calidad de su información y aplicar lógica estadística avanzada con unos pocos clics."
         </div>
     </section>
 
     <section class="section-card">
-        <h2>Funcionalidades Core</h2>
+        <h2>Exploración Técnica de Funcionalidades</h2>
 
-        <h3>1. Diagnóstico 360 y Auditoría</h3>
-        <p>Al cargar un archivo <code>CSV</code> o <code>Excel</code>, la app genera un reporte instantáneo de salud del dataset: conteo de nulos, detección de duplicados y un mapa visual de ausencias para priorizar la limpieza.</p>
+        <h3>1. Diagnóstico de Calidad y Reporte 360</h3>
+        <p>Al cargar un dataset, la suite realiza un escaneo inmediato que detecta:</p>
+        <ul>
+            <li><strong>Densidad de Datos:</strong> Mapa visual de valores nulos por columna.</li>
+            <li><strong>Integridad Estructural:</strong> Tipos de datos detectados y filas duplicadas.</li>
+            <li><strong>Resumen Estadístico:</strong> Métricas de tendencia central instantáneas.</li>
+        </ul>
+        
 
-        <h3>2. Limpieza Inteligente y "Formulas Lab"</h3>
-        <p>Esta es la joya de la corona. La app no solo borra duplicados, sino que utiliza una métrica de densidad de información para <strong>conservar el registro más completo</strong>.</p>
-        <div class="highlight-box" style="background: #f8fafc; font-style: normal; color: var(--text-main);">
-            <strong>Motor de Fórmulas Lab:</strong> Permite imputar valores nulos mediante operaciones matemáticas entre columnas. 
-            <br><br>
-            <em>Ejemplo de sintaxis:</em> <code>0 + 1.2</code> 
-            <br>
-            (Suma 1.2 a cada valor de la columna de índice 0 para rellenar los huecos). Recuerda siempre separar los operadores con espacios.
+        <h3>2. Fase de Limpieza de Precisión</h3>
+        <p>Aquí es donde la aplicación aplica lógica avanzada de curaduría de datos:</p>
+        <ul>
+            <li><strong>Borrado Inteligente de Duplicados:</strong> A diferencia de los métodos estándar que borran registros al azar, mi algoritmo calcula una métrica interna (<code>__n</code>) para identificar y conservar el registro que posee la mayor cantidad de información poblada, evitando la pérdida de datos valiosos.</li>
+            <li><strong>Normalización Masiva:</strong> Conversión de strings (Mayúsculas/Minúsculas) y limpieza de espacios (Strip) automática para estandarizar categorías.</li>
+        </ul>
+
+        <div class="highlight-box" style="background: #f8fafc; color: var(--text-main); border-left-color: #10b981;">
+            <strong>Motor de "Fórmulas Lab":</strong> He implementado un evaluador dinámico que permite imputar nulos usando lógica de negocio. El sistema descompone la fórmula identificando los números enteros como <strong>índices de columna</strong>.
+        </div>
+        
+        <p>Ejemplos de uso del motor:</p>
+        <div class="formula-card">
+            # Sumar 100 a la columna 0: "0 + 100"<br>
+            # Proyectar un 15% adicional a la columna 1: "1 * 1.15"<br>
+            # Operar entre columnas (Col 0 / Col 2): "0 / 2"
+        </div>
+        <p><em>*Nota importante: Los elementos de la fórmula deben estar siempre separados por espacios.</em></p>
+
+        <h3>3. Mitigación Científica de Outliers</h3>
+        <p>Los valores atípicos pueden destruir la validez de cualquier insight. EDA Suite Pro utiliza el método del <strong>Rango Intercuartílico (IQR)</strong> con un slider de sensibilidad ajustable (de 0.5 a 3.5).</p>
+        
+        <p>El analista puede elegir tres caminos:</p>
+        <ol>
+            <li><strong>Eliminación:</strong> Limpiar el dataset de ruidos extremos.</li>
+            <li><strong>Winsorización:</strong> Ajustar los valores extremos a los límites de los percentiles 1 y 99.</li>
+            <li><strong>Imputación por Mediana:</strong> Reemplazar el outlier por la medida de tendencia central más robusta de esa columna.</li>
+        </ol>
+
+        <h3>4. Business Intelligence Interactiva (Plotly)</h3>
+        <p>La visualización no es estática. La app exporta archivos HTML autónomos con gráficos de alta fidelidad:</p>
+        <ul>
+            <li><strong>Matriz de Correlación:</strong> Identifica dependencias entre variables numéricas.</li>
+            <li><strong>Scatter Plots con OLS:</strong> Incluye líneas de tendencia de Mínimos Cuadrados Ordinarios para visualizar regresiones de forma inmediata.</li>
+            <li><strong>Análisis Multidimensional:</strong> Capacidad de añadir una tercera dimensión mediante códigos de color.</li>
+        </ul>
+
+        <h3>5. Segmentación con IA: K-Means Clustering</h3>
+        <p>Para usuarios avanzados, la Fase 5 automatiza un pipeline de Machine Learning:</p>
+        <ul>
+            <li><strong>Pre-procesamiento:</strong> Realiza automáticamente el <code>StandardScaling</code> (escalado) y <code>LabelEncoding</code> (codificación de texto).</li>
+            <li><strong>Visualización 3D:</strong> Genera un cubo de dispersión donde el tamaño de la burbuja puede ser asignado a un KPI crítico (ventas, volumen, etc.), permitiendo ver el peso real de cada clúster.</li>
+        </ul>
+        
+    </section>
+
+    <section class="section-card">
+        <h2>Preguntas Frecuentes (FAQ)</h2>
+        
+        <div class="faq-item">
+            <span class="faq-question">¿Cómo puedo estar seguro de no borrar datos importantes al eliminar duplicados?</span>
+            <p>La app prioriza la fila con más datos rellenos. Si tienes dos filas para el mismo ID, se quedará con la que tenga menos campos vacíos.</p>
         </div>
 
-        <h3>3. Control Avanzado de Outliers</h3>
-        <p>Implementa el método del <strong>Rango Intercuartílico (IQR)</strong> con sensibilidad ajustable. Puedes elegir entre eliminar valores atípicos, realizar una <strong>Winsorización</strong> (limitar extremos) o imputar la mediana de forma masiva.</p>
+        <div class="faq-item">
+            <span class="faq-question">¿Qué archivos puedo procesar?</span>
+            <p>Es totalmente compatible con CSV y Excel (.xlsx). El sistema de exportación permite bajar los datos procesados en ambos formatos para usarlos en Power BI o SQL.</p>
+        </div>
 
-        <h3>4. Business Intelligence Interactiva</h3>
-        
-        <p>Genera dashboards profesionales en <code>HTML</code> (vía Plotly). Incluye matrices de correlación, boxplots y gráficos de dispersión con líneas de tendencia <strong>OLS</strong> listas para presentaciones ejecutivas.</p>
-
-        <h3>5. Segmentación con Machine Learning</h3>
-        
-        <p>Aplica <strong>K-Means Clustering</strong> de forma transparente. La app escala los datos y codifica variables de texto automáticamente, permitiendo segmentar clientes o productos en un entorno 3D interactivo donde el tamaño de la burbuja representa un KPI de éxito.</p>
+        <div class="faq-item">
+            <span class="faq-question">¿Es necesario saber programar para usar las Fórmulas Lab?</span>
+            <p>No, solo necesitas saber el índice de tu columna (la primera columna es 0, la segunda es 1, etc.) y usar operaciones matemáticas básicas con espacios.</p>
+        </div>
     </section>
 
     <section class="section-card" style="text-align: center;">
-        <h2>¡Descarga EDA Suite Pro!</h2>
-        <p>La herramienta es de código abierto y está disponible en mi repositorio oficial de GitHub.</p>
+        <h2>Obtén EDA Suite Pro</h2>
+        <p>He decidido liberar esta herramienta como Open Source para apoyar a la comunidad de analistas. Puedes descargar el ejecutable o el código fuente desde mi repositorio.</p>
+        
         <a href="https://github.com/cristiancheride" target="_blank" class="btn-download">
-            Ir a GitHub / Descargar App
+            🚀 Descargar desde GitHub
         </a>
 
         <div class="social-cta">
-            <p><strong>¿Te resultó útil?</strong> Como favor personal, te invito a seguirme en mis redes. Tu apoyo me ayuda a seguir creando herramientas gratuitas para la comunidad de datos.</p>
+            <p><strong>¿Te ha sido útil este desarrollo?</strong></p>
+            <p>Mi mayor recompensa es saber que mi trabajo ayuda a otros a ser más eficientes. Te pido como favor personal que:</p>
             <p>
-                ⭐ Dame una estrella en <a href="https://github.com/cristiancheride" target="_blank">GitHub</a><br>
-                🔔 Sígueme y conecta en <a href="https://www.linkedin.com/in/cristian-cheride/" target="_blank">LinkedIn</a>
+                ⭐ <strong>Me sigas en GitHub:</strong> <a href="https://github.com/cristiancheride" target="_blank">github.com/cristiancheride</a><br>
+                🤝 <strong>Conectemos en LinkedIn:</strong> <a href="https://www.linkedin.com/in/cristian-cheride/" target="_blank">in/cristian-cheride</a> (Dale a "Seguir" para ver mis próximas herramientas)
             </p>
-            <p>¡Deja tus comentarios y sugerencias para futuras versiones!</p>
+            <p><em>Tus comentarios y feedback en ambas plataformas son el motor para seguir mejorando esta suite.</em></p>
         </div>
     </section>
 </div>
 
 <footer>
     <p>Buenos Aires, Argentina | crismoonchild@gmail.com</p>
-    <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 10px;">&copy; 2026 Cristian Cheride | Data Science Professional Portfolio</p>
+    <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 10px;">&copy; 2026 Cristian Cheride | Data Science & Business Process Professional</p>
 </footer>
 
 <script>
