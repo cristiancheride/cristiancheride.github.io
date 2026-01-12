@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDA Suite Pro | Cristian O. Cheride</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --text-main: #1e293b;
+            --accent-color: #2563eb;
+            --section-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --header-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--text-main);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* --- Navegación Superior --- */
+        nav {
+            background: #0f172a;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 20px;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover { color: #60a5fa; }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dropbtn:hover { background-color: #1d4ed8; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: white;
+            min-width: 220px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 6px;
+            margin-top: 12px;
+        }
+
+        .show { display: block; }
+
+        .dropdown-content a {
+            color: #1e293b;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.85rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .dropdown-content a:hover { background-color: #f1f5f9; color: var(--accent-color); }
+
+        /* --- Estilos de Página --- */
+        header {
+            text-align: center;
+            padding: 100px 20px;
+            background: var(--header-gradient);
+            color: white;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        header h1 { font-size: 3rem; margin: 0; letter-spacing: -0.025em; }
+        header p.tagline { font-size: 1.3rem; font-weight: 300; opacity: 0.8; max-width: 800px; margin: 20px auto 0; }
+
+        .container { max-width: 1000px; margin: -50px auto 60px; padding: 0 20px; position: relative; }
+
+        .section-card {
+            background: var(--section-bg);
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+        }
+
+        h2 {
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            border-left: 5px solid var(--accent-color);
+            padding-left: 20px;
+        }
+
+        h3 { color: #0f172a; margin-top: 35px; font-size: 1.4rem; border-bottom: 1px solid #e2e8f0; padding-bottom: 10px; }
+
+        .highlight-box {
+            background-color: #eff6ff;
+            border-left: 4px solid var(--accent-color);
+            padding: 25px;
+            margin: 20px 0;
+            font-size: 1.1rem;
+            color: #1e40af;
+        }
+
+        code {
+            font-family: 'Fira Code', monospace;
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: #e11d48;
+        }
+
+        .btn-download {
+            display: inline-block;
+            background: #24292e;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: transform 0.2s;
+            margin-top: 20px;
+        }
+
+        .btn-download:hover { transform: translateY(-3px); background: #444; }
+
+        .social-cta {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        footer { text-align: center; padding: 60px; background: #0f172a; color: #94a3b8; }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            .section-card { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <a href="index.html" class="nav-link">Inicio</a>
+        <a href="https://linkedin.com/in/cristian-cheride" target="_blank" class="nav-link">LinkedIn</a>
+        <div class="dropdown">
+            <button id="menu-toggle" class="dropbtn">Proyectos ▾</button>
+            <div id="projects-dropdown" class="dropdown-content">
+                <a href="#">EDA Suite Pro</a>
+                <a href="proyecto-blooms.html">Blooms Global Analysis</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<header>
+    <h1>EDA Suite Pro</h1>
+    <p class="tagline">La herramienta definitiva para automatizar el Análisis Exploratorio de Datos (EDA) y potenciar decisiones estratégicas.</p>
+</header>
+
+<div class="container">
+    <section class="section-card">
+        <h2>Sobre la Herramienta</h2>
+        <p>Como analista de procesos y datos, siempre me he enfrentado al mismo obstáculo: el 80% del tiempo se pierde limpiando datos en lugar de analizándolos. Por eso creé <strong>EDA Suite Pro</strong>, una aplicación de escritorio diseñada para democratizar el análisis avanzado, permitiendo que cualquier profesional pueda auditar, limpiar y segmentar datos sin necesidad de programar.</p>
+        
+        <div class="highlight-box">
+            "Mi objetivo es cerrar la brecha entre tener datos y generar valor real. Esta app optimiza los flujos de trabajo de RevOps y Business Intelligence, eliminando errores manuales."
+        </div>
+    </section>
+
+    <section class="section-card">
+        <h2>Funcionalidades Core</h2>
+
+        <h3>1. Diagnóstico 360 y Auditoría</h3>
+        <p>Al cargar un archivo <code>CSV</code> o <code>Excel</code>, la app genera un reporte instantáneo de salud del dataset: conteo de nulos, detección de duplicados y un mapa visual de ausencias para priorizar la limpieza.</p>
+
+        <h3>2. Limpieza Inteligente y "Formulas Lab"</h3>
+        <p>Esta es la joya de la corona. La app no solo borra duplicados, sino que utiliza una métrica de densidad de información para <strong>conservar el registro más completo</strong>.</p>
+        <div class="highlight-box" style="background: #f8fafc; font-style: normal; color: var(--text-main);">
+            <strong>Motor de Fórmulas Lab:</strong> Permite imputar valores nulos mediante operaciones matemáticas entre columnas. 
+            <br><br>
+            <em>Ejemplo de sintaxis:</em> <code>0 + 1.2</code> 
+            <br>
+            (Suma 1.2 a cada valor de la columna de índice 0 para rellenar los huecos). Recuerda siempre separar los operadores con espacios.
+        </div>
+
+        <h3>3. Control Avanzado de Outliers</h3>
+        <p>Implementa el método del <strong>Rango Intercuartílico (IQR)</strong> con sensibilidad ajustable. Puedes elegir entre eliminar valores atípicos, realizar una <strong>Winsorización</strong> (limitar extremos) o imputar la mediana de forma masiva.</p>
+
+        <h3>4. Business Intelligence Interactiva</h3>
+        
+        <p>Genera dashboards profesionales en <code>HTML</code> (vía Plotly). Incluye matrices de correlación, boxplots y gráficos de dispersión con líneas de tendencia <strong>OLS</strong> listas para presentaciones ejecutivas.</p>
+
+        <h3>5. Segmentación con Machine Learning</h3>
+        
+        <p>Aplica <strong>K-Means Clustering</strong> de forma transparente. La app escala los datos y codifica variables de texto automáticamente, permitiendo segmentar clientes o productos en un entorno 3D interactivo donde el tamaño de la burbuja representa un KPI de éxito.</p>
+    </section>
+
+    <section class="section-card" style="text-align: center;">
+        <h2>¡Descarga EDA Suite Pro!</h2>
+        <p>La herramienta es de código abierto y está disponible en mi repositorio oficial de GitHub.</p>
+        <a href="https://github.com/cristiancheride" target="_blank" class="btn-download">
+            Ir a GitHub / Descargar App
+        </a>
+
+        <div class="social-cta">
+            <p><strong>¿Te resultó útil?</strong> Como favor personal, te invito a seguirme en mis redes. Tu apoyo me ayuda a seguir creando herramientas gratuitas para la comunidad de datos.</p>
+            <p>
+                ⭐ Dame una estrella en <a href="https://github.com/cristiancheride" target="_blank">GitHub</a><br>
+                🔔 Sígueme y conecta en <a href="https://www.linkedin.com/in/cristian-cheride/" target="_blank">LinkedIn</a>
+            </p>
+            <p>¡Deja tus comentarios y sugerencias para futuras versiones!</p>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>Buenos Aires, Argentina | crismoonchild@gmail.com</p>
+    <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 10px;">&copy; 2026 Cristian Cheride | Data Science Professional Portfolio</p>
+</footer>
+
+<script>
+    const dropbtn = document.getElementById('menu-toggle');
+    const dropdownContent = document.getElementById('projects-dropdown');
+
+    dropbtn.onclick = function(e) {
+        e.stopPropagation();
+        dropdownContent.classList.toggle('show');
+    };
+
+    window.onclick = function(e) {
+        if (!e.target.matches('#menu-toggle')) {
+            if (dropdownContent.classList.contains('show')) {
+                dropdownContent.classList.remove('show');
+            }
+        }
+    };
+</script>
+
+</body>
+</html>
