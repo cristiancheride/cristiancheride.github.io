@@ -43,18 +43,10 @@
             gap: 20px;
         }
 
-        .nav-link {
-            color: white;
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
+        .nav-link { color: white; text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.3s; }
         .nav-link:hover { color: #60a5fa; }
 
         .dropdown { position: relative; display: inline-block; }
-
         .dropbtn {
             background-color: var(--accent-color);
             color: white;
@@ -80,7 +72,6 @@
         }
 
         .show { display: block; }
-
         .dropdown-content a {
             color: #1e293b;
             padding: 12px 16px;
@@ -89,7 +80,6 @@
             font-size: 0.85rem;
             border-bottom: 1px solid #f1f5f9;
         }
-
         .dropdown-content a:hover { background-color: #f1f5f9; color: var(--accent-color); }
 
         header {
@@ -114,14 +104,7 @@
             border: 1px solid var(--border-color);
         }
 
-        h2 {
-            color: var(--accent-color);
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            border-left: 5px solid var(--accent-color);
-            padding-left: 20px;
-        }
-
+        h2 { color: var(--accent-color); font-size: 1.8rem; margin-bottom: 25px; border-left: 5px solid var(--accent-color); padding-left: 20px; }
         h3 { color: #0f172a; margin-top: 40px; font-size: 1.5rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; }
 
         .highlight-box {
@@ -153,7 +136,6 @@
             transition: all 0.3s;
             margin: 30px 0;
         }
-
         .btn-download:hover { transform: translateY(-3px); background: #444; }
 
         .social-cta {
@@ -164,9 +146,6 @@
             text-align: center;
             margin-top: 50px;
         }
-
-        .faq-item { margin-bottom: 25px; }
-        .faq-question { font-weight: 700; color: #0f172a; display: block; margin-bottom: 8px; }
 
         footer { text-align: center; padding: 60px; background: #0f172a; color: #94a3b8; }
 
@@ -185,7 +164,7 @@
             <button id="menu-toggle" class="dropbtn" data-i18n="nav-projects">Proyectos ▾</button>
             <div id="projects-dropdown" class="dropdown-content">
                 <a href="index.html" data-i18n="nav-main">Main Portfolio</a>
-                <a href="proyecto-eda.html" data-i18n="nav-eda">EDA Suite Pro (Actual)</a>
+                <a href="EDASuitePro.html" data-i18n="nav-eda">EDA Suite Pro (Actual)</a>
                 <a href="proyecto-blooms.html" data-i18n="nav-blooms">Blooms Global Analysis</a>
             </div>
         </div>
@@ -208,45 +187,67 @@
     </section>
 
     <section class="section-card">
-        <h2 data-i18n="features-h2">Exploración Técnica de Funcionalidades</h2>
+        <h2 data-i18n="tech-guide-h2">Maximizando el Análisis con EDA Suite Pro: Guía Técnica de Funcionalidades</h2>
+        <p data-i18n="tech-guide-p">Para los profesionales de datos, la eficiencia radica en la capacidad de transformar rápidamente un dataset ruidoso en una fuente de verdad. EDA Suite Pro facilita este proceso mediante herramientas de manipulación lógica y estadística avanzada.</p>
 
-        <h3 data-i18n="feat1-h3">1. Diagnóstico de Calidad y Reporte 360</h3>
-        <p data-i18n="feat1-p">Al cargar un dataset, la suite realiza un escaneo inmediato que detecta densidad de datos, integridad estructural (tipos de datos) y métricas de tendencia central instantáneas.</p>
+        <h3 data-i18n="lab-h3">🧬 Dominando "Fórmulas Lab": Lógica Personalizada</h3>
+        <p data-i18n="lab-p1">La función de Fórmulas Lab en la Fase 2 permite realizar imputaciones dinámicas que van más allá de los promedios simples.</p>
+        <p data-i18n="lab-p2"><strong>Cómo funciona el motor:</strong> El script descompone la entrada del usuario en "tokens" basándose en los espacios. Si un token es un número entero, el sistema lo interpreta como el índice de una columna (empezando desde 0); si no es un entero, lo trata como un operador o una constante.</p>
         
-
-        <h3 data-i18n="feat2-h3">2. Fase de Limpieza de Precisión</h3>
-        <p data-i18n="feat2-p1">Implementé un algoritmo de <strong>Borrado Inteligente de Duplicados</strong>. A diferencia de los métodos estándar, el código calcula una métrica interna (<code>__n</code>) para identificar y conservar el registro con mayor cantidad de información poblada.</p>
-
-        <div class="highlight-box" style="background: #f8fafc; color: var(--text-main); border-left-color: #10b981;">
-            <strong data-i18n="formula-title">Motor de "Fórmulas Lab":</strong> 
-            <p data-i18n="formula-p">He desarrollado un evaluador dinámico que permite imputar nulos usando lógica de negocio. El sistema interpreta los números enteros como <strong>índices de columna</strong> (0 es la primera, 1 la segunda, etc.).</p>
-        </div>
-        
-        <p data-i18n="formula-ex">Ejemplos de uso (Siempre usar espacios entre elementos):</p>
+        <p data-i18n="lab-syntax"><strong>Sintaxis Correcta:</strong> Es fundamental separar cada elemento con espacios.</p>
         <div class="formula-card">
-            # Sumar 100 a Col 0: "0 + 100"<br>
-            # Proyectar 15% en Col 1: "1 * 1.15"<br>
-            # Operar entre columnas: "0 / 2"
+            # <span data-i18n="lab-ex1">Suma: 0 + 100 (Suma 100 a columna 0)</span><br>
+            # <span data-i18n="lab-ex2">Multiplicación: 1 * 1.15 (Proyección de impuestos)</span><br>
+            # <span data-i18n="lab-ex3">Operación entre columnas: 0 / 2</span>
         </div>
+        <p data-i18n="lab-impact"><strong>Impacto:</strong> Esto permite reconstruir datos faltantes basándose en la relación lógica que ya existe en el dataset.</p>
 
-        <h3 data-i18n="feat3-h3">3. Mitigación Científica de Outliers (IQR)</h3>
-        <p data-i18n="feat3-p">Utiliza el Rango Intercuartílico con sensibilidad ajustable (0.5 a 3.5). Permite realizar acciones masivas como eliminación, <strong>Winsorización</strong> o imputación por la mediana.</p>
+        <h3 data-i18n="out-h3">🧠 Tratamiento Quirúrgico de Outliers</h3>
+        <p data-i18n="out-p1">En la Fase 3, la aplicación automatiza la detección de anomalías mediante el Rango Intercuartílico (IQR).</p>
         
+        <p data-i18n="out-p2"><strong>Ajuste de Sensibilidad:</strong> El usuario controla el "Factor IQR" (por defecto 1.5). Un factor más bajo detecta más anomalías, mientras que uno de 3.0 detecta solo valores extremadamente raros.</p>
+        
+        <p><strong>Estrategias de Mitigación:</strong></p>
+        <ul>
+            <li data-i18n="out-li1"><strong>Winsorización:</strong> En lugar de perder datos, el sistema "recorta" los valores extremos y los iguala a los límites de los percentiles 1 y 99.</li>
+            <li data-i18n="out-li2"><strong>Imputación por Mediana:</strong> Los valores fuera de rango se reemplazan por la mediana de su propia columna.</li>
+        </ul>
 
-        <h3 data-i18n="feat4-h3">4. BI Interactiva y Segmentación con IA</h3>
-        <p data-i18n="feat4-p">Exporta archivos HTML dinámicos con líneas de tendencia <strong>OLS</strong> y ejecuta un pipeline de <strong>K-Means Clustering</strong> con pre-procesamiento automático (Scaling y Encoding), culminando en visualizaciones 3D por KPI.</p>
+        <h3 data-i18n="bi-h3">📊 Visualización BI e Interactividad</h3>
+        <p data-i18n="bi-p1">La Fase 4 transforma el análisis estático en una experiencia exploratoria mediante Plotly.</p>
         
+        <ul>
+            <li data-i18n="bi-p2"><strong>Gráficos de Dispersión (Scatter):</strong> Incluyen automáticamente una línea de tendencia OLS (mínimos cuadrados ordinarios).</li>
+            <li data-i18n="bi-p3"><strong>Análisis Multidimensional:</strong> Se puede asignar una tercera variable al parámetro de Color.</li>
+            <li data-i18n="bi-p4"><strong>Portabilidad:</strong> Todos los gráficos se exportan como archivos HTML autónomos.</li>
+        </ul>
+
+        <h3 data-i18n="ml-h3">🚀 Segmentación Estratégica con Machine Learning</h3>
+        <p data-i18n="ml-p1">La Fase 5 aplica K-Means Clustering para agrupar registros por similitudes matemáticas.</p>
+        
+        <ul>
+            <li data-i18n="ml-p2"><strong>Pre-procesamiento Transparente:</strong> La app realiza automáticamente StandardScaling y LabelEncoding de textos.</li>
+            <li data-i18n="ml-p3"><strong>KPI de Impacto:</strong> El usuario puede elegir una variable de "Target" que determinará el tamaño de la burbuja.</li>
+        </ul>
     </section>
 
     <section class="section-card">
-        <h2 data-i18n="faq-h2">Preguntas Frecuentes</h2>
+        <h2 data-i18n="faq-h2">Preguntas Frecuentes (FAQ)</h2>
         <div class="faq-item">
-            <span class="faq-question" data-i18n="faq-q1">¿Cómo evito borrar datos importantes en duplicados?</span>
-            <p data-i18n="faq-a1">La app prioriza la fila con más datos rellenos mediante un análisis de densidad.</p>
+            <span class="faq-question" data-i18n="faq-q1">1. ¿Por qué es importante el "Borrado Inteligente" de duplicados?</span>
+            <p data-i18n="faq-a1">A diferencia de un borrado aleatorio, la app conserva la fila que tiene menos valores nulos. Esto garantiza que te quedes con la información más completa.</p>
         </div>
         <div class="faq-item">
-            <span class="faq-question" data-i18n="faq-q2">¿Es necesario saber programar?</span>
-            <p data-i18n="faq-a2">No. Solo necesitas conocer el índice de tu columna y usar matemáticas básicas con espacios.</p>
+            <span class="faq-question" data-i18n="faq-q2">2. ¿Qué pasa si ingreso una fórmula sin espacios en "Fórmulas Lab"?</span>
+            <p data-i18n="faq-a2">El motor no podrá identificar los índices de las columnas correctamente. Recuerda siempre usar espacios: 0 * 1.2 en lugar de 0*1.2.</p>
+        </div>
+        <div class="faq-item">
+            <span class="faq-question" data-i18n="faq-q3">3. ¿Puedo segmentar mis datos si tengo columnas con nombres de ciudades o categorías?</span>
+            <p data-i18n="faq-a3">Sí. La app detecta automáticamente las columnas de texto y las convierte en valores numéricos (LabelEncoding) para el algoritmo.</p>
+        </div>
+        <div class="faq-item">
+            <span class="faq-question" data-i18n="faq-q4">4. ¿Qué archivos puedo cargar?</span>
+            <p data-i18n="faq-a4">La suite es compatible con archivos CSV y Excel (.xlsx).</p>
         </div>
     </section>
 
@@ -268,76 +269,82 @@
 
 <footer>
     <p>Buenos Aires, Argentina | crismoonchild@gmail.com</p>
-    <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 10px;">&copy; 2026 Cristian Cheride | Data Science Professional</p>
+    <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 10px;">&copy; 2026 Cristian Cheride | Data Science & Automation Professional</p>
 </footer>
 
 <script>
     const translations = {
         es: {
-            "nav-projects": "Proyectos ▾",
-            "nav-main": "Portfolio Principal",
-            "nav-eda": "EDA Suite Pro (Actual)",
-            "nav-blooms": "Análisis Blooms",
-            "header-title": "EDA Suite Pro",
-            "header-tagline": "Optimizando el flujo de datos: Del caos de un CSV al valor estratégico.",
+            "nav-projects": "Proyectos ▾", "nav-main": "Portfolio Principal", "nav-eda": "EDA Suite Pro (Actual)", "nav-blooms": "Análisis Blooms",
+            "header-title": "EDA Suite Pro", "header-tagline": "Optimizando el flujo de datos: Del caos de un CSV al valor estratégico.",
             "intro-h2": "Una pequeña contribución para nuestra comunidad",
             "intro-p1": "Estimados colegas y entusiastas de los datos: hoy traigo humildemente esta herramienta a todos ustedes para ayudarles a facilitar el trabajo del día a día. Sé lo que es pasar horas lidiando con archivos CSV desordenados o Excel inconsistentes. He creado EDA Suite Pro no como una solución definitiva, sino como un apoyo sincero.",
-            "intro-quote": "Diseñé esta herramienta para que tanto analistas como perfiles de negocio puedan auditar la calidad de su información y aplicar lógica estadística avanzada.",
-            "features-h2": "Exploración Técnica de Funcionalidades",
-            "feat1-h3": "1. Diagnóstico de Calidad y Reporte 360",
-            "feat1-p": "Escaneo inmediato de densidad de datos, integridad estructural y métricas de tendencia central.",
-            "feat2-h3": "2. Fase de Limpieza de Precisión",
-            "feat2-p1": "Borrado Inteligente: Algoritmo que conserva el registro con mayor información poblada mediante métrica __n.",
-            "formula-title": "Motor de Fórmulas Lab:",
-            "formula-p": "Evaluador dinámico que imputa nulos usando índices de columna (0, 1, 2...).",
-            "formula-ex": "Ejemplos (usar espacios entre elementos):",
-            "feat3-h3": "3. Mitigación Científica de Outliers (IQR)",
-            "feat3-p": "Sensibilidad ajustable con acciones masivas: eliminación, Winsorización o imputación por mediana.",
-            "feat4-h3": "4. BI Interactiva y Segmentación con IA",
-            "feat4-p": "Gráficos Plotly con tendencia OLS y pipeline de K-Means Clustering con visualización 3D.",
-            "faq-h2": "Preguntas Frecuentes",
-            "faq-q1": "¿Cómo evito borrar datos importantes?",
-            "faq-a1": "La app prioriza la fila con más datos rellenos mediante análisis de densidad.",
-            "faq-q2": "¿Es necesario saber programar?",
-            "faq-a2": "No. Solo necesitas el índice de la columna y matemáticas básicas.",
-            "repo-h2": "Obtén EDA Suite Pro",
-            "repo-p": "Herramienta Open Source disponible para toda la comunidad.",
-            "btn-github": "🚀 Descargar desde GitHub",
-            "cta-title": "¿Me ayudarías con un favor?",
-            "cta-p": "Si te es útil, sígueme en GitHub y LinkedIn. Tu apoyo es fundamental."
+            "intro-quote": "Diseñé esta herramienta para que tanto analistas como perfiles de negocio puedan auditar la calidad de su información y aplicar lógica estadística avanzada con unos pocos clics.",
+            "tech-guide-h2": "Maximizando el Análisis con EDA Suite Pro: Guía Técnica de Funcionalidades",
+            "tech-guide-p": "Para los profesionales de datos, la eficiencia radica en la capacidad de transformar rápidamente un dataset ruidoso en una fuente de verdad.",
+            "lab-h3": "🧬 Dominando 'Fórmulas Lab': Lógica Personalizada",
+            "lab-p1": "La función de Fórmulas Lab permite realizar imputaciones dinámicas que van más allá de los promedios simples.",
+            "lab-p2": "Cómo funciona el motor: El script interpreta los números enteros como el índice de una columna (empezando desde 0).",
+            "lab-syntax": "Sintaxis Correcta: Es fundamental separar cada elemento con espacios.",
+            "lab-ex1": "Suma: 0 + 100 (Suma 100 a columna 0)", "lab-ex2": "Multiplicación: 1 * 1.15", "lab-ex3": "Operación entre columnas: 0 / 2",
+            "lab-impact": "Impacto: Reconstruye datos basados en la relación lógica del dataset.",
+            "out-h3": "🧠 Tratamiento Quirúrgico de Outliers",
+            "out-p1": "Automatiza la detección de anomalías mediante el Rango Intercuartílico (IQR).",
+            "out-p2": "Ajuste de Sensibilidad: El usuario controla el 'Factor IQR' (por defecto 1.5).",
+            "out-li1": "Winsorización: Recorta valores extremos a los límites del 1% y 99%.",
+            "out-li2": "Imputación por Mediana: Reemplaza outliers por la mediana de la columna.",
+            "bi-h3": "📊 Visualización BI e Interactividad",
+            "bi-p1": "Transforma el análisis estático en una experiencia exploratoria mediante Plotly.",
+            "bi-p2": "Gráficos de Dispersión: Con línea de tendencia OLS automática.",
+            "bi-p3": "Análisis Multidimensional: Variable de color para segmentación visual.",
+            "bi-p4": "Portabilidad: Exportación a HTML autónomo.",
+            "ml-h3": "🚀 Segmentación Estratégica con Machine Learning",
+            "ml-p1": "Agrupa registros por similitudes matemáticas mediante K-Means.",
+            "ml-p2": "Pre-procesamiento: StandardScaling y LabelEncoding automático.",
+            "ml-p3": "KPI de Impacto: El tamaño de la burbuja representa la rentabilidad o volumen.",
+            "faq-h2": "Preguntas Frecuentes (FAQ)",
+            "faq-q1": "1. ¿Por qué es importante el 'Borrado Inteligente'?", "faq-a1": "Conserva la fila con menos valores nulos para garantizar información completa.",
+            "faq-q2": "2. ¿Qué pasa si no uso espacios en las fórmulas?", "faq-a2": "El motor no identificará los índices. Usa siempre: 0 * 1.2.",
+            "faq-q3": "3. ¿Puedo usar categorías de texto?", "faq-a3": "Sí, la app las convierte a números automáticamente.",
+            "faq-q4": "4. ¿Qué archivos soporta?", "faq-a4": "CSV y Excel (.xlsx).",
+            "repo-h2": "Obtén EDA Suite Pro", "repo-p": "Herramienta Open Source disponible para toda la comunidad.",
+            "btn-github": "🚀 Descargar desde GitHub", "cta-title": "¿Me ayudarías con un favor?", "cta-p": "Si te es útil, sígueme en GitHub y LinkedIn."
         },
         en: {
-            "nav-projects": "Projects ▾",
-            "nav-main": "Main Portfolio",
-            "nav-eda": "EDA Suite Pro (Current)",
-            "nav-blooms": "Blooms Global Analysis",
-            "header-title": "EDA Suite Pro",
-            "header-tagline": "Optimizing data flow: From CSV chaos to strategic value.",
+            "nav-projects": "Projects ▾", "nav-main": "Main Portfolio", "nav-eda": "EDA Suite Pro (Current)", "nav-blooms": "Blooms Analysis",
+            "header-title": "EDA Suite Pro", "header-tagline": "Optimizing data flow: From CSV chaos to strategic value.",
             "intro-h2": "A small contribution to our community",
-            "intro-p1": "Dear colleagues and data enthusiasts: today I humbly bring this tool to all of you to help facilitate your day-to-day work. I know what it's like to spend hours dealing with messy CSVs or inconsistent Excels. I created EDA Suite Pro not as a definitive solution, but as sincere support.",
+            "intro-p1": "Dear colleagues and data enthusiasts: today I humbly bring this tool to all of you to help facilitate your day-to-day work. I created EDA Suite Pro not as a definitive solution, but as sincere support.",
             "intro-quote": "I designed this tool so that both analysts and business profiles can audit their information quality and apply advanced statistical logic.",
-            "features-h2": "Technical Features Exploration",
-            "feat1-h3": "1. Quality Diagnosis & 360 Report",
-            "feat1-p": "Immediate scan of data density, structural integrity, and instant central tendency metrics.",
-            "feat2-h3": "2. Precision Cleaning Phase",
-            "feat2-p1": "Smart Deletion: Algorithm that preserves the record with the most populated information using the __n metric.",
-            "formula-title": "Formula Lab Engine:",
-            "formula-p": "Dynamic evaluator that imputes nulls using column indices (0, 1, 2...).",
-            "formula-ex": "Examples (always use spaces between elements):",
-            "feat3-h3": "3. Scientific Outlier Mitigation (IQR)",
-            "feat3-p": "Adjustable sensitivity with bulk actions: removal, Winsorization, or median imputation.",
-            "feat4-h3": "4. Interactive BI & IA Segmentation",
-            "feat4-p": "Dynamic Plotly charts with OLS trends and K-Means Clustering pipeline with 3D visualization.",
-            "faq-h2": "Frequently Asked Questions",
-            "faq-q1": "How do I avoid deleting important data?",
-            "faq-a1": "The app prioritizes the row with more filled data through density analysis.",
-            "faq-q2": "Is programming knowledge required?",
-            "faq-a2": "No. You only need the column index and basic math with spaces.",
-            "repo-h2": "Get EDA Suite Pro",
-            "repo-p": "Open Source tool available for the entire community.",
-            "btn-github": "🚀 Download from GitHub",
-            "cta-title": "Would you do me a favor?",
-            "cta-p": "If you find it useful, please follow me on GitHub and LinkedIn. Your support is key."
+            "tech-guide-h2": "Maximizing Analysis with EDA Suite Pro: Technical Features Guide",
+            "tech-guide-p": "For data professionals, efficiency lies in the ability to quickly transform a noisy dataset into a source of truth.",
+            "lab-h3": "🧬 Mastering 'Formula Lab': Custom Logic",
+            "lab-p1": "The Formula Lab feature allows for dynamic imputations that go beyond simple averages.",
+            "lab-p2": "How the engine works: The script interprets integers as column indices (starting from 0).",
+            "lab-syntax": "Correct Syntax: It is essential to separate each element with spaces.",
+            "lab-ex1": "Sum: 0 + 100 (Add 100 to col 0)", "lab-ex2": "Multiply: 1 * 1.15", "lab-ex3": "Column operation: 0 / 2",
+            "lab-impact": "Impact: Reconstructs missing data based on the dataset's logical relationships.",
+            "out-h3": "🧠 Surgical Outlier Treatment",
+            "out-p1": "Automates anomaly detection using the Interquartile Range (IQR).",
+            "out-p2": "Sensitivity Adjustment: User controls the 'IQR Factor' (default 1.5).",
+            "out-li1": "Winsorization: Clips extreme values to the 1% and 99% limits.",
+            "out-li2": "Median Imputation: Replaces outliers with the column's median.",
+            "bi-h3": "📊 BI Visualization & Interactivity",
+            "bi-p1": "Transforms static analysis into an exploratory experience using Plotly.",
+            "bi-p2": "Scatter Plots: With automatic OLS trendlines.",
+            "bi-p3": "Multidimensional Analysis: Color variable for visual segmentation.",
+            "bi-p4": "Portability: Export to standalone HTML files.",
+            "ml-h3": "🚀 Strategic Segmentation with Machine Learning",
+            "ml-p1": "Groups records by mathematical similarities using K-Means.",
+            "ml-p2": "Preprocessing: Automatic StandardScaling and LabelEncoding.",
+            "ml-p3": "Impact KPI: Bubble size represents profitability or volume.",
+            "faq-h2": "Frequently Asked Questions (FAQ)",
+            "faq-q1": "1. Why is 'Smart Deletion' important?", "faq-a1": "It keeps the row with fewer null values to ensure complete information.",
+            "faq-q2": "2. What if I don't use spaces in formulas?", "faq-a2": "The engine won't identify indices. Always use: 0 * 1.2.",
+            "faq-q3": "3. Can I use text categories?", "faq-a3": "Yes, the app converts them to numbers automatically.",
+            "faq-q4": "4. What files are supported?", "faq-a4": "CSV and Excel (.xlsx).",
+            "repo-h2": "Get EDA Suite Pro", "repo-p": "Open Source tool available for the community.",
+            "btn-github": "🚀 Download from GitHub", "cta-title": "Would you do me a favor?", "cta-p": "If it's useful, follow me on GitHub and LinkedIn."
         }
     };
 
