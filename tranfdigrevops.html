@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Study: Digital Transformation & RevOps | Cristian O. Cheride</title>
+    <meta name="description" content="A comprehensive case study on process reengineering, data governance, and RevOps implementation in public administration by Cristian O. Cheride.">
+    <meta name="author" content="Cristian O. Cheride">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --text-main: #1e293b;
+            --accent-color: #2563eb;
+            --section-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --header-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--text-main);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            background: #0f172a;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 20px;
+            gap: 20px;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover { color: #60a5fa; }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dropbtn:hover { background-color: #1d4ed8; }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: white;
+            min-width: 220px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 6px;
+            margin-top: 12px;
+        }
+
+        .show { display: block; }
+
+        .dropdown-content a {
+            color: #1e293b;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.85rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .dropdown-content a:hover { background-color: #f1f5f9; color: var(--accent-color); }
+
+        /* --- Header --- */
+        header {
+            text-align: center;
+            padding: 100px 20px 140px;
+            background: var(--header-gradient);
+            color: white;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        header h1 { font-size: 3rem; margin: 0; letter-spacing: -0.025em; }
+        header p.tagline { font-size: 1.3rem; font-weight: 300; opacity: 0.8; max-width: 800px; margin: 20px auto 0; }
+
+        /* --- Content Layout --- */
+        .container { max-width: 900px; margin: -80px auto 60px; padding: 0 20px; position: relative; }
+
+        .section-card {
+            background: var(--section-bg);
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+        }
+
+        .meta-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .executive-summary {
+            background: #f1f5f9;
+            border-left: 6px solid #0f172a;
+            padding: 30px;
+            margin: 40px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .executive-summary h3 {
+            margin-top: 0;
+            color: #0f172a;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        h2 {
+            color: var(--accent-color);
+            font-size: 1.8rem;
+            margin: 45px 0 25px;
+            border-left: 5px solid var(--accent-color);
+            padding-left: 20px;
+        }
+
+        h2:first-of-type { margin-top: 0; }
+
+        p { margin-bottom: 20px; text-align: justify; }
+
+        .highlight-box {
+            background-color: #eff6ff;
+            border-right: 4px solid var(--accent-color);
+            padding: 25px;
+            margin: 30px 0;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #1e40af;
+        }
+
+        /* --- Metrics Grid --- */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .metric-item {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+
+        .metric-value {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 5px;
+        }
+
+        .metric-label { font-size: 0.85rem; color: #64748b; font-weight: 600; text-transform: uppercase; }
+
+        footer { text-align: center; padding: 60px; background: #0f172a; color: #94a3b8; }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            .section-card { padding: 30px; }
+            .meta-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="https://linkedin.com/in/cristian-cheride" target="_blank" class="nav-link">LinkedIn</a>
+        <div class="dropdown">
+            <button id="menu-toggle" class="dropbtn">Projects ▾</button>
+            <div id="projects-dropdown" class="dropdown-content">
+                <a href="index.html">Main Portfolio</a>
+                <a href="edasuitepro.html">EDA Suite Pro</a>
+                <a href="proyecto-blooms.html">Blooms Global Analysis</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<header>
+    <h1>Digital Transformation & RevOps</h1>
+    <p class="tagline">A Chronicle of Reengineering Public Management in Las Lomitas</p>
+</header>
+
+<div class="container">
+    <article class="section-card">
+        <div class="meta-header">
+            <span><strong>Location:</strong> Las Lomitas, Formosa, AR</span>
+            <span><strong>Timeline:</strong> Dec 2022 - Aug 2024</span>
+            <span><strong>Focus:</strong> Business Process Reengineering</span>
+        </div>
+
+        <section class="executive-summary">
+            <h3>Management Overview</h3>
+            <p>In high-complexity environments characterized by operational silos and data fragmentation, efficiency is a strategic imperative. This case study details the transformation of an analog administrative structure into a data-driven engine. By implementing <strong>RevOps</strong> methodologies and <strong>Low-Code</strong> architectures, I successfully mitigated integrity risks, optimized tax collection, and scaled institutional responsiveness. This project serves as a blueprint for how intelligent information governance can turn administrative overhead into a high-performance asset.</p>
+        </section>
+
+        <p>This project represents a defining chapter in my professional career: the challenge of leading the <strong>Organization and Methods (O&M) Sub-directorate</strong> at the Municipality of Las Lomitas. It was far more than a technical upgrade; it was a surgical intervention on an administrative culture that was drowning in paperwork and disconnected silos.</p>
+
+        <div class="highlight-box">
+            "When data loses its integrity, the State loses its authority. My mission was to restore that authority by building an infallible 'Single Source of Truth' from the ground up."
+        </div>
+
+        <h2>The Diagnosis: Data Ingovernability</h2>
+        <p>Upon taking the lead, I encountered a complex landscape: a municipality experiencing rapid growth but held back by a profound administrative gap. Existing technology was a labyrinth of legacy systems where data entry lacked standardization and process documentation was non-existent. We faced what I termed <strong>Data Ingovernability</strong>. Departments like Land Registry, Revenue, and Legal worked as isolated islands; while one knew the physical territory, another held the debt records, and a third managed the collection capacity. None spoke the same language, resulting in critical revenue leakage.</p>
+
+        <h2>The Strategy: Injecting RevOps into Public DNA</h2>
+        <p>In the face of this disconnection, the solution couldn't be a rigid, million-dollar commercial software. I decided to shift the paradigm and view public management through the lens of <strong>Revenue Operations (RevOps)</strong>. We treated the municipality as a service provider and the taxpayer as a customer. I adapted private-sector pillars to our reality:</p>
+        <ul>
+            <li><strong>Lead Generation:</strong> Using land regularization to identify and onboard new taxpayers.</li>
+            <li><strong>Management Pipeline:</strong> Creating digital workflows that moved the citizen from initial notification to signed payment plans.</li>
+            <li><strong>Customer Success:</strong> Redesigning procedures like the "Tax Clearance Certificate" to reduce friction and incentivize voluntary compliance.</li>
+        </ul>
+
+        <h2>Architecture: Building the Single Source of Truth (SSOT)</h2>
+        <p>The core technical challenge was establishing a <strong>Single Source of Truth (SSOT)</strong> without an enterprise-level budget. I designed a <strong>Low-Code architecture</strong> on Google Workspace, built with the structural rigor of a relational backend. I implemented strict data hygiene protocols where every record featured georeferencing and visual status indicators (automated heatmaps for compliance). This allowed for a seamless, digital "handover" of files between departments, ensuring 100% auditability.</p>
+
+        <h2>Automation: Pro-Level Operational Efficiency</h2>
+        <p>To eliminate hundreds of hours of manual, error-prone labor, I developed custom automation using <strong>Google Apps Script</strong>. I engineered an <strong>Early Warning System</strong> that monitored expiration dates and automatically triggered notifications to both taxpayers and responsible officials. This was paired with a <strong>"Document Factory"</strong>: dynamic templates linked to our SSOT that enabled the mass issuance of legal summons and certificates in minutes, with a human error rate of zero.</p>
+
+        <h2>Engagement: The Power of Conversational CRM</h2>
+        <p>I recognized that in our region, the citizen's primary interface with the world is the smartphone. Consequently, I transformed WhatsApp into our most critical engagement channel. By implementing <strong>Conversational Marketing</strong> strategies for segmented debt-relief campaigns, the municipality shifted from passive waiting to proactive outreach. We were able to measure delivery rates and payment commitments in real-time for the first time in the institution's history.</p>
+
+        <h2>The Legacy: Tangible Results</h2>
+        <div class="metrics-grid">
+            <div class="metric-item">
+                <span class="metric-value">+30%</span>
+                <span class="metric-label">Operational Efficiency</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-value">-60%</span>
+                <span class="metric-label">Data Latency</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-value">+45%</span>
+                <span class="metric-label">Digital Adoption</span>
+            </div>
+            <div class="metric-item">
+                <span class="metric-value">100%</span>
+                <span class="metric-label">Data Integrity</span>
+            </div>
+        </div>
+
+        <p style="margin-top: 40px;">This project proved that modernization does not require infinite budgets, but rather the vision to order, measure, and optimize data. By the end of my tenure, we hadn't just implemented scripts; we had installed a data-driven culture where decisions are made based on objective metrics from a centralized source.</p>
+    </article>
+</div>
+
+<footer>
+    <p>Posted on: February 04, 2026</p>
+    <p>Buenos Aires, Argentina | crismoonchild@gmail.com</p>
+    <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 10px;">&copy; 2026 Cristian O. Cheride | Business Data Analyst Portfolio</p>
+</footer>
+
+<script>
+    const dropbtn = document.getElementById('menu-toggle');
+    const dropdownContent = document.getElementById('projects-dropdown');
+
+    dropbtn.onclick = function(e) {
+        e.stopPropagation();
+        dropdownContent.classList.toggle('show');
+    };
+
+    window.onclick = function(e) {
+        if (!e.target.matches('#menu-toggle')) {
+            if (dropdownContent.classList.contains('show')) {
+                dropdownContent.classList.remove('show');
+            }
+        }
+    };
+</script>
+
+</body>
+</html>
