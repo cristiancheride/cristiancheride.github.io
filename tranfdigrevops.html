@@ -199,7 +199,18 @@
 
         .metric-label { font-size: 0.85rem; color: #64748b; font-weight: 600; text-transform: uppercase; }
 
-        footer { text-align: center; padding: 60px; background: #0f172a; color: #94a3b8; }
+        /* --- Footer (Fixed Alignment) --- */
+        footer { 
+            text-align: center; 
+            padding: 60px; 
+            background: #0f172a; 
+            color: #94a3b8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
 
         @media (max-width: 768px) {
             header h1 { font-size: 2.2rem; }
