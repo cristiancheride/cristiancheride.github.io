@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cristian O. Cheride | Professional Portfolio</title>
+    <title>Cristian O. Cheride | Data Analyst & Product Builder</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -161,6 +161,34 @@
             font-size: 0.9rem;
         }
 
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .project-card {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 20px;
+            display: block;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px -6px rgba(0,0,0,0.12);
+            border-color: var(--accent-color);
+        }
+
+        .project-card .p-title { font-weight: 700; color: var(--accent-color); font-size: 1.05rem; }
+        .project-card .p-stack { font-size: 0.78rem; color: #64748b; margin: 4px 0 10px; font-family: 'Fira Code', monospace; }
+        .project-card .p-desc { font-size: 0.9rem; color: #334155; margin: 0; }
+
         .exp-item { margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid #f1f5f9; }
         .exp-item:last-child { border: none; }
         .exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
@@ -197,34 +225,78 @@
 
 <header>
     <h1>Cristian O. Cheride</h1>
-    <p class="tagline">RevOps & Business Process Analyst | Driving Efficiency via Data & Automation</p>
+    <p class="tagline">Data Analyst | AI-Augmented Product Builder & Citizen Developer</p>
 </header>
 
 <div class="container">
     <section class="section-card">
         <h2>About Me</h2>
-        <p>Hi! I'm Cristian. My professional career is defined by a single obsession: <strong>bridging the gap between "having data" and "using it to generate value"</strong>. I actively work at the intersection of Revenue Operations (RevOps), Data Analysis, and Process Automation.</p>
-        
+        <p>Hi! I'm Cristian, a Data Analyst who doesn't stop at the dashboard. My work sits at the intersection of <strong>data analysis, process automation, and AI-augmented development</strong>: I don't just interpret data, I build the tools — scripts, dashboards, and full applications — that turn analysis into something a team can actually use.</p>
+
         <div class="highlight-box">
-            "With 15 years of experience, my goal is operational efficiency, whether optimizing e-commerce logistics or leading digital transformation in the public sector."
+            "With 12 years of experience turning messy, manual processes into data-driven systems, my edge isn't just reading the data — it's shipping the tool that acts on it, often without waiting on a dev team."
         </div>
 
-        <p>I have a solid 12-year foundation in the private sector. As a Technical Operations Lead at Ciriux, I managed over 1,000 monthly transactions and ensured service levels for over 200 corporate clients. I leverage my experience as an Advanced Excel Instructor to simplify complex technical concepts for commercial teams, facilitating the adoption of new processes.</p>
-         <p>Currently working as an Independent Consultant, I am open to exploring new professional opportunities that align with my goals and experience.</p>
+        <p>I have a solid foundation in the private sector at Ciriux, where I managed over 1,000 monthly transactions and service levels for 200+ corporate clients. I later led the digital transformation of tax processes for a municipal government, designing and building the automation and BI systems myself. Today I also ship independent products end-to-end — from LMS platforms to AI-powered sales agents — as a <strong>Citizen Developer / Product Builder</strong>, using AI-assisted development (Claude Code, Cursor) instead of depending on a technical team.</p>
+        <p>Currently open to Data Analyst roles where I can also contribute as a builder, not just an analyst.</p>
     </section>
 
     <section class="section-card">
         <h2>Tech Stack</h2>
+        <h3 style="margin-top: 0; font-size: 1rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em;">Data & Analytics</h3>
         <div class="tech-grid">
             <div class="tech-item">SQL</div>
-            <div class="tech-item">Python</div>
+            <div class="tech-item">Python (Pandas)</div>
             <div class="tech-item">Power BI</div>
-            <div class="tech-item">Google Looker</div>
+            <div class="tech-item">Google Looker Studio</div>
             <div class="tech-item">Excel (VBA/Power Query)</div>
-            <div class="tech-item">Google Apps Script</div>
-            <div class="tech-item">Citizen Developer</div>
-            <div class="tech-item">RevOps</div>
             <div class="tech-item">Data Cleaning</div>
+        </div>
+        <h3 style="font-size: 1rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.05em;">Building & Automation</h3>
+        <div class="tech-grid">
+            <div class="tech-item">FastAPI / Python</div>
+            <div class="tech-item">JavaScript / Next.js</div>
+            <div class="tech-item">Google Apps Script</div>
+            <div class="tech-item">n8n</div>
+            <div class="tech-item">APIs & Webhooks</div>
+            <div class="tech-item">Citizen Developer</div>
+        </div>
+    </section>
+
+    <section class="section-card">
+        <h2>Independent Builds</h2>
+        <p style="margin-top: -10px; color: #64748b;">Products I designed, built, and shipped end-to-end using AI-augmented development — proof that the analysis doesn't stop at a slide, it becomes something people actually use.</p>
+        <div class="project-grid">
+            <a href="https://docentia.fullinsights.store/" target="_blank" class="project-card">
+                <div class="p-title">Docentia</div>
+                <div class="p-stack">FastAPI · Jinja2 · SQLite</div>
+                <p class="p-desc">LMS platform with WYSIWYG editing, quizzes, and role-based access for teachers and students.</p>
+            </a>
+            <a href="https://viajero.fullinsights.store/" target="_blank" class="project-card">
+                <div class="p-title">Viajero (TravelCanvas)</div>
+                <div class="p-stack">Next.js · PostgreSQL · Socket.io</div>
+                <p class="p-desc">Real-time collaborative trip planner on an interactive visual canvas.</p>
+            </a>
+            <a href="https://catalaxia.fullinsights.store/" target="_blank" class="project-card">
+                <div class="p-title">Catalaxia</div>
+                <div class="p-stack">PHP · PostgreSQL · PWA</div>
+                <p class="p-desc">Decentralized marketplace with split-payment logistics via the Mercado Pago escrow API.</p>
+            </a>
+            <a href="https://fullinsights.store/vendedor-detalles.html" target="_blank" class="project-card">
+                <div class="p-title">AI Sales Assistant (WhatsApp)</div>
+                <div class="p-stack">n8n · Python · LLMs</div>
+                <p class="p-desc">Conversational agent automating sales and customer support workflows.</p>
+            </a>
+            <a href="https://crmagik.fullinsights.store/" target="_blank" class="project-card">
+                <div class="p-title">CRMagik</div>
+                <div class="p-stack">Python · Streamlit · Webhook API</div>
+                <p class="p-desc">Intelligent assistant and automation layer for CRM workflows.</p>
+            </a>
+            <a href="https://aplicaciones.fullinsights.store/" target="_blank" class="project-card">
+                <div class="p-title">See the Full Catalog →</div>
+                <div class="p-stack">aplicaciones.fullinsights.store</div>
+                <p class="p-desc">All shipped apps in one place, including systems-architecture work like a full multiplayer game backend.</p>
+            </a>
         </div>
     </section>
 
@@ -248,7 +320,7 @@
 
         <div class="exp-item">
             <div class="exp-header">
-                <span class="exp-title">Sales Operations Lead | Ciriux</span>
+                <span class="exp-title">Sales Operations & E-commerce Logistics Lead | Ciriux</span>
                 <span class="exp-date">Aug 2014 - Sep 2020</span>
             </div>
             <p>Orchestrated logistics operations with zero inventory discrepancies through automated tracking. Achieved a 15% reduction in acquisition costs and a 25% increase in ARR through upselling strategies.</p>
@@ -282,7 +354,7 @@
 
 <footer>
     <p>Buenos Aires, Argentina | crismoonchild@gmail.com</p>
-    <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 10px;">&copy; 2026 Cristian Cheride | Business Data Analyst Portfolio</p>
+    <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 10px;">&copy; 2026 Cristian Cheride | Data Analyst & Product Builder Portfolio</p>
 </footer>
 
 <script>
