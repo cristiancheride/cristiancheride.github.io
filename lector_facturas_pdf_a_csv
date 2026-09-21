@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FacturIA | Cristian Cheride</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f8fafc;
+            --text-main: #1e293b;
+            --accent-color: #2563eb;
+            --section-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --header-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            color: var(--text-main);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        nav {
+            background: #0f172a;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 0 20px;
+            gap: 20px;
+        }
+
+        .nav-link { color: white; text-decoration: none; font-size: 0.9rem; font-weight: 600; transition: color 0.3s; }
+        .nav-link:hover { color: #60a5fa; }
+
+        .dropdown { position: relative; display: inline-block; }
+        .dropbtn {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: white;
+            min-width: 220px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 6px;
+            margin-top: 12px;
+        }
+
+        .show { display: block; }
+        .dropdown-content a {
+            color: #1e293b;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 0.85rem;
+            border-bottom: 1px solid #f1f5f9;
+        }
+        .dropdown-content a:hover { background-color: #f1f5f9; color: var(--accent-color); }
+
+        header {
+            text-align: center;
+            padding: 100px 20px;
+            background: var(--header-gradient);
+            color: white;
+            border-bottom: 4px solid var(--accent-color);
+        }
+
+        header h1 { font-size: 3rem; margin: 0; letter-spacing: -0.025em; }
+        header p.tagline { font-size: 1.3rem; font-weight: 300; opacity: 0.8; max-width: 800px; margin: 20px auto 0; }
+
+        .container { max-width: 1000px; margin: -50px auto 60px; padding: 0 20px; position: relative; }
+
+        .section-card {
+            background: var(--section-bg);
+            padding: 50px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+            border: 1px solid var(--border-color);
+        }
+
+        h2 { color: var(--accent-color); font-size: 1.8rem; margin-bottom: 25px; border-left: 5px solid var(--accent-color); padding-left: 20px; }
+        h3 { color: #0f172a; margin-top: 40px; font-size: 1.5rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; }
+
+        .highlight-box {
+            background-color: #eff6ff;
+            border-left: 4px solid var(--accent-color);
+            padding: 25px;
+            margin: 25px 0;
+            color: #1e40af;
+        }
+
+        .formula-card {
+            background: #1e293b;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            font-family: 'Fira Code', monospace;
+            font-size: 0.95rem;
+            margin: 15px 0;
+        }
+
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .tech-table th, .tech-table td {
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .tech-table th {
+            background-color: #f1f5f9;
+            color: #0f172a;
+        }
+
+        .faq-item {
+            margin-bottom: 20px;
+        }
+
+        .faq-question {
+            font-weight: 700;
+            color: #0f172a;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .btn-download {
+            display: inline-block;
+            background: #24292e;
+            color: white;
+            padding: 18px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            margin: 30px 0;
+        }
+        .btn-download:hover { transform: translateY(-3px); background: #444; }
+
+        .social-cta {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        footer { text-align: center; padding: 60px; background: #0f172a; color: #94a3b8; }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            .section-card { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <a href="https://www.linkedin.com/in/cristian-cheride/" target="_blank" class="nav-link">LinkedIn</a>
+        
+        <div class="dropdown">
+            <button id="menu-toggle" class="dropbtn">Projects ▾</button>
+            <div id="projects-dropdown" class="dropdown-content">
+                <a href="index.html">Main Portfolio</a>
+                <a href="edasuitepro.html">EDA Suite Pro</a>
+                <a href="facturia.html">FacturIA</a>
+                <a href="tranfdigrevops.html">Digital Transformation and RevOps</a>
+                <a href="proyecto-blooms.html">Blooms Global Analysis</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<header>
+    <h1>FacturIA</h1>
+    <p class="tagline">La evolución de la gestión financiera mediante Inteligencia Artificial y ejecución local.</p>
+</header>
+
+<div class="container">
+    <section class="section-card">
+        <h2>Elevator Pitch</h2>
+        <p>FacturIA es una solución de escritorio autónoma diseñada para eliminar el trabajo manual en la facturación y control de gastos de freelancers, PyMEs y contadores. Combinando procesamiento de lenguaje natural, lectura avanzada de documentos PDF y una arquitectura híbrida de alto rendimiento, la plataforma transforma comprobantes digitalizados no estructurados en datos operativos listos para la toma de decisiones en tiempo real.</p>
+        
+        <div class="highlight-box">
+            "Transformando la burocracia financiera en un proceso continuo, autónomo y local, manteniendo la soberanía absoluta de los datos."
+        </div>
+    </section>
+
+    <section class="section-card">
+        <h2>El Problema & La Solución</h2>
+        
+        <h3>⚠️ El Problema</h3>
+        <p>La gestión administrativa tradicional presenta fricciones estructurales que impactan directamente en la productividad y la precisión financiera:</p>
+        <ul>
+            <li><strong>Carga de datos manual y propensa a errores:</strong> La digitación manual de facturas y recibos en formato PDF insume horas de trabajo operativo y registra un alto índice de inconsistencias en montos, fechas e identificadores fiscales (CUIT/RUT).</li>
+            <li><strong>Falta de visibilidad financiera centralizada:</strong> El seguimiento de métricas clave (flujo de caja, ingresos vs. egresos y saldos vencidos) suele depender de planillas dispersas o procesos de conciliación tardíos.</li>
+            <li><strong>Fricción en esquemas recurrentes:</strong> La emisión periódica de facturas por servicios o suscripciones genera cuellos de botella administrativos y retrasos en el cobro.</li>
+            <li><strong>Desconexión entre clientes y contadores:</strong> El envío ineficiente de documentación a fin de mes retrasa la liquidación de impuestos y dificulta la categorización precisa de gastos deducibles.</li>
+        </ul>
+
+        <h3>💡 La Solución</h3>
+        <p>FacturIA redefine la interacción con los sistemas de facturación al integrar un motor de IA que automatiza el ciclo de vida del documento contable:</p>
+        <ul>
+            <li><strong>Procesamiento inteligente de documentos:</strong> Extracción y estructuración automática de información desde archivos PDF, transformando entradas heterogéneas en registros de base de datos relacionales sin intervención manual.</li>
+            <li><strong>Gestión por lenguaje natural:</strong> Interfaz conversacional que permite ejecutar comandos de negocio (como la emisión de comprobantes o consulta de saldos) de forma intuitiva.</li>
+            <li><strong>Control analítico centralizado:</strong> Tablero interactivo con métricas financieras consolidadas, alertas de vencimiento y reconciliación de transacciones.</li>
+            <li><strong>Arquitectura eficiente de distribución:</strong> Aplicación ejecutada localmente con persistencia de alta velocidad que garantiza privacidad, baja latencia y disponibilidad inmediata.</li>
+        </ul>
+    </section>
+
+    <section class="section-card">
+        <h2>Características Principales</h2>
+
+        <h3>🤖 Inteligencia Artificial & Automatización Integrada</h3>
+        <ul>
+            <li><strong>Motor de Extracción de Datos en PDF:</strong> Procesamiento de facturas y comprobantes en PDF con extracción automática de campos clave: montos, impuestos, fechas y CUIT/RUT.</li>
+            <li><strong>Asistente Conversacional Integrado:</strong> Chatbot guiado por LLMs capaz de interpretar instrucciones complejas en lenguaje natural para la creación y gestión de documentos.</li>
+            <li><strong>Clasificación y Categorización Automática:</strong> Etiquetado inteligente de egresos e ingresos para simplificar la deducción impositiva y el análisis analítico.</li>
+        </ul>
+
+        <h3>📈 Gestión Contable & Comercial</h3>
+        <ul>
+            <li><strong>Emisión Eficiente de Comprobantes:</strong> Creación de facturas electrónicas en un clic mediante plantillas personalizables.</li>
+            <li><strong>Suscripciones y Facturación Recurrente:</strong> Programación automatizada de cobros periódicos e igualas de servicios.</li>
+            <li><strong>Presupuestos y Multimoneda:</strong> Generación de cotizaciones y conversión de divisas en tiempo real para operaciones internacionales.</li>
+        </ul>
+
+        <h3>🖥️ Panel de Control & CRM</h3>
+        <ul>
+            <li><strong>Dashboard Financiero:</strong> Visualización en tiempo real de flujo de caja, balance operativo y comparativas de ingresos/egresos.</li>
+            <li><strong>Conciliación y Alertas:</strong> Detección de inconsistencias y notificaciones automáticas para la gestión de cobranzas.</li>
+            <li><strong>Directorio CRM de Clientes:</strong> Historial consolidado de transacciones, saldos pendientes y trazabilidad por cliente.</li>
+        </ul>
+    </section>
+
+    <section class="section-card">
+        <h2>Mi Rol & Stack Tecnológico</h2>
+        <p><strong>Rol:</strong> Diseñador y Desarrollador Full Stack de la Solución (Arquitectura, Motor de IA, Backend, Frontend y Empaquetado).</p>
+
+        <table class="tech-table">
+            <thead>
+                <tr>
+                    <th>Capa / Módulo</th>
+                    <th>Tecnología Utilizada</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Backend & Lógica Core</strong></td>
+                    <td>Python, FastAPI (Servidor local), Pandas (Transformación de datos)</td>
+                </tr>
+                <tr>
+                    <td><strong>Frontend / UI</strong></td>
+                    <td>HTML5, CSS3, JavaScript (Interfaz web servida localmente en ventana dedicada)</td>
+                </tr>
+                <tr>
+                    <td><strong>Base de Datos</strong></td>
+                    <td>SQLite (Persistencia local optimizada y segura)</td>
+                </tr>
+                <tr>
+                    <td><strong>Procesamiento PDF & IA</strong></td>
+                    <td>PyMuPDF, API de DeepSeek</td>
+                </tr>
+                <tr>
+                    <td><strong>Integraciones</strong></td>
+                    <td>n8n vía Webhooks (Ej. Automatización de pasarelas como Mercado Pago)</td>
+                </tr>
+                <tr>
+                    <td><strong>Empaquetado y Despliegue</strong></td>
+                    <td>PyInstaller (Compilación ejecutable), Inno Setup (Instalador .exe profesional)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>🧬 Desafío Técnico Integrador: Procesamiento de PDFs + LLMs</h3>
+        <p>El mayor reto técnico consistió en diseñar una tubería de datos (<em>data pipeline</em>) resiliente que convirtiera archivos PDF no estructurados y de maquetación heterogénea en estructuras <code>DataFrame</code> strictly tipadas y listas para su inserción en SQLite.</p>
+        
+        <div class="formula-card">
+            1. Extracción de Vectores de Texto: PyMuPDF (PDF Reader)<br>
+            2. Estructuración y Normalización: DeepSeek API (JSON Schema Enforcement)<br>
+            3. Validación & Tipado de Datos: Pandas DataFrame Engine<br>
+            4. Persistencia Local & Indexación: SQLite Database
+        </div>
+
+        <p><strong>Flujo del pipeline:</strong></p>
+        <ol>
+            <li><strong>Lectura y Extracción de PDFs:</strong> Se implementó <code>PyMuPDF</code> para la lectura directa y extracción eficiente de los vectores de texto contenidos en los documentos digitales.</li>
+            <li><strong>Estructuración vía LLM:</strong> La salida de texto extraída se canaliza hacia la API de DeepSeek utilizando esquemas JSON rigurosos (<em>prompt engineering</em> con validación de formato). Esto garantiza la identificación precisa de entidades financieras (CUIT/RUT, bases imponibles, alícuotas) ignorando variaciones en la disposición visual.</li>
+            <li><strong>Consolidación Vectorial:</strong> Los datos validados son procesados eficientemente mediante <code>Pandas</code> para alimentar los dashboards analíticos en tiempo real, ofreciendo una experiencia fluida con tiempos de respuesta mínimos en el entorno local del usuario.</li>
+        </ol>
+    </section>
+
+    <section class="section-card">
+        <h2>Casos de Uso</h2>
+        <ul>
+            <li><strong>Freelancers y Monotributistas:</strong> Reducción drástica del tiempo invertido en tareas administrativas. Permite procesar y registrar gastos al instante importando los PDFs de las facturas recibidas y emitir nuevos comprobantes en segundos usando comandos simples de texto.</li>
+            <li><strong>PyMEs y Agencias:</strong> Automatización completa de la cobranza recurrente por servicios prestados. Mejora el control del flujo de caja mediante un dashboard en tiempo real y reduce la morosidad mediante alertas de vencimiento.</li>
+            <li><strong>Contadores y Asesores Fiscales:</strong> Herramienta desplegable para clientes que estandariza la entrada de datos. Garantiza la entrega de información pre-categorizada, limpia y validada al cierre de cada período fiscal.</li>
+        </ul>
+    </section>
+
+    <section class="section-card">
+        <h2>Frequently Asked Questions (FAQ)</h2>
+        <div class="faq-item">
+            <span class="faq-question">1. ¿Por qué FacturIA funciona como una app de escritorio con servidor local?</span>
+            <p>Garantiza que la base de datos financiera resida exclusivamente en la máquina del usuario (SQLite), ofreciendo máxima velocidad de respuesta sin depender de servidores web externos para almacenar información sensible.</p>
+        </div>
+        <div class="faq-item">
+            <span class="faq-question">2. ¿Cómo maneja el sistema los diferentes formatos de facturas en PDF?</span>
+            <p>A través del motor PyMuPDF combinado con esquemas de validación estricta en la API de DeepSeek, lo que permite interpretar el contenido de cualquier PDF fiscal independientemente de su maquetación.</p>
+        </div>
+        <div class="faq-item">
+            <span class="faq-question">3. ¿Qué integraciones externas soporta?</span>
+            <p>Se conecta vía Webhooks con n8n, lo que permite automatizar flujos complejos como la generación y cobranza de enlaces de pago a través de pasarelas como Mercado Pago.</p>
+        </div>
+        <div class="faq-item">
+            <span class="faq-question">4. ¿Cuáles son los próximos pasos en la hoja de ruta?</span>
+            <p>Incorporar sincronización opcional con cifrado end-to-end, integrar modelos SLM locales (ej. Ollama/Phi) para soporte 100% offline y añadir un módulo multi-empresa avanzado.</p>
+        </div>
+    </section>
+
+    <section class="section-card" style="text-align: center;">
+        <h2>Obtener FacturIA</h2>
+        <p>Descarga la aplicación ejecutable e instalador para Windows desde Google Drive.</p>
+        <a href="https://drive.google.com/drive/folders/1cI4nSduZNHF0zyctF9HM_sE8uYE4gWcG?usp=sharing" target="_blank" class="btn-download">🚀 Descargar FacturIA en Google Drive</a>
+
+        <div class="social-cta">
+            <p><strong>¿Te interesa conocer más del proyecto o conectar?</strong></p>
+            <p>Puedes revisar mis repositorios en GitHub o conectar conmigo directamente en LinkedIn.</p>
+            <p>
+                ⭐ <a href="https://github.com/cristiancheride" target="_blank">GitHub</a> | 
+                🤝 <a href="https://www.linkedin.com/in/cristian-cheride/" target="_blank">LinkedIn (Follow)</a>
+            </p>
+        </div>
+    </section>
+</div>
+
+<footer>
+    <p>Buenos Aires, Argentina | crismoonchild@gmail.com</p>
+    <p style="font-size: 0.8rem; opacity: 0.6; margin-top: 10px;">&copy; 2026 Cristian Cheride | Business Data Analyst & Developer Portfolio</p>
+</footer>
+
+<script>
+    const dropbtn = document.getElementById('menu-toggle');
+    const dropdownContent = document.getElementById('projects-dropdown');
+    dropbtn.onclick = function(e) { e.stopPropagation(); dropdownContent.classList.toggle('show'); };
+    window.onclick = function(e) {
+        if (!e.target.matches('#menu-toggle')) {
+            if (dropdownContent.classList.contains('show')) dropdownContent.classList.remove('show');
+        }
+    };
+</script>
+
+</body>
+</html>
